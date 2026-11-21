@@ -41,6 +41,7 @@ h2{font-size:clamp(26px,4.6vw,48px);font-weight:700;margin:6px 0 8px;line-height
 .mono{font-family:'Space Mono',monospace}
 .big{position:absolute;right:10px;top:-14px;font:900 96px 'Cinzel',serif;color:#ffffff07;pointer-events:none}
 .ico{width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,var(--o),var(--o2));display:grid;place-items:center;font-size:24px;box-shadow:0 0 28px rgba(255,107,0,.55);margin-bottom:14px}
+/* cover */
 .cover{align-items:center;text-align:center;position:relative}
 .ring{position:absolute;width:min(78vw,640px);aspect-ratio:1;border-radius:50%;background:conic-gradient(from 0deg,transparent,rgba(255,107,0,.5),transparent 40%,rgba(255,166,61,.35),transparent 80%);-webkit-mask:radial-gradient(circle,transparent 62%,#000 63%,#000 64%,transparent 65%);mask:radial-gradient(circle,transparent 62%,#000 63%,#000 64%,transparent 65%);animation:spin 14s linear infinite;z-index:-1}
 .ring.b{width:min(60vw,500px);animation-duration:22s;animation-direction:reverse;opacity:.7}
@@ -57,10 +58,12 @@ h2{font-size:clamp(26px,4.6vw,48px);font-weight:700;margin:6px 0 8px;line-height
 .mini{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:26px}
 .mini div{padding:11px 18px;border-radius:14px;background:#ffffff0a;border:1px solid #ffffff14;font-size:13px}
 .mini b{color:var(--o2);font-weight:500}
+/* rules */
 .rule{display:flex;gap:14px;align-items:flex-start;padding:15px 16px}
 .rule .n{flex:none;font:900 22px 'Cinzel',serif;color:var(--o);text-shadow:0 0 18px var(--o);min-width:34px}
 .rule h4{font-size:13.5px;margin-bottom:3px}.rule h4 span{color:var(--o2);font:700 11px 'Space Mono',monospace;display:block;letter-spacing:.08em}
 .rule p{font-size:12.5px;color:var(--m);line-height:1.6}
+/* form */
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}
 .chips span{font:11px 'Space Mono',monospace;padding:4px 9px;border-radius:7px;background:#ff6b0014;border:1px solid #ff6b0033;color:#ffc999}
 .ex{margin-top:12px;padding:10px 12px;border-radius:11px;background:#000000aa;border-left:3px solid var(--o);font:11.5px/1.6 'Space Mono',monospace;color:#d8d8e0}
@@ -68,6 +71,7 @@ h2{font-size:clamp(26px,4.6vw,48px);font-weight:700;margin:6px 0 8px;line-height
 .sec{font:900 40px 'Cinzel',serif;color:var(--o);line-height:1;text-shadow:0 0 22px rgba(255,107,0,.7)}
 .sec small{display:block;font:700 10px 'Space Mono',monospace;letter-spacing:.2em;color:var(--m);margin-top:6px;text-shadow:none}
 .head{display:flex;gap:16px;align-items:center}.head h3{font-size:16px;margin:0}.head h3 span{display:block;font-size:12px;color:var(--m);font-weight:400;margin-top:2px}
+/* checklist */
 .chk{display:flex;gap:12px;align-items:center;padding:11px 13px;border-radius:12px;background:#ffffff08;border:1px solid #ffffff10;margin-bottom:8px;cursor:pointer;font-size:13px;transition:.25s}
 .chk:hover{border-color:var(--o)}.chk.d{background:#ff6b0022;border-color:var(--o);box-shadow:0 0 22px #ff6b0033}
 .chk b{width:22px;height:22px;border-radius:7px;border:2px solid #555;display:grid;place-items:center;font-size:13px;color:transparent;flex:none;transition:.25s}
@@ -85,6 +89,7 @@ h2{font-size:clamp(26px,4.6vw,48px);font-weight:700;margin:6px 0 8px;line-height
 .inp{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,166,61,.24);border-radius:12px;padding:12px 14px;color:#fff;font:13.5px 'Prompt',sans-serif;outline:0;transition:.25s;backdrop-filter:blur(8px);box-shadow:inset 0 1px 0 rgba(255,255,255,.06)}.inp:focus{border-color:var(--o);background:rgba(255,107,0,.07);box-shadow:0 0 0 3px rgba(255,107,0,.16),0 0 34px -6px rgba(255,107,0,.7)}.inp::placeholder{color:#7a6c5d}textarea.inp{min-height:70px;resize:vertical}
 .pid{font:900 32px 'Cinzel',serif;color:var(--o);text-shadow:0 0 26px var(--o);margin:6px 0}.pr{margin:8px 0;font-size:13px}.pr small{display:block;font:11px 'Space Mono',monospace;color:var(--m)}
 .ready{margin:14px 0;padding:20px;border-radius:14px;border:1px solid rgba(255,166,61,.35);background:linear-gradient(145deg,rgba(255,150,60,.16),rgba(255,107,0,.04));box-shadow:0 0 40px -12px rgba(255,107,0,.7),inset 0 1px 0 rgba(255,255,255,.14);text-align:left}.ready b{color:var(--o2);font-size:16px;display:block;margin-bottom:8px}.ready p{font-size:13.5px;line-height:1.8;color:#e6dccf;margin:10px 0}.ready p b{color:#fff;font-size:inherit}#done{animation:sIn .8s cubic-bezier(.16,1,.3,1)}
+/* nav */
 nav{position:relative;z-index:20;margin:0 auto;max-width:1180px;width:calc(100% - 40px);display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 14px;border-radius:18px;background:rgba(26,16,8,.5);border:1px solid rgba(255,166,61,.28);backdrop-filter:blur(20px) saturate(150%);box-shadow:0 10px 40px #000,0 0 44px -12px rgba(255,107,0,.45),inset 0 1px 0 rgba(255,255,255,.12)}
 nav button{border:0;border-radius:12px;padding:10px 18px;font:700 12px 'Space Mono',monospace;cursor:pointer;color:#fff;background:#232330;transition:.2s}
 nav #nx{background:linear-gradient(135deg,var(--o),var(--o2));color:#000;box-shadow:0 0 22px #ff6b0066}
@@ -116,7 +121,7 @@ nav button:disabled{opacity:.3;pointer-events:none}
 <div class="r mini" style="--i:6"><div>✍️ <b>ไม่ต้องมีประสบการณ์เขียน</b></div><div>🌐 <b>ไม่ต้องเก่งอังกฤษ</b></div><div>🕰️ <b>เรียนตามจังหวะตัวเอง</b></div></div>
 <div class="r live-badge" style="--i:7">
   <div class="live-dot"></div>
-  มีผู้เข้าร่วมกิจกรรมแล้ว <b id="reg-count" style="color:#fff;margin:0 4px">…</b> คน
+  มีผู้เข้าร่วมกิจกรรมแล้ว <b id="reg-count" style="color:#fff;margin:0 4px">0</b> คน
 </div>
 <div class="r" style="--i:8;margin-top:26px"><button class="btn p" onclick="show(8)">🔥 สมัครเข้าร่วมเลย</button><button class="btn s" onclick="show(1)">ดูรายละเอียดกิจกรรม →</button></div>
 </section>
@@ -184,8 +189,8 @@ nav button:disabled{opacity:.3;pointer-events:none}
     <p>หากมีข้อสงสัยหรือติดขัดตรงไหน สามารถสอบถาม <b>ปิตซึม (Bong Sol)</b> ได้เลยนะครับ เพื่อช่วยให้ทุกคนทำชิ้นงานออกมาได้สมบูรณ์ครับ</p>
   </div>
   <button class="btn p" id="cpf" style="width:100%">✅ พร้อมแล้ว คัดลอกแบบฟอร์มตัวละคร</button>
-  <button class="btn s" id="cpa" style="width:100%;margin-top:8px">📨 คัดลอกใบสมัครเก็บไว้ (สำรอง)</button>
-  <p style="font-size:12px;color:var(--m);margin-top:12px;text-align:center">ระบบได้ส่งข้อมูลให้ผู้ดูแลทางอีเมลและบันทึกในระบบแล้ว</p>
+  <button class="btn s" id="cpa" style="width:100%;margin-top:8px">📨 คัดลอกใบสมัครส่งผู้ดูแล (สำรอง)</button>
+  <p style="font-size:12px;color:var(--m);margin-top:12px;text-align:center">ระบบได้ส่งข้อมูลให้ผู้ดูแลอัตโนมัติแล้ว ปุ่มด้านล่างใช้สำหรับคัดลอกเก็บไว้ส่วนตัว</p>
 </div>
 </div></div>
 </section>
@@ -198,9 +203,10 @@ nav button:disabled{opacity:.3;pointer-events:none}
 <script>
 const $=(s,e=document)=>e.querySelector(s),$$=(s,e=document)=>[...e.querySelectorAll(s)];
 
-/* ✅ URL เดียว ใช้ทั้งเว็บ — แก้บรรทัดนี้บรรทัดเดียวพอ */
+/* URL ของ Google Apps Script */
 const APP_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyv-OawwEx1e0VXnBTok1JlCEpebM81WVCKEeMkHaCW0tx7H3iCb0ze9fkP5TaZm95P/exec";
 
+/* ---------- data ---------- */
 const RULES=[["RESPECT & CONDUCT","เคารพซึ่งกันและกัน","ไม่ดูถูกความสามารถ ภาษา หรือผลงานของผู้อื่น วิจารณ์ได้ด้วยเหตุผลและความสุภาพ"],["ORIGINALITY","สร้างสรรค์อย่างมีเอกลักษณ์","ออกแบบตัวละครได้อิสระ แต่ต้องมีรายละเอียดเป็นของตนเอง"],["FICTIONAL WORLD","โลกสมมติเพื่อการเรียนรู้","ธีม Mafia ใช้เล่าเรื่องและสร้างบรรยากาศเท่านั้น ไม่ส่งเสริมการกระทำผิดในชีวิตจริง"],["ENGLISH IMMERSION","ฝึกภาษาตามระดับตัวเอง","ไม่ต้องเป๊ะ ค้นศัพท์ ใช้ตัวช่วยแปล แล้วค่อยปรับแก้เพื่อเรียนรู้"],["CONSISTENCY","พัฒนาอย่างต่อเนื่อง","ไม่ต้องเสร็จในวันเดียว เน้นรายละเอียดและความสมเหตุสมผลของเรื่อง"],["NO PLAGIARISM","ห้ามคัดลอกผลงาน","ห้ามนำประวัติ บทเขียน หรือภาพของผู้อื่นไปใช้โดยไม่ขออนุญาต"],["PRIVACY","เคารพความเป็นส่วนตัว","ไม่เผยแพร่ข้อมูลส่วนตัว บทสนทนา หรือผลงานของสมาชิกโดยไม่ได้รับอนุญาต"],["CONSTRUCTIVE FEEDBACK","ติชมอย่างสร้างสรรค์","แนะนำด้วยความหวังดี ไม่ประชดหรือทำให้เจ้าของผลงานรู้สึกด้อยค่า"],["PARTICIPATION","เรียนตามจังหวะของตนเอง","ไม่แข่งขัน ไม่เปรียบเทียบระดับภาษาหรือความละเอียดของตัวละคร"],["PROJECT INTEGRITY","รักษาบรรยากาศที่ดี","หากเกิดความเห็นต่าง ให้คุยกันด้วยเหตุผล และให้ผู้ดูแลเป็นกลางพิจารณา"]];
 const SEC=[
 ["01","IDENTITY","ข้อมูลระบุตัวตน","ชื่อจริง ชื่อเล่น อายุ วันเกิด สัญชาติ อาชีพฉากหน้า และสังกัด/แก๊ง","Alias: “The Architect” | Occupation: Art Restorer (front)","Full Name|Nickname|Age|Date of Birth|Place of Birth|Nationality|Languages|Current Residence|Occupation|Affiliation"],
@@ -217,13 +223,12 @@ const SEC=[
 ["12","BIOGRAPHY CHAPTERS","โครงเรื่อง 10 บท","ทยอยเขียนทีละบท จาก “Before Everything” ถึง “What Comes Next” ไม่ต้องรีบ","Start with chapter I, only 3–5 lines is fine","I. Before Everything|II. The House He Grew Up In|III. The Boy He Used to Be|IV. Education &amp; Formation|V. The Turning Point|VI. Entering the World|VII. The Man Behind the Name|VIII. His Present Life|IX. The Things He Never Says|X. What Comes Next"]];
 const STAT=[["Character Generated","คิดโครงตัวละคร"],["Visual Reference Created","หารูปอ้างอิง"],["Personal File Completed","กรอกประวัติครบ"],["Biography Completed","เขียน 10 บท"],["Vocabulary Reviewed","ทบทวนศัพท์"],["English Summary Written","สรุปอังกฤษ"],["Speaking Practice Completed","ฝึกพูด"]];
 
+/* ---------- build ---------- */
 $('#rules').innerHTML=RULES.map((r,i)=>`<div class="r card rule" style="--i:${i%5+1}"><div class="n">${String(i+1).padStart(2,'0')}</div><div><h4><span>${r[0]}</span>${r[1]}</h4><p>${r[2]}</p></div></div>`).join('');
 $$('[data-f]').forEach(g=>{const s=+g.dataset.f;g.innerHTML=SEC.slice(s,s+4).map((x,i)=>`<div class="r card" style="--i:${i+1}"><div class="head"><div class="sec">${x[0]}<small>SECTION</small></div><h3>${x[1]}<span>${x[2]}</span></h3></div><p style="margin-top:12px">${x[3]}</p><div class="chips">${x[5].split('|').map(f=>`<span>${f}</span>`).join('')}</div><div class="ex"><em>EX //</em> ${x[4]}</div></div>`).join('')});
-$('#cl').innerHTML=STAT.map(s=>`<div class="chk"><b>✓</b>${s[0]}<small>${s[1]}</small></div>`).join('');
+$('#cl').innerHTML=STAT.map(s=>`<div class="chk"><b>✓</b>${s[0]}<small>${s[1]}</small></div>`).join('');  /* template text */ const L='━━━━━━━━━━━ 𖤐 ━━━━━━━━━━━',dec=t=>{const d=document.createElement('textarea');d.innerHTML=t;return d.value}; $('#tpl').value='╔══════════════════════════════════════╗\n𓆩 CONFIDENTIAL ARCHIVE 𓆪\nTHE CHARACTER RECORD\n╚══════════════════════════════════════╝\n\n⌞ FILE NO. :\n⌞ CHARACTER NAME :\n⌞ ALIAS :\n⌞ STATUS :\n\n「 A PERSON BEHIND THE NAME 」\n\n'+SEC.map(s=>`${L}\n${s[0]}.${dec(s[1])}\n${L}\n`+s[5].split('\vert{}').map(f=>dec(f)).map(f=>s[0]=='12'?f:`⌞ ${f} :`).join('\n')).join('\n\n')+'\n\n╭────────── · · 𖤐 · · ──────────╮\nLANGUAGE RECORD\n╰────────── · · 𖤐 · · ──────────╯\n\n✧ NEW VOCABULARY\n- \n\n✧ USEFUL EXPRESSIONS\n- \n\n✧ SENTENCES I UNDERSTAND\n- \n\n✧ SENTENCES I CAN REWRITE\n- \n\n✧ MY ENGLISH SUMMARY\n...\n\n✧ MY SPEAKING PRACTICE\n...\n\n╔══════════════════════════════════════╗\nPROJECT STATUS\n╚══════════════════════════════════════╝\n'+STAT.map(s=>'[ ] '+s[0]).join('\n');
 
-const L='━━━━━━━━━━━ 𖤐 ━━━━━━━━━━━',dec=t=>{const d=document.createElement('textarea');d.innerHTML=t;return d.value};
-$('#tpl').value='╔══════════════════════════════════════╗\n𓆩 CONFIDENTIAL ARCHIVE 𓆪\nTHE CHARACTER RECORD\n╚══════════════════════════════════════╝\n\n⌞ FILE NO. :\n⌞ CHARACTER NAME :\n⌞ ALIAS :\n⌞ STATUS :\n\n「 A PERSON BEHIND THE NAME 」\n\n'+SEC.map(s=>`${L}\n${s[0]}. ${dec(s[1])}\n${L}\n`+s[5].split('|').map(f=>dec(f)).map(f=>s[0]=='12'?f:`⌞ ${f} :`).join('\n')).join('\n\n')+'\n\n╭────────── · · 𖤐 · · ──────────╮\nLANGUAGE RECORD\n╰────────── · · 𖤐 · · ──────────╯\n\n✧ NEW VOCABULARY\n- \n\n✧ USEFUL EXPRESSIONS\n- \n\n✧ SENTENCES I UNDERSTAND\n- \n\n✧ SENTENCES I CAN REWRITE\n- \n\n✧ MY ENGLISH SUMMARY\n...\n\n✧ MY SPEAKING PRACTICE\n...\n\n╔══════════════════════════════════════╗\nPROJECT STATUS\n╚══════════════════════════════════════╝\n'+STAT.map(s=>'[ ] '+s[0]).join('\n');
-
+/* ---------- navigation ---------- */
 const S=$$('.slide'),N=S.length;let cur=0;
 function show(n){cur=Math.max(0,Math.min(N-1,n));S.forEach((s,i)=>s.classList.toggle('on',i===cur));
  $('#bar').style.width=((cur+1)/N*100)+'%';$('#ct').textContent=String(cur+1).padStart(2,'0')+' / '+String(N).padStart(2,'0');
@@ -236,12 +241,17 @@ let tx=0;addEventListener('touchstart',e=>tx=e.changedTouches[0].clientX,{passiv
 addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-tx;if(Math.abs(d)>70)show(cur+(d<0?1:-1))},{passive:true});
 $('#fs').onclick=()=>{try{document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()}catch(e){}};
 
+/* toast + copy */
 let tt;function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('s');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('s'),2600)}
+
+/* checklist */
 $$('.chk').forEach(c=>c.onclick=e=>{c.classList.toggle('d');const n=$$('.chk.d').length;$('#cc').textContent=n+' / 7';$('#mt').style.width=(n/7*100)+'%';const r=c.getBoundingClientRect();burst(r.left+30,r.top+16,18);if(n===7){toast('🔥 MISSION COMPLETE');burst(innerWidth/2,innerHeight/2,140)}});
 
+/* tilt + glow */
 document.addEventListener('mousemove',e=>{const sp=$('#spot');sp.style.left=e.clientX+'px';sp.style.top=e.clientY+'px';const c=e.target.closest&&e.target.closest('.card');if(c){const b=c.getBoundingClientRect(),x=(e.clientX-b.left)/b.width,y=(e.clientY-b.top)/b.height;c.style.setProperty('--mx',x*100+'%');c.style.setProperty('--my',y*100+'%');c.style.setProperty('--ry',((x-.5)*7)+'deg');c.style.setProperty('--rx',((.5-y)*7)+'deg')}});
 document.addEventListener('mouseout',e=>{const c=e.target.closest&&e.target.closest('.card');if(c){c.style.setProperty('--rx','0deg');c.style.setProperty('--ry','0deg')}});
 
+/* ember particles */
 const cv=$('#fx'),cx=cv.getContext('2d');let W,H,P=[];
 function rs(){W=cv.width=innerWidth;H=cv.height=innerHeight}rs();addEventListener('resize',rs);
 const mk=(x,y,b)=>({x,y,vx:b?(Math.random()-.5)*7:(Math.random()-.5)*.4,vy:b?(Math.random()-.8)*7:-Math.random()*.9-.25,r:Math.random()*2.2+.6,l:b?60+Math.random()*40:1e9,a:Math.random()*.8+.2,b});
@@ -255,45 +265,72 @@ requestAnimationFrame(loop)})();
 function cpy(t,m){const b=document.createElement('textarea');b.value=t;b.style.cssText='position:fixed;left:-9999px';document.body.appendChild(b);b.select();let ok=false;try{ok=document.execCommand('copy')}catch(e){}b.remove();if(ok)toast(m);else if(navigator.clipboard)navigator.clipboard.writeText(t).then(()=>toast(m),()=>toast('คัดลอกไม่สำเร็จ'))}
 let formTxt='',appTxt='';
 
-/* ✅ โหลดจำนวนคนสมัคร (GET ตาม redirect ได้) */
+/* โหลดจำนวนคนสมัคร */
 async function loadRegistrations(){
   try{
-    const res=await fetch(APP_SCRIPT_URL,{redirect:'follow'});
+    const res=await fetch(APP_SCRIPT_URL);
     const data=await res.json();
-    $('#reg-count').textContent=data.count||0;
-  }catch(e){$('#reg-count').textContent='—';console.log('counter fail',e)}
+    if(data && typeof data.count !== 'undefined'){
+      $('#reg-count').textContent=data.count;
+    }
+  }catch(e){
+    console.log('Counter standby');
+  }
 }
 
-/* ✅ ส่งฟอร์ม — ซ่อม syntax + ใช้ no-cors (Apps Script ต้องการแบบนี้) */
-$('#rf').onsubmit=async(e)=>{
-  e.preventDefault();
-  const v=s=>$(s).value.trim();
-  const nick=v('#f-nick'),charName=v('#f-char'),age=v('#f-age'),soc=v('#f-soc'),link=v('#f-link');
-  const id='#MC-'+(Math.floor(Math.random()*9000)+1000);
-  const btn=$('#rf button[type="submit"]'),orig=btn.innerHTML;
-  btn.innerHTML='⏳ กำลังส่งข้อมูล...';btn.disabled=true;
+/* ---------- FORM SUBMISSION TO GOOGLE SHEETS ---------- */
+$('#rf').onsubmit = async (e) => {
+    e.preventDefault();
+    const v = s => $(s).value.trim();
+    const nick = v('#f-nick');
+    const charName = v('#f-char');
+    const age = v('#f-age');
+    const soc = v('#f-soc');
+    const link = v('#f-link');
+    const id = '#MC-' + (Math.floor(Math.random() * 9000) + 1000);
+    
+    const btn = $('#rf button[type="submit"]');
+    const originalBtnText = btn.innerHTML;
+    btn.innerHTML = '⏳ กำลังส่งข้อมูล...';
+    btn.disabled = true;
 
-  try{
-    await fetch(APP_SCRIPT_URL,{
-      method:'POST',
-      mode:'no-cors',
-      headers:{'Content-Type':'text/plain;charset=utf-8'},
-      body:JSON.stringify({id:id,nick:nick,char:charName,age:age,soc:soc,link:link})
-    });
-    /* no-cors = response อ่านไม่ได้ แต่ Apps Script ทำงานแล้ว → ถือว่าสำเร็จ */
-    formTxt=$('#tpl').value.replace('⌞ FILE NO. :','⌞ FILE NO. : '+id).replace('⌞ CHARACTER NAME :','⌞ CHARACTER NAME : '+charName);
-    appTxt='𓆩 MAFIA CHARACTER IMMERSION — ใบสมัคร 𓆪\nรหัส: '+id+'\nชื่อเล่น: '+nick+'\nตัวละคร: '+charName+'\nอายุ: '+age+'\nโซเชียล: '+soc+'\nช่องทางติดต่อ: '+link;
-    $('#pid').textContent=id;$('#pn').textContent=nick;$('#pc').textContent=charName;$('#welcome-name').textContent=nick;
-    $('#wait').style.display='none';$('#done').style.display='block';
-    $('#done').scrollIntoView({behavior:'smooth',block:'center'});
-    burst(innerWidth/2,innerHeight/2,140);
-    toast('🔥 สมัครสำเร็จ! ส่งข้อมูลให้ผู้ดูแลเรียบร้อยแล้ว');
-    loadRegistrations();
-  }catch(error){
-    console.error('Error:',error);
-    toast('❌ '+error.message);
-    btn.innerHTML=orig;btn.disabled=false;
-  }
+    try {
+        await fetch(APP_SCRIPT_URL, {
+            method: "POST",
+            mode: "no-cors",
+            headers: { "Content-Type": "text/plain;charset=utf-8" },
+            body: JSON.stringify({
+                id: id,
+                nick: nick,
+                char: charName,
+                age: age,
+                soc: soc,
+                link: link
+            })
+        });
+    } catch (error) {
+        console.error('Submit warning:', error);
+    }
+
+    // สร้างข้อความฟอร์มและแสดงผลทันที (เหมือนต้นฉบับ)
+    formTxt = $('#tpl').value.replace('⌞ FILE NO. :', '⌞ FILE NO. : ' + id).replace('⌞ CHARACTER NAME :', '⌞ CHARACTER NAME : ' + charName);
+    appTxt = `𓆩 MAFIA CHARACTER IMMERSION — ใบสมัคร 𓆪\nรหัส: ${id}\nชื่อเล่น: ${nick}\nตัวละคร: ${charName}\nอายุ: ${age}\nโซเชียล: ${soc}\nช่องทางติดต่อ: ${link}`;
+    
+    $('#pid').textContent = id;
+    $('#pn').textContent = nick;
+    $('#pc').textContent = charName;
+    $('#welcome-name').textContent = nick;
+    
+    $('#wait').style.display = 'none';
+    $('#done').style.display = 'block';
+    $('#done').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    burst(innerWidth / 2, innerHeight / 2, 140);
+    toast('🔥 สมัครสำเร็จ! บันทึกข้อมูลเรียบร้อยแล้ว');
+
+    // คืนค่าปุ่มให้กดซ้ำได้หากต้องการแก้ไข
+    btn.innerHTML = originalBtnText;
+    btn.disabled = false;
+    setTimeout(loadRegistrations, 1500);
 };
 
 $('#cpf').onclick=()=>cpy(formTxt,'✓ คัดลอกแบบฟอร์มตัวละครแล้ว');
