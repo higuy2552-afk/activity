@@ -200,7 +200,7 @@ nav button:disabled{opacity:.3;pointer-events:none}
 const $=(s,e=document)=>e.querySelector(s),$$=(s,e=document)=>[...e.querySelectorAll(s)];
 
 // ⚠️ สำคัญ: วางลิงก์ Web App URL จาก Google Apps Script ตรงนี้
-const APP_SCRIPT_URL = "YOUR_WEB_APP_URL_HERE"; 
+const APP_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyv-OawwEx1e0VXnBTok1JlCEpebM81WVCKEeMkHaCW0tx7H3iCb0ze9fkP5TaZm95P/exec";
 
 const RULES=[["RESPECT & CONDUCT","เคารพซึ่งกันและกัน","ไม่ดูถูกความสามารถ ภาษา หรือผลงานของผู้อื่น วิจารณ์ได้ด้วยเหตุผลและความสุภาพ"],["ORIGINALITY","สร้างสรรค์อย่างมีเอกลักษณ์","ออกแบบตัวละครได้อิสระ แต่ต้องมีรายละเอียดเป็นของตนเอง"],["FICTIONAL WORLD","โลกสมมติเพื่อการเรียนรู้","ธีม Mafia ใช้เล่าเรื่องและสร้างบรรยากาศเท่านั้น ไม่ส่งเสริมการกระทำผิดในชีวิตจริง"],["ENGLISH IMMERSION","ฝึกภาษาตามระดับตัวเอง","ไม่ต้องเป๊ะ ค้นศัพท์ ใช้ตัวช่วยแปล แล้วค่อยปรับแก้เพื่อเรียนรู้"],["CONSISTENCY","พัฒนาอย่างต่อเนื่อง","ไม่ต้องเสร็จในวันเดียว เน้นรายละเอียดและความสมเหตุสมผลของเรื่อง"],["NO PLAGIARISM","ห้ามคัดลอกผลงาน","ห้ามนำประวัติ บทเขียน หรือภาพของผู้อื่นไปใช้โดยไม่ขออนุญาต"],["PRIVACY","เคารพความเป็นส่วนตัว","ไม่เผยแพร่ข้อมูลส่วนตัว บทสนทนา หรือผลงานของสมาชิกโดยไม่ได้รับอนุญาต"],["CONSTRUCTIVE FEEDBACK","ติชมอย่างสร้างสรรค์","แนะนำด้วยความหวังดี ไม่ประชดหรือทำให้เจ้าของผลงานรู้สึกด้อยค่า"],["PARTICIPATION","เรียนตามจังหวะของตนเอง","ไม่แข่งขัน ไม่เปรียบเทียบระดับภาษาหรือความละเอียดของตัวละคร"],["PROJECT INTEGRITY","รักษาบรรยากาศที่ดี","หากเกิดความเห็นต่าง ให้คุยกันด้วยเหตุผล และให้ผู้ดูแลเป็นกลางพิจารณา"]];
 const SEC=[
@@ -284,9 +284,11 @@ $('#rf').onsubmit = async (e) => {
 
     try {
         // ส่งข้อมูลไปยัง Google Apps Script (ใช้ text/plain เพื่อเลี่ยงปัญหา CORS)
-        const response = await fetch("https://script.google.com/macros/s/AKfycbyv-OawwEx1e0VXnBTok1JlCEpebM81WVCKEeMkHaCW0tx7H3iCb0ze9fkP5TaZm95P/exec", {
-            method: "POST",
-            body: JSON.stringify({
+    const response = await fetch(APP_SCRIPT_URL, {
+        method: "POST",
+        body: JSON.stringify({ id: id, nick: nick, char: charName, age: age, soc: soc, link: link })
+  });
+
                 id: id,
                 nick: nick,
                 char: charName,
