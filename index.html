@@ -18,7 +18,7 @@ body::after{content:"";position:fixed;inset:0;background:repeating-linear-gradie
 .top{position:relative;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:14px 20px;font:700 11px 'Space Mono',monospace;letter-spacing:.18em;color:var(--m)}
 .top i{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--o);box-shadow:0 0 12px var(--o);margin-right:10px;animation:pl 1.6s infinite}
 @keyframes pl{50%{opacity:.25}}
-.top button{background:#ffffff0d;border:1px solid #ffffff1f;color:var(--m);padding:6px 11px;border-radius:9px;font:inherit;cursor:pointer}
+.top button{background:#ffffff0d;border:1px solid #ffffff1f;color:var(--m);padding:6px 11px;border-radius:9px;font:inherit;cursor:pointer;margin-left:6px}
 .top button:hover{color:var(--o2);border-color:var(--o)}
 main{position:relative;z-index:10;height:calc(100% - 128px);overflow-y:auto;overflow-x:hidden;padding:0 20px;scrollbar-width:thin;scrollbar-color:#333 transparent}
 .slide{display:none;max-width:1180px;margin:0 auto;min-height:100%;flex-direction:column;justify-content:center;padding:10px 0 24px}
@@ -83,15 +83,35 @@ h2{font-size:clamp(26px,4.6vw,48px);font-weight:700;margin:6px 0 8px;line-height
 .fg{margin-bottom:14px}.fg label{display:block;font-size:13px;font-weight:500;margin-bottom:6px}.fg label i{color:var(--o);font-style:normal}.fg small{display:block;color:var(--o2);font-size:11.5px;margin-bottom:6px}
 .inp{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,166,61,.24);border-radius:12px;padding:12px 14px;color:#fff;font:13.5px 'Prompt',sans-serif;outline:0;transition:.25s;backdrop-filter:blur(8px);box-shadow:inset 0 1px 0 rgba(255,255,255,.06)}.inp:focus{border-color:var(--o);background:rgba(255,107,0,.07);box-shadow:0 0 0 3px rgba(255,107,0,.16),0 0 34px -6px rgba(255,107,0,.7)}.inp::placeholder{color:#7a6c5d}textarea.inp{min-height:70px;resize:vertical}
 .pid{font:900 32px 'Cinzel',serif;color:var(--o);text-shadow:0 0 26px var(--o);margin:6px 0}.pr{margin:8px 0;font-size:13px}.pr small{display:block;font:11px 'Space Mono',monospace;color:var(--m)}
-.ready,.praise-box,.submit-box{margin:14px 0;padding:18px;border-radius:14px;border:1px solid rgba(255,166,61,.35);background:linear-gradient(145deg,rgba(255,150,60,.16),rgba(255,107,0,.04));box-shadow:0 0 40px -12px rgba(255,107,0,.7),inset 0 1px 0 rgba(255,255,255,.14);text-align:left}
-.ready b,.praise-box b,.submit-box b{color:var(--o2);font-size:15px;display:block;margin-bottom:8px}
-.ready p,.praise-box p,.submit-box p{font-size:13.5px;line-height:1.8;color:#e6dccf;margin:8px 0}
+.ready,.praise-box,.submit-box,.publish-box{margin:14px 0;padding:18px;border-radius:14px;border:1px solid rgba(255,166,61,.35);background:linear-gradient(145deg,rgba(255,150,60,.16),rgba(255,107,0,.04));box-shadow:0 0 40px -12px rgba(255,107,0,.7),inset 0 1px 0 rgba(255,255,255,.14);text-align:left}
+.ready b,.praise-box b,.submit-box b,.publish-box b{color:var(--o2);font-size:15px;display:block;margin-bottom:8px}
+.ready p,.praise-box p,.submit-box p,.publish-box p{font-size:13.5px;line-height:1.8;color:#e6dccf;margin:8px 0}
 .praise-box{border-color:rgba(0,255,136,.35);background:linear-gradient(145deg,rgba(0,255,136,.10),rgba(255,107,0,.04))}
 .praise-box b{color:#7effc2}
+.publish-box{border-color:rgba(0,210,255,.45);background:linear-gradient(145deg,rgba(0,210,255,.12),rgba(255,107,0,.05))}
+.publish-box b{color:#7ee8ff}
 .login-row{display:flex;gap:8px;margin-bottom:14px}
 .login-row .inp{flex:1}
 .login-row .btn{margin:0;padding:12px 16px;white-space:nowrap;font-size:12.5px}
-.status-pill{display:inline-block;padding:4px 12px;border-radius:99px;background:rgba(255,107,0,.16);border:1px solid rgba(255,166,61,.4);color:var(--o2);font-size:11.5px;font-family:'Space Mono',monospace;margin-bottom:8px}
+.status-pill{display:inline-block;padding:5px 13px;border-radius:99px;background:rgba(255,107,0,.16);border:1px solid rgba(255,166,61,.4);color:var(--o2);font-size:12px;font-weight:500;margin-bottom:8px}
+.status-pill.ok{background:rgba(0,255,136,.14);border-color:rgba(0,255,136,.5);color:#7effc2}
+.status-pill.wait{background:rgba(255,193,7,.14);border-color:rgba(255,193,7,.5);color:#ffe082}
+.status-pill.fail{background:rgba(255,77,77,.16);border-color:rgba(255,77,77,.55);color:#ff9e9e}
+/* Showcase Feed & Comments */
+.post-card{margin-bottom:16px}
+.post-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;border-bottom:1px solid rgba(255,255,255,.08);padding-bottom:10px;margin-bottom:12px}
+.post-author{font-weight:700;font-size:15px;color:#fff;display:flex;align-items:center;gap:8px}
+.post-author span.badge{font:700 10px 'Space Mono',monospace;padding:2px 8px;border-radius:99px;background:rgba(255,107,0,.18);color:var(--o2);border:1px solid rgba(255,107,0,.35)}
+.post-time{font:11px 'Space Mono',monospace;color:var(--m)}
+.post-caption{font-size:14px;color:#f0ece6;line-height:1.75;white-space:pre-line;margin:10px 0 14px}
+.cmt-area{margin-top:14px;padding-top:12px;border-top:1px dashed rgba(255,255,255,.12)}
+.cmt-list{display:flex;flex-direction:column;gap:8px;margin-bottom:10px}
+.cmt-item{padding:9px 12px;border-radius:10px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);font-size:12.5px}
+.cmt-meta{display:flex;justify-content:space-between;color:var(--o2);font-size:11.5px;font-weight:500;margin-bottom:3px}
+.cmt-meta small{color:var(--m);font-family:'Space Mono',monospace;font-size:10.5px}
+.cmt-form{display:flex;gap:8px}
+.cmt-form .inp{padding:9px 12px;font-size:12.5px}
+.cmt-form .btn{margin:0;padding:9px 14px;font-size:12px;white-space:nowrap}
 #done{animation:sIn .8s cubic-bezier(.16,1,.3,1)}
 nav{position:relative;z-index:20;margin:0 auto;max-width:1180px;width:calc(100% - 40px);display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 14px;border-radius:18px;background:rgba(26,16,8,.5);border:1px solid rgba(255,166,61,.28);backdrop-filter:blur(20px) saturate(150%);box-shadow:0 10px 40px #000,0 0 44px -12px rgba(255,107,0,.45),inset 0 1px 0 rgba(255,255,255,.12)}
 nav button{border:0;border-radius:12px;padding:10px 18px;font:700 12px 'Space Mono',monospace;cursor:pointer;color:#fff;background:#232330;transition:.2s}
@@ -102,13 +122,13 @@ nav button:disabled{opacity:.3;pointer-events:none}
 #toast{position:fixed;left:50%;bottom:96px;transform:translate(-50%,20px);padding:12px 20px;border-radius:12px;background:#15151b;border:1px solid var(--o);font-size:13px;opacity:0;transition:.35s;z-index:80;pointer-events:none;box-shadow:0 0 30px #ff6b0055}#toast.s{opacity:1;transform:translate(-50%,0)}
 .live-badge{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:99px;background:rgba(255,107,0,0.1);border:1px solid rgba(255,107,0,0.3);font-size:12px;color:var(--o2);font-family:'Space Mono',monospace;margin-top:16px}
 .live-dot{width:8px;height:8px;border-radius:50%;background:#00ff88;box-shadow:0 0 8px #00ff88;animation:pl 1.5s infinite}
-@media(max-width:640px){.top span.hd{display:none}#dots{display:none}.card{padding:18px}.stamp{position:static;display:inline-block;margin-top:16px}.login-row{flex-direction:column}}
+@media(max-width:640px){.top span.hd{display:none}#dots{display:none}.card{padding:18px}.stamp{position:static;display:inline-block;margin-top:16px}.login-row,.cmt-form{flex-direction:column}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important}.r{opacity:1}}
 </style>
 </head>
 <body>
 <canvas id="fx"></canvas><div class="orb" style="left:-14%;top:8%"></div><div class="orb b" style="right:-14%;bottom:0"></div><div id="spot"></div><div id="bar"></div>
-<div class="top"><div><i></i><span class="hd">CONFIDENTIAL ARCHIVE // PROJECT BRIEF</span></div><div><button id="fs">⛶ FULL</button></div></div>
+<div class="top"><div><i></i><span class="hd">CONFIDENTIAL ARCHIVE // PROJECT BRIEF</span></div><div><button onclick="show(9)">🏛️ บอร์ดผลงาน</button><button id="fs">⛶ FULL</button></div></div>
 <main id="main">
 
 <!-- 1 COVER -->
@@ -126,7 +146,7 @@ nav button:disabled{opacity:.3;pointer-events:none}
   <div class="live-dot"></div>
   มีผู้เข้าร่วมกิจกรรมแล้ว <b id="reg-count" style="color:#fff;margin:0 4px">0</b> คน
 </div>
-<div class="r" style="--i:8;margin-top:26px"><button class="btn p" onclick="show(8)">🔥 สมัครเข้าร่วม / เข้าแอคเดิม</button><button class="btn s" onclick="show(1)">ดูรายละเอียดกิจกรรม →</button></div>
+<div class="r" style="--i:8;margin-top:26px"><button class="btn p" onclick="show(8)">🔥 สมัคร / เข้าแอคเดิม</button><button class="btn s" onclick="show(9)">🏛️ ชมผลงานสมาชิก</button></div>
 </section>
 
 <!-- 2 CONCEPT -->
@@ -169,8 +189,8 @@ nav button:disabled{opacity:.3;pointer-events:none}
 <div class="r cta" style="--i:5"><q>THE STORY IS YOURS.<br><span>THE LANGUAGE WILL FOLLOW.</span></q><p class="sub" style="margin:12px auto 18px;text-align:center">ยินดีต้อนรับสู่โลกที่คุณเป็นผู้สร้างเรื่องราว</p><button class="btn p" onclick="show(8)">🔥 สมัครและรับแบบฟอร์ม</button><button class="btn s" id="hm">↺ หน้าแรก</button></div>
 </section>
 
-<!-- 9 REGISTER -->
-<section class="slide"><div class="r" style="--i:0"><div class="tag">06 // Member Registration &amp; Archive Access</div><h2>สมัครเข้าร่วม หรือเข้าแอคเคาต์เดิมด้วย Gmail</h2><p class="sub">สมัครใหม่เพื่อรับเลขแฟ้มและแบบฟอร์ม หรือกรอก <b>Gmail</b> เพื่อเรียกดูแอคเคาต์เดิม ส่งงานหลังทำเสร็จ และรอรับ <b>คำชม/คำอวยพรจากผู้ดูแล</b></p></div>
+<!-- 9 REGISTER & SUBMISSION -->
+<section class="slide"><div class="r" style="--i:0"><div class="tag">06 // Member Registration &amp; Archive Access</div><h2>สมัครเข้าร่วม หรือเข้าแอคเคาต์เดิมด้วย Gmail</h2><p class="sub">สมัครใหม่เพื่อรับเลขแฟ้ม หรือกรอก <b>Gmail</b> เพื่อเรียกดูแอคเดิม ส่งงานหลังทำเสร็จ รอรับคำชม และปลดล็อกสิทธิ์โพสต์ผลงานขึ้นบอร์ด</p></div>
 <div class="grid g2">
 <form class="r card" id="rf" style="--i:1">
 <div class="fg"><label for="f-gmail">อีเมล Gmail ของคุณ <i>*</i></label><small>ใช้จำแอคเคาต์เดิม ไม่ให้ลืมรหัสแฟ้มและตัวละคร</small><input class="inp" type="email" id="f-gmail" required placeholder="เช่น name@gmail.com"></div>
@@ -196,7 +216,7 @@ nav button:disabled{opacity:.3;pointer-events:none}
 </div>
 
 <div id="done" style="display:none">
-  <div class="status-pill" id="p-status">รับใบสมัครแล้ว (ยังไม่ส่งงาน)</div>
+  <div class="status-pill" id="p-status">ยังไม่ส่งงาน</div>
   <div class="pid" id="pid">#MC-0000</div>
   <div class="pr"><small>ชื่อเล่น / Gmail</small><span id="pn"></span></div>
   <div class="pr"><small>ตัวละคร</small><b id="pc" style="color:var(--o2)"></b></div>
@@ -211,10 +231,21 @@ nav button:disabled{opacity:.3;pointer-events:none}
   <!-- ส่งงานหลังทำเสร็จ -->
   <div class="submit-box">
     <b>📤 ส่งงานหลังทำเสร็จ</b>
-    <p style="font-size:12.5px;color:var(--m)">วางลิงก์ผลงาน (Canva / Google Drive / โพสต์ / เอกสาร) เพื่อส่งให้ผู้ดูแลตรวจและรับคำชม</p>
+    <p style="font-size:12.5px;color:var(--m)">วางลิงก์ผลงาน (Canva / Google Drive / โพสต์ / เอกสาร) เพื่อส่งให้ผู้ดูแลตรวจสอบ</p>
     <div id="current-work-wrap" style="display:none;font-size:12px;margin-bottom:8px;color:var(--o2)">งานที่ส่งล่าสุด: <a id="current-work-link" href="#" target="_blank" rel="noopener" style="color:#fff"></a></div>
     <input class="inp" type="url" id="f-work-url" placeholder="วางลิงก์งานที่ทำเสร็จแล้ว เช่น https://...">
     <button class="btn p" type="button" id="btn-submit-work" style="width:100%;margin-top:10px">🚀 ส่งงานหลังทำเสร็จ</button>
+  </div>
+
+  <!-- แจ้งเตือนสถานะการตรวจ & กล่องโพสต์ผลงาน (ขึ้นเฉพาะตอนผ่านการตรวจสอบแล้ว) -->
+  <div id="review-notice" style="display:none;margin:12px 0;padding:14px;border-radius:12px;font-size:13px"></div>
+
+  <div class="publish-box" id="publish-box" style="display:none">
+    <b>✨ ผ่านการตรวจสอบแล้ว! โพสต์ผลงานขึ้นบอร์ดให้เพื่อนๆ ชม</b>
+    <p style="font-size:12.5px;color:var(--m)">ระบบจะแสดงเฉพาะ <b>ชื่อเล่น</b> ของคุณ (<b><span id="pub-nick"></span></b>) พร้อมเวลาที่ลงโพสต์และแคปชั่น</p>
+    <textarea class="inp" id="f-post-caption" placeholder="เขียนแคปชั่นแนะนำตัวละคร หรือเล่าเบื้องหลังผลงานของคุณ..."></textarea>
+    <button class="btn p" type="button" id="btn-publish-post" style="width:100%;margin-top:10px">📢 โพสต์ผลงานขึ้นบอร์ด</button>
+    <button class="btn s" type="button" onclick="show(9)" style="width:100%;margin-top:8px">🏛️ ไปดูบอร์ดผลงาน</button>
   </div>
 
   <!-- คำชม / คำอวยพรจากผู้ดูแล -->
@@ -228,9 +259,24 @@ nav button:disabled{opacity:.3;pointer-events:none}
 </div>
 </div></div>
 </section>
+
+<!-- 10 SHOWCASE FEED & COMMENTS -->
+<section class="slide">
+<div class="r" style="--i:0;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px;margin-bottom:18px">
+  <div>
+    <div class="tag">07 // Public Archive Showcase</div>
+    <h2>บอร์ดผลงานสมาชิก &amp; คอมเมนต์</h2>
+    <p class="sub" style="margin-bottom:0">รวมผลงานที่ <b>ผ่านการตรวจสอบแล้ว</b> แสดงเฉพาะชื่อเล่นและเวลาลงโพสต์ แวะอ่านและคอมเมนต์ให้กำลังใจกันได้เลย!</p>
+  </div>
+  <button class="btn s" type="button" id="btn-refresh-feed" style="margin:0">↻ รีเฟรชฟีด</button>
+</div>
+<div id="feed-list">
+  <div class="card"><p style="color:var(--m)">⏳ กำลังโหลดผลงานสมาชิก...</p></div>
+</div>
+</section>
 </main>
 
-<nav><button id="pv">← PREV</button><div style="display:flex;gap:16px;align-items:center"><div id="dots"></div><span id="ct">01 / 09</span></div><button id="nx">NEXT →</button></nav>
+<nav><button id="pv">← PREV</button><div style="display:flex;gap:16px;align-items:center"><div id="dots"></div><span id="ct">01 / 10</span></div><button id="nx">NEXT →</button></nav>
 <div id="toast"></div>
 <textarea id="tpl" style="position:fixed;left:-9999px;top:0" readonly></textarea>
 
@@ -265,13 +311,24 @@ const L='━━━━━━━━━━━ 𖤐 ━━━━━━━━━━�
 $('#tpl').value='╔══════════════════════════════════════╗\n𓆩 CONFIDENTIAL ARCHIVE 𓆪\nTHE CHARACTER RECORD\n╚══════════════════════════════════════╝\n\n⌞ FILE NO. :\n⌞ CHARACTER NAME :\n⌞ ALIAS :\n⌞ STATUS :\n\n「 A PERSON BEHIND THE NAME 」\n\n'+SEC.map(s=>`${L}\n${s[0]}. ${dec(s[1])}\n${L}\n`+s[5].split('|').map(f=>dec(f)).map(f=>s[0]=='12'?f:`⌞ ${f} :`).join('\n')).join('\n\n')+'\n\n╭────────── · · 𖤐 · · ──────────╮\nLANGUAGE RECORD\n╰────────── · · 𖤐 · · ──────────╯\n\n✧ NEW VOCABULARY\n- \n\n✧ USEFUL EXPRESSIONS\n- \n\n✧ SENTENCES I UNDERSTAND\n- \n\n✧ SENTENCES I CAN REWRITE\n- \n\n✧ MY ENGLISH SUMMARY\n...\n\n✧ MY SPEAKING PRACTICE\n...\n\n╔══════════════════════════════════════╗\nPROJECT STATUS\n╚══════════════════════════════════════╝\n'+STAT.map(s=>'[ ] '+s[0]).join('\n');
 
 const S=$$('.slide'),N=S.length;let cur=0;
-function show(n){cur=Math.max(0,Math.min(N-1,n));S.forEach((s,i)=>s.classList.toggle('on',i===cur));
- $('#bar').style.width=((cur+1)/N*100)+'%';$('#ct').textContent=String(cur+1).padStart(2,'0')+' / '+String(N).padStart(2,'0');
- $('#pv').disabled=cur===0;$('#nx').disabled=cur===N-1;
- $('#dots').innerHTML=S.map((_,i)=>`<i class="${i===cur?'a':''}" data-i="${i}"></i>`).join('');$('#main').scrollTop=0;burst(innerWidth/2,innerHeight*.45,26)}
+function show(n){
+  cur=Math.max(0,Math.min(N-1,n));
+  S.forEach((s,i)=>s.classList.toggle('on',i===cur));
+  $('#bar').style.width=((cur+1)/N*100)+'%';
+  $('#ct').textContent=String(cur+1).padStart(2,'0')+' / '+String(N).padStart(2,'0');
+  $('#pv').disabled=cur===0;$('#nx').disabled=cur===N-1;
+  $('#dots').innerHTML=S.map((_,i)=>`<i class="${i===cur?'a':''}" data-i="${i}"></i>`).join('');
+  $('#main').scrollTop=0;
+  burst(innerWidth/2,innerHeight*.45,26);
+  if(cur === 9) loadFeed();
+}
 $('#dots').onclick=e=>{if(e.target.dataset.i!=null)show(+e.target.dataset.i)};
 $('#pv').onclick=()=>show(cur-1);$('#nx').onclick=()=>show(cur+1);$('#hm').onclick=()=>show(0);
-addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='PageDown')show(cur+1);if(e.key==='ArrowLeft'||e.key==='PageUp')show(cur-1)});
+addEventListener('keydown',e=>{
+  if(document.activeElement && ['INPUT','TEXTAREA'].includes(document.activeElement.tagName)) return;
+  if(e.key==='ArrowRight'||e.key==='PageDown')show(cur+1);
+  if(e.key==='ArrowLeft'||e.key==='PageUp')show(cur-1);
+});
 let tx=0;addEventListener('touchstart',e=>tx=e.changedTouches[0].clientX,{passive:true});
 addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-tx;if(Math.abs(d)>70)show(cur+(d<0?1:-1))},{passive:true});
 $('#fs').onclick=()=>{try{document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()}catch(e){}};
@@ -294,14 +351,20 @@ requestAnimationFrame(loop)})();
 
 function cpy(t,m){const b=document.createElement('textarea');b.value=t;b.style.cssText='position:fixed;left:-9999px';document.body.appendChild(b);b.select();let ok=false;try{ok=document.execCommand('copy')}catch(e){}b.remove();if(ok)toast(m);else if(navigator.clipboard)navigator.clipboard.writeText(t).then(()=>toast(m),()=>toast('คัดลอกไม่สำเร็จ'))}
 
-let formTxt='',appTxt='',activeUser={id:'',nick:'',char:'',gmail:''};
+function esc(str){
+  return String(str || '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+}
+
+let formTxt='',appTxt='',activeUser={id:'',nick:'',char:'',gmail:'',workUrl:'',reviewStatus:''};
 
 function renderDossier(u){
   activeUser = {
     id: u.id || '#MC-0000',
     nick: u.nick || '',
     char: u.char || '',
-    gmail: u.gmail || ''
+    gmail: u.gmail || '',
+    workUrl: u.workUrl || '',
+    reviewStatus: u.reviewStatus || 'ยังไม่ส่งงาน'
   };
 
   formTxt = $('#tpl').value
@@ -313,14 +376,44 @@ function renderDossier(u){
   $('#pn').textContent = `${activeUser.nick}${activeUser.gmail ? ' (' + activeUser.gmail + ')' : ''}`;
   $('#pc').textContent = activeUser.char;
   $('#welcome-name').textContent = activeUser.nick;
-  $('#p-status').textContent = u.reviewStatus || 'รับใบสมัครแล้ว (ยังไม่ส่งงาน)';
+  $('#pub-nick').textContent = activeUser.nick;
   $('#praise-text').textContent = u.adminPraise || 'รอผู้ดูแลอ่านผลงานและส่งคำชม / คำอวยพรกลับมานะครับ';
 
-  if(u.workUrl){
+  // จัดการแสดงผลตาม 3 สถานะ: รอดำเนินการ / ไม่ผ่าน / ผ่านการตรวจสอบแล้ว
+  const st = activeUser.reviewStatus;
+  const pill = $('#p-status');
+  const notice = $('#review-notice');
+  const pubBox = $('#publish-box');
+
+  pill.className = 'status-pill';
+  pill.textContent = 'สถานะ: ' + st;
+  notice.style.display = 'none';
+  pubBox.style.display = 'none';
+
+  if(st === 'ผ่านการตรวจสอบแล้ว'){
+    pill.classList.add('ok');
+    pubBox.style.display = 'block';
+  } else if(st === 'ไม่ผ่าน'){
+    pill.classList.add('fail');
+    notice.style.display = 'block';
+    notice.style.background = 'rgba(255,77,77,.12)';
+    notice.style.border = '1px solid rgba(255,77,77,.4)';
+    notice.style.color = '#ffb3b3';
+    notice.innerHTML = '❌ <b>ผลงานยังไม่ผ่านการตรวจสอบ:</b> กรุณาอ่านคำแนะนำจากผู้ดูแลด้านล่าง แก้ไขผลงาน แล้ววางลิงก์ส่งใหม่อีกครั้ง (ระบบยังไม่เปิดให้โพสต์ขึ้นบอร์ด)';
+  } else if(st === 'รอดำเนินการ'){
+    pill.classList.add('wait');
+    notice.style.display = 'block';
+    notice.style.background = 'rgba(255,193,7,.10)';
+    notice.style.border = '1px solid rgba(255,193,7,.35)';
+    notice.style.color = '#ffe082';
+    notice.innerHTML = '⏳ <b>รอดำเนินการ:</b> ผู้ดูแลได้รับลิงก์ผลงานแล้ว เมื่อผู้ดูแลตรวจสอบและอนุมัติ ปุ่มโพสต์ผลงานขึ้นบอร์ดจะปรากฏตรงนี้ทันที';
+  }
+
+  if(activeUser.workUrl){
     $('#current-work-wrap').style.display = 'block';
-    $('#current-work-link').href = u.workUrl;
-    $('#current-work-link').textContent = u.workUrl;
-    $('#f-work-url').value = u.workUrl;
+    $('#current-work-link').href = activeUser.workUrl;
+    $('#current-work-link').textContent = activeUser.workUrl;
+    $('#f-work-url').value = activeUser.workUrl;
   } else {
     $('#current-work-wrap').style.display = 'none';
     $('#f-work-url').value = '';
@@ -384,7 +477,7 @@ $('#rf').onsubmit = async (e) => {
 
   renderDossier({
     id, nick, char: charName, gmail, age, soc, link,
-    reviewStatus: 'รับใบสมัครแล้ว (ยังไม่ส่งงาน)',
+    reviewStatus: 'ยังไม่ส่งงาน',
     adminPraise: 'ยินดีต้อนรับเข้าสู่แฟ้มลับ! ตั้งใจสร้างสรรค์ตัวละครในแบบของตัวเองได้เลย รออ่านผลงานอยู่นะครับ'
   });
 
@@ -462,12 +555,14 @@ $('#btn-submit-work').onclick = async () => {
       })
     });
 
-    $('#current-work-wrap').style.display = 'block';
-    $('#current-work-link').href = workUrl;
-    $('#current-work-link').textContent = workUrl;
-    $('#p-status').textContent = 'ส่งงานแล้ว (รอผู้ดูแลตรวจ)';
+    renderDossier({
+      ...activeUser,
+      gmail,
+      workUrl,
+      reviewStatus: 'รอดำเนินการ'
+    });
     burst(innerWidth / 2, innerHeight / 2, 90);
-    toast('🚀 ส่งงานเรียบร้อย! รอคำชมจากผู้ดูแลได้เลย');
+    toast('🚀 ส่งงานเรียบร้อย! สถานะ: รอดำเนินการ');
   } catch(e){
     toast('❌ ส่งงานไม่สำเร็จ ลองใหม่อีกครั้งครับ');
   } finally {
@@ -476,6 +571,131 @@ $('#btn-submit-work').onclick = async () => {
   }
 };
 
+/* โพสต์ผลงานขึ้นบอร์ด (เฉพาะผ่านการตรวจสอบแล้ว) */
+$('#btn-publish-post').onclick = async () => {
+  const caption = $('#f-post-caption').value.trim();
+  if(activeUser.reviewStatus !== 'ผ่านการตรวจสอบแล้ว'){
+    toast('❌ ต้องผ่านการตรวจสอบจากผู้ดูแลก่อนจึงจะโพสต์ได้');
+    return;
+  }
+  if(!caption){
+    toast('เขียนแคปชั่นสั้นๆ แนะนำผลงานก่อนโพสต์นะครับ');
+    return;
+  }
+
+  const btn = $('#btn-publish-post');
+  const oldTxt = btn.innerHTML;
+  btn.innerHTML = '⏳ กำลังโพสต์...';
+  btn.disabled = true;
+
+  try{
+    await fetch(APP_SCRIPT_URL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify({
+        action: "create_post",
+        gmail: activeUser.gmail,
+        nick: activeUser.nick,
+        char: activeUser.char,
+        workUrl: activeUser.workUrl,
+        caption: caption
+      })
+    });
+
+    $('#f-post-caption').value = '';
+    burst(innerWidth / 2, innerHeight / 2, 120);
+    toast('📢 โพสต์ผลงานขึ้นบอร์ดเรียบร้อยแล้ว!');
+    setTimeout(() => show(9), 900);
+  } catch(e){
+    toast('❌ โพสต์ไม่สำเร็จ ลองใหม่อีกครั้งครับ');
+  } finally {
+    btn.innerHTML = oldTxt;
+    btn.disabled = false;
+  }
+};
+
+/* โหลดบอร์ดผลงาน & คอมเมนต์ */
+async function loadFeed(){
+  const list = $('#feed-list');
+  list.innerHTML = '<div class="card"><p style="color:var(--m)">⏳ กำลังโหลดผลงานสมาชิก...</p></div>';
+  try{
+    const res = await fetch(`${APP_SCRIPT_URL}?action=feed`);
+    const data = await res.json();
+    const posts = (data && data.posts) || [];
+
+    if(!posts.length){
+      list.innerHTML = '<div class="card"><h3>ยังไม่มีโพสต์ผลงานในบอร์ด</h3><p>เมื่อสมาชิกส่งงานและผ่านการตรวจสอบจากผู้ดูแลแล้ว จะสามารถกดโพสต์ผลงานมาโชว์ตรงนี้ได้เป็นคนแรก!</p></div>';
+      return;
+    }
+
+    list.innerHTML = posts.map(p => `
+      <div class="card post-card">
+        <div class="post-head">
+          <div>
+            <div class="post-author">🎭 ${esc(p.nick)} <span class="badge">${esc(p.char || 'CHARACTER')}</span></div>
+            <div class="post-time">🕒 โพสต์เมื่อ ${esc(p.time)}</div>
+          </div>
+          ${p.workUrl ? `<a class="btn s" href="${esc(p.workUrl)}" target="_blank" rel="noopener" style="margin:0;padding:8px 14px;font-size:12px;text-decoration:none">🔗 เปิดดูผลงาน</a>` : ''}
+        </div>
+        <div class="post-caption">${esc(p.caption)}</div>
+        <div class="cmt-area">
+          <div style="font-size:12px;color:var(--o2);margin-bottom:8px;font-weight:500">💬 ความคิดเห็น (${p.comments.length})</div>
+          <div class="cmt-list">
+            ${p.comments.map(c => `
+              <div class="cmt-item">
+                <div class="cmt-meta"><span>${esc(c.nick)}</span><small>${esc(c.time)}</small></div>
+                <div>${esc(c.text)}</div>
+              </div>
+            `).join('')}
+          </div>
+          <div class="cmt-form">
+            <input class="inp" id="cmt-inp-${esc(p.postId)}" placeholder="${activeUser.nick ? 'คอมเมนต์ในชื่อ ' + esc(activeUser.nick) + '...' : 'พิมพ์คอมเมนต์ให้กำลังใจ...'}">
+            <button class="btn p" type="button" onclick="sendComment('${esc(p.postId)}')">ส่งคอมเมนต์</button>
+          </div>
+        </div>
+      </div>
+    `).join('');
+  } catch(e){
+    list.innerHTML = '<div class="card"><p style="color:#ff9e9e">❌ โหลดฟีดไม่สำเร็จ กดรีเฟรชด้านบนเพื่อลองใหม่ครับ</p></div>';
+  }
+}
+
+async function sendComment(postId){
+  const inp = document.getElementById('cmt-inp-' + postId);
+  const text = inp ? inp.value.trim() : '';
+  if(!text){
+    toast('พิมพ์ข้อความก่อนส่งคอมเมนต์นะครับ');
+    return;
+  }
+  const commenterNick = activeUser.nick || prompt('ใส่ชื่อเล่นของคุณสำหรับแสดงในคอมเมนต์:') || '';
+  if(!commenterNick.trim()){
+    toast('กรุณาระบุชื่อเล่นก่อนคอมเมนต์ครับ');
+    return;
+  }
+
+  inp.disabled = true;
+  try{
+    await fetch(APP_SCRIPT_URL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify({
+        action: "add_comment",
+        postId: postId,
+        nick: commenterNick.trim(),
+        text: text
+      })
+    });
+    toast('💬 ส่งคอมเมนต์แล้ว!');
+    setTimeout(loadFeed, 900);
+  } catch(e){
+    toast('❌ ส่งคอมเมนต์ไม่สำเร็จ');
+    inp.disabled = false;
+  }
+}
+
+$('#btn-refresh-feed').onclick = loadFeed;
 $('#cpf').onclick=()=>cpy(formTxt,'✓ คัดลอกแบบฟอร์มตัวละครแล้ว');
 $('#cpa').onclick=()=>cpy(appTxt,'✓ คัดลอกใบสมัครแล้ว');
 
