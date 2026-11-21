@@ -258,13 +258,14 @@ let formTxt='',appTxt='';
 
 // ฟังก์ชันโหลดจำนวนคนสมัครแบบ Live
 async function loadRegistrations() {
-  if(APP_SCRIPT_URL === "https://script.google.com/macros/s/AKfycbyv-OawwEx1e0VXnBTok1JlCEpebM81WVCKEeMkHaCW0tx7H3iCb0ze9fkP5TaZm95P/exec") return;
+  if(APP_SCRIPT_URL === "YOUR_WEB_APP_URL_HERE" || APP_SCRIPT_URL === "") return;  // ← ถูกแล้ว
   try {
     const res = await fetch(APP_SCRIPT_URL);
     const data = await res.json();
     $('#reg-count').textContent = data.count;
   } catch(e) { console.log("Counter load failed", e); }
 }
+
 
 $('#rf').onsubmit = async (e) => {
     e.preventDefault();
@@ -283,7 +284,7 @@ $('#rf').onsubmit = async (e) => {
 
     try {
         // ส่งข้อมูลไปยัง Google Apps Script (ใช้ text/plain เพื่อเลี่ยงปัญหา CORS)
-        const response = await fetch(APP_SCRIPT_URL, {
+        const response = await fetch("https://script.google.com/macros/s/AKfycbyv-OawwEx1e0VXnBTok1JlCEpebM81WVCKEeMkHaCW0tx7H3iCb0ze9fkP5TaZm95P/exec", {
             method: "POST",
             body: JSON.stringify({
                 id: id,
