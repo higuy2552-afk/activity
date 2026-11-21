@@ -1,1131 +1,341 @@
-```html
 <!DOCTYPE html>
 <html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MAFIA CHARACTER IMMERSION — Presentation Deck</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Cinzel (Editorial Serif), Space Mono (Dossier Code), Prompt (Clean Thai) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Prompt:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        noir: {
-                            950: '#070709',
-                            900: '#0D0D11',
-                            800: '#15151B',
-                            700: '#1E1E26',
-                            600: '#2A2A35'
-                        },
-                        amberx: {
-                            400: '#FF9E2C',
-                            500: '#FF6B00',
-                            600: '#E05A00',
-                            glow: 'rgba(255, 107, 0, 0.25)'
-                        }
-                    },
-                    fontFamily: {
-                        serif: ['Cinzel', 'serif'],
-                        mono: ['Space Mono', 'monospace'],
-                        sans: ['Prompt', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
-
-    <style>
-        body {
-            background-color: #070709;
-            color: #F4F4F6;
-            font-family: 'Prompt', sans-serif;
-            overflow-x: hidden;
-        }
-
-        /* Subtle Noir Grid & Ambient Glow */
-        .noir-bg {
-            background-color: #070709;
-            background-image: 
-                radial-gradient(circle at 85% 15%, rgba(255, 107, 0, 0.08) 0%, transparent 45%),
-                radial-gradient(circle at 15% 85%, rgba(255, 107, 0, 0.06) 0%, transparent 45%),
-                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-            background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
-        }
-
-        /* Glassmorphism Dossier Cards */
-        .dossier-card {
-            background: rgba(21, 21, 27, 0.78);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
-
-        .dossier-card:hover {
-            border-color: rgba(255, 107, 0, 0.45);
-            box-shadow: 0 10px 30px -10px rgba(255, 107, 0, 0.18);
-            transform: translateY(-2px);
-        }
-
-        /* Slide Transitions */
-        .slide {
-            display: none;
-            animation: slideFadeIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-
-        .slide.active {
-            display: flex;
-        }
-
-        @keyframes slideFadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(14px) scale(0.99);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-
-        /* Custom Scrollbar for inner content if needed */
-        ::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0D0D11;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #2A2A35;
-            border-radius: 999px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #FF6B00;
-        }
-
-        /* Print / Overview Mode */
-        body.overview-mode {
-            overflow-y: auto !important;
-        }
-        body.overview-mode .slide {
-            display: flex !important;
-            min-height: auto !important;
-            margin-bottom: 3rem;
-            border-bottom: 1px dashed rgba(255, 107, 0, 0.3);
-            padding-bottom: 3rem;
-        }
-        body.overview-mode #bottom-nav {
-            display: none;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MAFIA CHARACTER IMMERSION</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800;900&family=Prompt:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--o:#ff6b00;--o2:#ffa63d;--bg:#050507;--c:#14141a;--t:#f4f4f6;--m:#9a9aa6;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{background:var(--bg);color:var(--t);font-family:'Prompt',sans-serif;overflow:hidden;position:relative}
+body::before{content:"";position:fixed;inset:0;background:radial-gradient(ellipse at 80% 0,rgba(255,107,0,.22),transparent 50%),radial-gradient(ellipse at 10% 100%,rgba(255,107,0,.16),transparent 50%),linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px) 0 0/44px 44px,linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px) 0 0/44px 44px;z-index:0}
+body::after{content:"";position:fixed;inset:0;background:repeating-linear-gradient(0deg,rgba(0,0,0,.18) 0 1px,transparent 1px 3px);pointer-events:none;z-index:60;opacity:.5}
+#fx{position:fixed;inset:0;z-index:1;pointer-events:none}
+#spot{position:fixed;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(255,107,0,.16),transparent 65%);transform:translate(-50%,-50%);pointer-events:none;z-index:2;left:50%;top:40%}
+#bar{position:fixed;top:env(safe-area-inset-top,0px);left:0;height:3px;width:0;background:linear-gradient(90deg,var(--o),var(--o2),#fff);box-shadow:0 0 16px var(--o);z-index:70;transition:width .6s}
+.top{position:relative;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:14px 20px;font:700 11px 'Space Mono',monospace;letter-spacing:.18em;color:var(--m)}
+.top i{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--o);box-shadow:0 0 12px var(--o);margin-right:10px;animation:pl 1.6s infinite}
+@keyframes pl{50%{opacity:.25}}
+.top button{background:#ffffff0d;border:1px solid #ffffff1f;color:var(--m);padding:6px 11px;border-radius:9px;font:inherit;cursor:pointer}
+.top button:hover{color:var(--o2);border-color:var(--o)}
+main{position:relative;z-index:10;height:calc(100% - 128px);overflow-y:auto;overflow-x:hidden;padding:0 20px;scrollbar-width:thin;scrollbar-color:#333 transparent}
+.slide{display:none;max-width:1180px;margin:0 auto;min-height:100%;flex-direction:column;justify-content:center;padding:10px 0 24px}
+.slide.on{display:flex;animation:sIn .8s cubic-bezier(.16,1,.3,1)}
+@keyframes sIn{from{opacity:0;filter:blur(14px);transform:scale(1.03)}to{opacity:1;filter:none;transform:none}}
+.r{opacity:0}.on .r{animation:rise .8s cubic-bezier(.16,1,.3,1) both;animation-delay:calc(var(--i,0)*80ms + 150ms)}
+@keyframes rise{from{opacity:0;transform:translateY(34px) scale(.96)}to{opacity:1;transform:none}}
+.tag{font:700 12px 'Space Mono',monospace;letter-spacing:.22em;color:var(--o);text-transform:uppercase}
+h2{font-size:clamp(26px,4.6vw,48px);font-weight:700;margin:6px 0 8px;line-height:1.15;background:linear-gradient(90deg,#fff,#ffd9b0 60%,var(--o2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:var(--m);font-size:clamp(13px,1.6vw,16px);max-width:760px;line-height:1.7;margin-bottom:22px}
+.sub b{color:var(--o2);font-weight:500}
+.grid{display:grid;gap:16px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}.g3{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}.g4{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.card{position:relative;overflow:hidden;background:linear-gradient(145deg,rgba(255,150,60,.10),rgba(255,255,255,.03) 42%,rgba(255,107,0,.05));border:1px solid rgba(255,166,61,.24);box-shadow:inset 0 1px 0 rgba(255,255,255,.14),inset 0 0 50px -30px rgba(255,150,60,.5),0 24px 60px -34px rgba(255,107,0,.6);border-radius:20px;padding:22px;transition:transform .25s,border-color .3s,box-shadow .3s;transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));backdrop-filter:blur(10px)}
+.card::before{content:"";position:absolute;inset:0;background:radial-gradient(260px circle at var(--mx,50%) var(--my,0%),rgba(255,107,0,.22),transparent 60%);opacity:0;transition:opacity .3s;pointer-events:none}
+.card::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.08),transparent);transform:skewX(-20deg);transition:left .8s}
+.card:hover{border-color:#ff6b0099;box-shadow:0 18px 50px -12px rgba(255,107,0,.4)}
+.card:hover::before{opacity:1}.card:hover::after{left:130%}
+.card h3{font-size:19px;margin:6px 0 8px}.card p{font-size:13.5px;color:#c9c9d2;line-height:1.7}
+.mono{font-family:'Space Mono',monospace}
+.big{position:absolute;right:10px;top:-14px;font:900 96px 'Cinzel',serif;color:#ffffff07;pointer-events:none}
+.ico{width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,var(--o),var(--o2));display:grid;place-items:center;font-size:24px;box-shadow:0 0 28px rgba(255,107,0,.55);margin-bottom:14px}
+.cover{align-items:center;text-align:center;position:relative}
+.ring{position:absolute;width:min(78vw,640px);aspect-ratio:1;border-radius:50%;background:conic-gradient(from 0deg,transparent,rgba(255,107,0,.5),transparent 40%,rgba(255,166,61,.35),transparent 80%);-webkit-mask:radial-gradient(circle,transparent 62%,#000 63%,#000 64%,transparent 65%);mask:radial-gradient(circle,transparent 62%,#000 63%,#000 64%,transparent 65%);animation:spin 14s linear infinite;z-index:-1}
+.ring.b{width:min(60vw,500px);animation-duration:22s;animation-direction:reverse;opacity:.7}
+@keyframes spin{to{transform:rotate(360deg)}}
+.pill{display:inline-block;padding:7px 18px;border:1px solid #ff6b0088;border-radius:99px;background:#ff6b001a;color:var(--o2);font:700 11px 'Space Mono',monospace;letter-spacing:.25em;box-shadow:0 0 30px #ff6b0033}
+.mafia{font:900 clamp(64px,15vw,168px)/.95 'Cinzel',serif;letter-spacing:.06em;margin:18px 0 4px;background:linear-gradient(100deg,#fff 0,#ffb870 25%,var(--o) 50%,#ffb870 75%,#fff 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 5s linear infinite;filter:drop-shadow(0 0 40px rgba(255,107,0,.55))}
+@keyframes shine{to{background-position:-250% 0}}
+.cim{font:700 clamp(16px,3.2vw,34px) 'Cinzel',serif;letter-spacing:.55em;color:#fff;margin-right:-.55em}
+.line{width:min(420px,70%);height:1px;margin:22px auto;background:linear-gradient(90deg,transparent,var(--o),transparent);box-shadow:0 0 14px var(--o)}
+.quote{font:700 clamp(12px,1.8vw,17px) 'Space Mono',monospace;letter-spacing:.14em;color:var(--o2);line-height:1.9}
+.stamp{position:absolute;right:2%;top:6%;border:3px solid #ff6b00aa;color:#ff6b00cc;padding:6px 16px;font:900 clamp(14px,2.4vw,26px) 'Cinzel',serif;letter-spacing:.2em;transform:rotate(12deg);border-radius:6px;opacity:.75;animation:st 1.2s .8s cubic-bezier(.2,1.6,.4,1) both}
+@keyframes st{from{opacity:0;transform:rotate(30deg) scale(3)}to{opacity:.75;transform:rotate(12deg) scale(1)}}
+.hint{margin-top:30px;font:11px 'Space Mono',monospace;color:var(--m);letter-spacing:.2em;animation:pl 2s infinite}
+.mini{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:26px}
+.mini div{padding:11px 18px;border-radius:14px;background:#ffffff0a;border:1px solid #ffffff14;font-size:13px}
+.mini b{color:var(--o2);font-weight:500}
+.rule{display:flex;gap:14px;align-items:flex-start;padding:15px 16px}
+.rule .n{flex:none;font:900 22px 'Cinzel',serif;color:var(--o);text-shadow:0 0 18px var(--o);min-width:34px}
+.rule h4{font-size:13.5px;margin-bottom:3px}.rule h4 span{color:var(--o2);font:700 11px 'Space Mono',monospace;display:block;letter-spacing:.08em}
+.rule p{font-size:12.5px;color:var(--m);line-height:1.6}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}
+.chips span{font:11px 'Space Mono',monospace;padding:4px 9px;border-radius:7px;background:#ff6b0014;border:1px solid #ff6b0033;color:#ffc999}
+.ex{margin-top:12px;padding:10px 12px;border-radius:11px;background:#000000aa;border-left:3px solid var(--o);font:11.5px/1.6 'Space Mono',monospace;color:#d8d8e0}
+.ex em{color:var(--o2);font-style:normal;font-weight:700}
+.sec{font:900 40px 'Cinzel',serif;color:var(--o);line-height:1;text-shadow:0 0 22px rgba(255,107,0,.7)}
+.sec small{display:block;font:700 10px 'Space Mono',monospace;letter-spacing:.2em;color:var(--m);margin-top:6px;text-shadow:none}
+.head{display:flex;gap:16px;align-items:center}.head h3{font-size:16px;margin:0}.head h3 span{display:block;font-size:12px;color:var(--m);font-weight:400;margin-top:2px}
+.chk{display:flex;gap:12px;align-items:center;padding:11px 13px;border-radius:12px;background:#ffffff08;border:1px solid #ffffff10;margin-bottom:8px;cursor:pointer;font-size:13px;transition:.25s}
+.chk:hover{border-color:var(--o)}.chk.d{background:#ff6b0022;border-color:var(--o);box-shadow:0 0 22px #ff6b0033}
+.chk b{width:22px;height:22px;border-radius:7px;border:2px solid #555;display:grid;place-items:center;font-size:13px;color:transparent;flex:none;transition:.25s}
+.chk.d b{background:var(--o);border-color:var(--o);color:#000}
+.chk small{color:var(--m);margin-left:auto;font-size:11px}
+.meter{height:8px;border-radius:9px;background:#ffffff14;overflow:hidden;margin:6px 0 16px}.meter i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--o),var(--o2));box-shadow:0 0 14px var(--o);transition:width .5s}
+.step b{font:900 44px 'Cinzel',serif;background:linear-gradient(var(--o2),var(--o));-webkit-background-clip:text;background-clip:text;color:transparent}
+.cta{margin:26px auto 0;max-width:760px;text-align:center;padding:32px 24px;border-radius:26px;border:1px solid #ff6b0088;background:radial-gradient(ellipse at 50% 0,rgba(255,107,0,.25),transparent 70%),#0c0c10;box-shadow:0 0 70px rgba(255,107,0,.25)}
+.cta q{display:block;font:800 clamp(18px,3.4vw,32px)/1.4 'Cinzel',serif;quotes:"“" "”"}.cta q span{color:var(--o)}
+.btn{margin:8px 5px 0;padding:14px 26px;border-radius:14px;border:0;cursor:pointer;font:700 14px 'Prompt',sans-serif;transition:.25s}
+.btn.p{background:linear-gradient(135deg,var(--o),var(--o2));color:#000;box-shadow:0 0 34px rgba(255,107,0,.6)}.btn.p:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 0 50px rgba(255,107,0,.9)}
+.btn.s{background:#ffffff10;color:#ddd;border:1px solid #ffffff22}
+.orb{position:fixed;width:46vmax;height:46vmax;border-radius:50%;background:radial-gradient(circle,rgba(255,107,0,.3),transparent 65%);filter:blur(40px);z-index:0;pointer-events:none;animation:drift 18s ease-in-out infinite alternate}.orb.b{background:radial-gradient(circle,rgba(255,150,60,.22),transparent 65%);animation-duration:25s}@keyframes drift{to{transform:translate(9vw,-7vh) scale(1.25)}}
+.fg{margin-bottom:14px}.fg label{display:block;font-size:13px;font-weight:500;margin-bottom:6px}.fg label i{color:var(--o);font-style:normal}.fg small{display:block;color:var(--o2);font-size:11.5px;margin-bottom:6px}
+.inp{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,166,61,.24);border-radius:12px;padding:12px 14px;color:#fff;font:13.5px 'Prompt',sans-serif;outline:0;transition:.25s;backdrop-filter:blur(8px);box-shadow:inset 0 1px 0 rgba(255,255,255,.06)}.inp:focus{border-color:var(--o);background:rgba(255,107,0,.07);box-shadow:0 0 0 3px rgba(255,107,0,.16),0 0 34px -6px rgba(255,107,0,.7)}.inp::placeholder{color:#7a6c5d}textarea.inp{min-height:70px;resize:vertical}
+.pid{font:900 32px 'Cinzel',serif;color:var(--o);text-shadow:0 0 26px var(--o);margin:6px 0}.pr{margin:8px 0;font-size:13px}.pr small{display:block;font:11px 'Space Mono',monospace;color:var(--m)}
+.ready{margin:14px 0;padding:20px;border-radius:14px;border:1px solid rgba(255,166,61,.35);background:linear-gradient(145deg,rgba(255,150,60,.16),rgba(255,107,0,.04));box-shadow:0 0 40px -12px rgba(255,107,0,.7),inset 0 1px 0 rgba(255,255,255,.14);text-align:left}.ready b{color:var(--o2);font-size:16px;display:block;margin-bottom:8px}.ready p{font-size:13.5px;line-height:1.8;color:#e6dccf;margin:10px 0}.ready p b{color:#fff;font-size:inherit}#done{animation:sIn .8s cubic-bezier(.16,1,.3,1)}
+nav{position:relative;z-index:20;margin:0 auto;max-width:1180px;width:calc(100% - 40px);display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 14px;border-radius:18px;background:rgba(26,16,8,.5);border:1px solid rgba(255,166,61,.28);backdrop-filter:blur(20px) saturate(150%);box-shadow:0 10px 40px #000,0 0 44px -12px rgba(255,107,0,.45),inset 0 1px 0 rgba(255,255,255,.12)}
+nav button{border:0;border-radius:12px;padding:10px 18px;font:700 12px 'Space Mono',monospace;cursor:pointer;color:#fff;background:#232330;transition:.2s}
+nav #nx{background:linear-gradient(135deg,var(--o),var(--o2));color:#000;box-shadow:0 0 22px #ff6b0066}
+nav button:disabled{opacity:.3;pointer-events:none}
+#dots{display:flex;gap:7px;align-items:center}#dots i{height:7px;width:7px;border-radius:9px;background:#444;cursor:pointer;transition:.4s}#dots i.a{width:30px;background:var(--o);box-shadow:0 0 12px var(--o)}
+#ct{font:700 12px 'Space Mono',monospace;color:var(--o2);letter-spacing:.15em}
+#toast{position:fixed;left:50%;bottom:96px;transform:translate(-50%,20px);padding:12px 20px;border-radius:12px;background:#15151b;border:1px solid var(--o);font-size:13px;opacity:0;transition:.35s;z-index:80;pointer-events:none;box-shadow:0 0 30px #ff6b0055}#toast.s{opacity:1;transform:translate(-50%,0)}
+.live-badge{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:99px;background:rgba(255,107,0,0.1);border:1px solid rgba(255,107,0,0.3);font-size:12px;color:var(--o2);font-family:'Space Mono',monospace;margin-top:16px}
+.live-dot{width:8px;height:8px;border-radius:50%;background:#00ff88;box-shadow:0 0 8px #00ff88;animation:pl 1.5s infinite}
+@media(max-width:640px){.top span.hd{display:none}#dots{display:none}.card{padding:18px}.stamp{position:static;display:inline-block;margin-top:16px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}.r{opacity:1}}
+</style>
 </head>
-<body class="noir-bg min-h-screen flex flex-col justify-between selection:bg-amberx-500 selection:text-white">
-
-    <!-- Top Progress Bar -->
-    <div class="fixed top-0 left-0 w-full h-1.5 bg-noir-800 z-50">
-        <div id="progress-bar" class="h-full bg-gradient-to-r from-amberx-600 via-amberx-500 to-amberx-400 transition-all duration-500 shadow-[0_0_12px_#FF6B00]" style="width: 12.5%;"></div>
-    </div>
-
-    <!-- Top Header Bar -->
-    <header class="w-full px-4 sm:px-8 pt-5 pb-2 flex items-center justify-between z-40 max-w-7xl mx-auto">
-        <div class="flex items-center gap-3">
-            <span class="w-2.5 h-2.5 rounded-full bg-amberx-500 animate-pulse shadow-[0_0_8px_#FF6B00]"></span>
-            <span class="font-mono text-xs sm:text-sm tracking-widest text-gray-400 uppercase">CONFIDENTIAL ARCHIVE // PROJECT BRIEF</span>
-        </div>
-
-        <div class="flex items-center gap-2 sm:gap-3">
-            <button onclick="toggleOverview()" id="overview-btn" title="สลับโหมดดูทั้งหมด / ทีละสไลด์" class="px-3 py-1.5 rounded-lg bg-noir-800/90 hover:bg-noir-700 border border-white/10 text-xs font-mono text-gray-300 hover:text-amberx-400 transition flex items-center gap-1.5">
-                <i class="fa-solid fa-layer-group"></i>
-                <span class="hidden sm:inline" id="overview-text">ALL SLIDES</span>
-            </button>
-            <button onclick="toggleFullscreen()" title="เต็มหน้าจอ" class="px-3 py-1.5 rounded-lg bg-noir-800/90 hover:bg-noir-700 border border-white/10 text-xs font-mono text-gray-300 hover:text-amberx-400 transition">
-                <i class="fa-solid fa-expand"></i>
-            </button>
-        </div>
-    </header>
-
-    <!-- Main Presentation Stage -->
-    <main id="slides-container" class="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-8 py-4 flex flex-col justify-center">
-
-        <!-- =========================================================
-             SLIDE 01: COVER SLIDE
-        ========================================================= -->
-        <section class="slide active flex-col justify-center items-center text-center py-8 sm:py-12 min-h-[75vh]" data-slide="1">
-            <!-- Top Tag -->
-            <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-amberx-500/10 border border-amberx-500/40 text-amberx-400 font-mono text-xs sm:text-sm tracking-widest mb-6 shadow-[0_0_20px_rgba(255,107,0,0.15)]">
-                <span>[ OPEN INVITATION // 00-ARCHIVE ]</span>
-            </div>
-
-            <!-- Main Dramatic Title -->
-            <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-wider text-white leading-tight mb-4">
-                MAFIA <span class="text-transparent bg-clip-text bg-gradient-to-r from-amberx-500 to-amberx-400">CHARACTER</span><br class="sm:hidden"> IMMERSION
-            </h1>
-
-            <!-- Thai Subtitle -->
-            <p class="text-lg sm:text-2xl text-gray-200 font-medium max-w-2xl leading-relaxed mb-6">
-                สร้างตัวละครสมมติที่มีชีวิต เรียนรู้ภาษาอังกฤษผ่านเรื่องราวที่คุณเป็นผู้ออกแบบเอง
-            </p>
-
-            <!-- Editorial Quote Box -->
-            <div class="relative px-6 py-4 sm:px-10 sm:py-5 rounded-2xl bg-noir-800/80 border-l-4 border-amberx-500 max-w-xl mb-10 shadow-xl">
-                <p class="font-mono text-sm sm:text-lg tracking-wider text-amberx-400 font-bold">
-                    “ THE STORY IS YOURS.<br>THE LANGUAGE WILL FOLLOW. ”
-                </p>
-            </div>
-
-            <!-- 3 Key Highlights -->
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-5 w-full max-w-3xl text-left">
-                <div class="dossier-card p-4 rounded-xl flex items-center gap-3.5">
-                    <div class="w-10 h-10 rounded-lg bg-amberx-500/15 border border-amberx-500/30 flex items-center justify-center text-amberx-500 shrink-0">
-                        <i class="fa-solid fa-feather-pointed"></i>
-                    </div>
-                    <div>
-                        <p class="text-sm font-semibold text-white">ไม่ต้องมีประสบการณ์เขียน</p>
-                        <p class="text-xs text-gray-400">เริ่มต้นจากไอเดียเล็กๆ ได้เลย</p>
-                    </div>
-                </div>
-
-                <div class="dossier-card p-4 rounded-xl flex items-center gap-3.5">
-                    <div class="w-10 h-10 rounded-lg bg-amberx-500/15 border border-amberx-500/30 flex items-center justify-center text-amberx-500 shrink-0">
-                        <i class="fa-solid fa-language"></i>
-                    </div>
-                    <div>
-                        <p class="text-sm font-semibold text-white">ไม่ต้องเก่งอังกฤษตั้งแต่แรก</p>
-                        <p class="text-xs text-gray-400">ใช้ตัวช่วยแปลและฝึกปรับแก้ได้</p>
-                    </div>
-                </div>
-
-                <div class="dossier-card p-4 rounded-xl flex items-center gap-3.5">
-                    <div class="w-10 h-10 rounded-lg bg-amberx-500/15 border border-amberx-500/30 flex items-center justify-center text-amberx-500 shrink-0">
-                        <i class="fa-solid fa-hourglass-half"></i>
-                    </div>
-                    <div>
-                        <p class="text-sm font-semibold text-white">เรียนรู้ตามจังหวะตัวเอง</p>
-                        <p class="text-xs text-gray-400">ไม่กดดัน ไม่แข่งขัน ไม่เปรียบเทียบ</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- =========================================================
-             SLIDE 02: CONCEPT & OBJECTIVE
-        ========================================================= -->
-        <section class="slide flex-col justify-center py-6 min-h-[75vh]" data-slide="2">
-            <div class="mb-8">
-                <span class="font-mono text-xs sm:text-sm text-amberx-500 tracking-widest uppercase">01 // PROJECT OVERVIEW</span>
-                <h2 class="text-2xl sm:text-4xl font-bold text-white mt-1">แนวคิดและเป้าหมายของโปรเจกต์</h2>
-                <p class="text-gray-400 text-sm sm:text-base mt-2 max-w-3xl">
-                    ใช้เสน่ห์ของโลกสมมติแนว <span class="text-amberx-400 font-medium">Mafia & Noir</span> ที่เต็มไปด้วยมิติของตัวละคร ความลับ และความสัมพันธ์ มาเป็นแรงผลักดันในการฝึกใช้ภาษาอังกฤษอย่างเป็นธรรมชาติ
-                </p>
-            </div>
-
-            <!-- 3 Core Pillars -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Pillar 1 -->
-                <div class="dossier-card p-6 sm:p-7 rounded-2xl flex flex-col justify-between relative overflow-hidden">
-                    <div class="absolute -right-4 -top-4 font-serif text-8xl font-bold text-white/[0.03] select-none">01</div>
-                    <div>
-                        <div class="w-12 h-12 rounded-xl bg-amberx-500 text-noir-950 flex items-center justify-center text-xl font-bold mb-5 shadow-[0_0_20px_rgba(255,107,0,0.4)]">
-                            <i class="fa-solid fa-user-secret"></i>
-                        </div>
-                        <span class="font-mono text-xs text-amberx-400 uppercase tracking-wider">DEEP CHARACTER DESIGN</span>
-                        <h3 class="text-xl font-bold text-white mt-1 mb-3">สร้างตัวตนที่มีมิติ</h3>
-                        <p class="text-gray-300 text-sm leading-relaxed">
-                            ออกแบบตัวละครสมมติอย่างละเอียด ตั้งแต่ชื่อ รูปลักษณ์ นิสัย กิจวัตร ไปจนถึงปมในอดีตและจิตวิทยาเบื้องลึก ทำให้ตัวละครดูมีชีวิตจริง
-                        </p>
-                    </div>
-                    <div class="mt-6 pt-4 border-t border-white/10 text-xs font-mono text-gray-400">
-                        > IDENTITY • PSYCHOLOGY • STORY
-                    </div>
-                </div>
-
-                <!-- Pillar 2 -->
-                <div class="dossier-card p-6 sm:p-7 rounded-2xl flex flex-col justify-between relative overflow-hidden">
-                    <div class="absolute -right-4 -top-4 font-serif text-8xl font-bold text-white/[0.03] select-none">02</div>
-                    <div>
-                        <div class="w-12 h-12 rounded-xl bg-amberx-500 text-noir-950 flex items-center justify-center text-xl font-bold mb-5 shadow-[0_0_20px_rgba(255,107,0,0.4)]">
-                            <i class="fa-solid fa-book-open-reader"></i>
-                        </div>
-                        <span class="font-mono text-xs text-amberx-400 uppercase tracking-wider">ACTIVE ENGLISH IMMERSION</span>
-                        <h3 class="text-xl font-bold text-white mt-1 mb-3">เรียนรู้ภาษาผ่านความสนใจ</h3>
-                        <p class="text-gray-300 text-sm leading-relaxed">
-                            เปลี่ยนการท่องจำที่น่าเบื่อ เป็นการอ่านประวัติ เก็บคำศัพท์ใหม่ ฝึกเขียนสรุป และเรียบเรียงประโยคภาษาอังกฤษจากเรื่องราวที่เราแต่งเอง
-                        </p>
-                    </div>
-                    <div class="mt-6 pt-4 border-t border-white/10 text-xs font-mono text-gray-400">
-                        > VOCABULARY • WRITING • SPEAKING
-                    </div>
-                </div>
-
-                <!-- Pillar 3 -->
-                <div class="dossier-card p-6 sm:p-7 rounded-2xl flex flex-col justify-between relative overflow-hidden">
-                    <div class="absolute -right-4 -top-4 font-serif text-8xl font-bold text-white/[0.03] select-none">03</div>
-                    <div>
-                        <div class="w-12 h-12 rounded-xl bg-amberx-500 text-noir-950 flex items-center justify-center text-xl font-bold mb-5 shadow-[0_0_20px_rgba(255,107,0,0.4)]">
-                            <i class="fa-solid fa-seedling"></i>
-                        </div>
-                        <span class="font-mono text-xs text-amberx-400 uppercase tracking-wider">SAFE & SUPPORTIVE SPACE</span>
-                        <h3 class="text-xl font-bold text-white mt-1 mb-3">พื้นที่ปลอดภัย ไม่กดดัน</h3>
-                        <p class="text-gray-300 text-sm leading-relaxed">
-                            ไม่จำเป็นต้องเขียนสมบูรณ์แบบ สามารถใช้ Dictionary หรือโปรแกรมแปลภาษาช่วยได้ แล้วค่อยๆ ปรับแก้เพื่อทำความเข้าใจโครงสร้างประโยค
-                        </p>
-                    </div>
-                    <div class="mt-6 pt-4 border-t border-white/10 text-xs font-mono text-gray-400">
-                        > ZERO PRESSURE • SELF-PACED
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- =========================================================
-             SLIDE 03: PROJECT RULES (10 RULES)
-        ========================================================= -->
-        <section class="slide flex-col justify-center py-6 min-h-[75vh]" data-slide="3">
-            <div class="mb-6 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
-                <div>
-                    <span class="font-mono text-xs sm:text-sm text-amberx-500 tracking-widest uppercase">02 // CODE OF CONDUCT</span>
-                    <h2 class="text-2xl sm:text-4xl font-bold text-white mt-1">กฎกติกาการอยู่ร่วมกัน (10 ข้อ)</h2>
-                </div>
-                <span class="font-mono text-xs text-gray-400 bg-noir-800 px-3 py-1.5 rounded-lg border border-white/10">
-                    “ CREATE WITH INTENTION. LEARN WITH CURIOSITY. ”
-                </span>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5 sm:gap-4">
-                <!-- Left Column: 01 - 05 -->
-                <div class="space-y-3">
-                    <div class="dossier-card p-3.5 rounded-xl flex items-start gap-3.5">
-                        <span class="font-mono text-xs font-bold px-2.5 py-1 rounded bg-amberx-500 text-noir-950 shrink-0 mt-0.5">01</span>
-                        <div>
-                            <h4 class="text-sm font-bold text-white">RESPECT & CONDUCT — เคารพซึ่งกันและกัน</h4>
-                            <p class="text-xs text-gray-400 mt-0.5">ไม่ดูถูกความสามารถ ภาษาอังกฤษ หรือผลงานของผู้อื่น วิจารณ์ได้ด้วยเหตุผลและความสุภาพ</p>
-                        </div>
-                    </div>
-
-                    <div class="dossier-card p-3.5 rounded-xl flex items-start gap-3.5">
-                        <span class="font-mono text-xs font-bold px-2.5 py-1 rounded bg-amberx-500 text-noir-950 shrink-0 mt-0.5">02</span>
-                        <div>
-                            <h4 class="text-sm font-bold text-white">ORIGINALITY — สร้างสรรค์อย่างมีเอกลักษณ์</h4>
-                            <p class="text-xs text-gray-400 mt-0.5">ออกแบบตัวละครได้อย่างอิสระ แต่ต้องเป็นรายละเอียดของตนเอง หลีกเลี่ยงการลอกเลียนแบบ</p>
-                        </div>
-                    </div>
-
-                    <div class="dossier-card p-3.5 rounded-xl flex items-start gap-3.5">
-                        <span class="font-mono text-xs font-bold px-2.5 py-1 rounded bg-amberx-500 text-noir-950 shrink-0 mt-0.5">03</span>
-                        <div>
-                            <h4 class="text-sm font-bold text-white">FICTIONAL WORLD — โลกสมมติเพื่อการเรียนรู้</h4>
-                            <p class="text-xs text-gray-400 mt-0.5">ธีม Mafia ใช้เพื่อเล่าเรื่องและสร้างบรรยากาศเท่านั้น ไม่ส่งเสริมการกระทำผิดในชีวิตจริง</p>
-                        </div>
-                    </div>
-
-                    <div class="dossier-card p-3.5 rounded-xl flex items-start gap-3.5">
-                        <span class="font-mono text-xs font-bold px-2.5 py-1 rounded bg-amberx-500 text-noir-950 shrink-0 mt-0.5">04</span>
-                        <div>
-                            <h4 class="text-sm font-bold text-white">ENGLISH IMMERSION — ฝึกภาษาตามระดับตัวเอง</h4>
-                            <p class="text-xs text-gray-400 mt-0.5">ไม่จำเป็นต้องเป๊ะ 100% สามารถค้นศัพท์ ใช้ตัวช่วยแปล และค่อยๆ ปรับแก้เพื่อเรียนรู้ได้</p>
-                        </div>
-                    </div>
-
-                    <div class="dossier-card p-3.5 rounded-xl flex items-start gap-3.5">
-                        <span class="font-mono text-xs font-bold px-2.5 py-1 rounded bg-amberx-500 text-noir-950 shrink-0 mt-0.5">05</span>
-                        <div>
-                            <h4 class="text-sm font-bold text-white">CONSISTENCY — พัฒนาอย่างต่อเนื่อง</h4>
-                            <p class="text-xs text-gray-400 mt-0.5">ไม่ต้องทำให้เสร็จในวันเดียว ค่อยๆ เติมรายละเอียดโดยเน้นความสมเหตุสมผลของเรื่องราว</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right Column: 06 - 10 -->
-                <div class="space-y-3">
-                    <div class="dossier-card p-3.5 rounded-xl flex items-start gap-3.5">
-                        <span class="font-mono text-xs font-bold px-2.5 py-1 rounded bg-noir-700 border border-amberx-500/50 text-amberx-400 shrink-0 mt-0.5">06</span>
-                        <div>
-                            <h4 class="text-sm font-bold text-white">NO PLAGIARISM — ห้ามคัดลอกผลงาน</h4>
-                            <p class="text-xs text-gray-400 mt-0.5">ห้ามนำประวัติ บทเขียน หรือภาพของสมาชิกคนอื่นไปแอบอ้างเป็นของตนเองโดยไม่ได้รับอนุญาต</p>
-                        </div>
-                    </div>
-
-                    <div class="dossier-card p-3.5 rounded-xl flex items-start gap-3.5">
-                        <span class="font-mono text-xs font-bold px-2.5 py-1 rounded bg-noir-700 border border-amberx-500/50 text-amberx-400 shrink-0 mt-0.5">07</span>
-                        <div>
-                            <h4 class="text-sm font-bold text-white">PRIVACY — เคารพความเป็นส่วนตัว</h4>
-                            <p class="text-xs text-gray-400 mt-0.5">ไม่นำข้อมูลส่วนตัว บทสนทนา หรือผลงานของสมาชิกออกไปเผยแพร่ภายนอกโดยไม่ได้รับอนุญาต</p>
-                        </div>
-                    </div>
-
-                    <div class="dossier-card p-3.5 rounded-xl flex items-start gap-3.5">
-                        <span class="font-mono text-xs font-bold px-2.5 py-1 rounded bg-noir-700 border border-amberx-500/50 text-amberx-400 shrink-0 mt-0.5">08</span>
-                        <div>
-                            <h4 class="text-sm font-bold text-white">CONSTRUCTIVE FEEDBACK — ติชมอย่างสร้างสรรค์</h4>
-                            <p class="text-xs text-gray-400 mt-0.5">แนะนำเรื่องภาษาหรือพล็อตด้วยความหวังดี ไม่ประชดประชันหรือทำให้เจ้าของผลงานเสียกำลังใจ</p>
-                        </div>
-                    </div>
-
-                    <div class="dossier-card p-3.5 rounded-xl flex items-start gap-3.5">
-                        <span class="font-mono text-xs font-bold px-2.5 py-1 rounded bg-noir-700 border border-amberx-500/50 text-amberx-400 shrink-0 mt-0.5">09</span>
-                        <div>
-                            <h4 class="text-sm font-bold text-white">PARTICIPATION — เรียนรู้ตามจังหวะของตนเอง</h4>
-                            <p class="text-xs text-gray-400 mt-0.5">ไม่จำเป็นต้องแข่งขันกัน ไม่เปรียบเทียบระดับภาษาหรือความยาวของประวัติระหว่างสมาชิก</p>
-                        </div>
-                    </div>
-
-                    <div class="dossier-card p-3.5 rounded-xl flex items-start gap-3.5">
-                        <span class="font-mono text-xs font-bold px-2.5 py-1 rounded bg-noir-700 border border-amberx-500/50 text-amberx-400 shrink-0 mt-0.5">10</span>
-                        <div>
-                            <h4 class="text-sm font-bold text-white">PROJECT INTEGRITY — รักษาบรรยากาศที่ดี</h4>
-                            <p class="text-xs text-gray-400 mt-0.5">หากเกิดความเห็นต่างให้พูดคุยกันด้วยเหตุผล และให้ผู้ดูแลเป็นคนกลางในการพิจารณา</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- =========================================================
-             SLIDE 04: CHARACTER RECORD GUIDE — PART 1 (SECTIONS 01 - 04)
-        ========================================================= -->
-        <section class="slide flex-col justify-center py-6 min-h-[75vh]" data-slide="4">
-            <div class="mb-6">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded bg-amberx-500/15 border border-amberx-500/30 text-amberx-400 font-mono text-xs mb-2">
-                    <i class="fa-solid fa-folder-open"></i>
-                    <span>DOSSIER GUIDE // PART 01 OF 03</span>
-                </div>
-                <h2 class="text-2xl sm:text-4xl font-bold text-white">วิธีกรอกแบบฟอร์ม: ข้อมูลพื้นฐาน & บุคลิกภาพ</h2>
-                <p class="text-gray-400 text-sm mt-1">เริ่มต้นปั้นโครงสร้างภายนอกและตัวตนเบื้องต้นของตัวละคร (หมวดที่ 01 – 04)</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
-                <!-- Section 01 -->
-                <div class="dossier-card p-5 rounded-2xl border-l-4 border-l-amberx-500">
-                    <div class="flex items-center justify-between mb-2">
-                        <h3 class="font-mono text-base font-bold text-amberx-400">01. IDENTITY (ข้อมูลระบุตัวตน)</h3>
-                        <span class="text-xs font-mono text-gray-500">FILE HEADER</span>
-                    </div>
-                    <p class="text-xs sm:text-sm text-gray-300 mb-3 leading-relaxed">
-                        กรอกรหัสแฟ้ม (ตั้งเองได้ เช่น <code class="text-amberx-400">#MC-001</code>) ชื่อจริง ชื่อเล่น <b>ฉายาในวงการ (Alias)</b> อายุ วันเกิด สัญชาติ ภาษาที่ใช้ อาชีพฉากหน้า และ <b>สังกัด/แก๊ง (Affiliation)</b>
-                    </p>
-                    <div class="bg-noir-950/90 p-3 rounded-xl border border-white/5 font-mono text-xs text-gray-300">
-                        <span class="text-amberx-500">Ex:</span> Alias: <span class="text-white">"The Architect"</span> | Occupation: <span class="text-white">Art Restorer (Front) / Strategist</span>
-                    </div>
-                </div>
-
-                <!-- Section 02 -->
-                <div class="dossier-card p-5 rounded-2xl border-l-4 border-l-amberx-500">
-                    <div class="flex items-center justify-between mb-2">
-                        <h3 class="font-mono text-base font-bold text-amberx-400">02. PHYSICAL DESCRIPTION (รูปลักษณ์)</h3>
-                        <span class="text-xs font-mono text-gray-500">APPEARANCE</span>
-                    </div>
-                    <p class="text-xs sm:text-sm text-gray-300 mb-3 leading-relaxed">
-                        บรรยายส่วนสูง รูปร่าง สีผม สีตา โครงหน้า <b>โทนเสียง (Voice)</b> สไตล์การแต่งตัว เครื่องประดับประจำตัว และ <b>ตำหนิ/เอกลักษณ์ (Distinguishing Features)</b>
-                    </p>
-                    <div class="bg-noir-950/90 p-3 rounded-xl border border-white/5 font-mono text-xs text-gray-300">
-                        <span class="text-amberx-500">Ex:</span> Voice: <span class="text-white">Calm, deep baritone</span> | Feature: <span class="text-white">Faint burn scar on left wrist</span>
-                    </div>
-                </div>
-
-                <!-- Section 03 -->
-                <div class="dossier-card p-5 rounded-2xl border-l-4 border-l-gray-500">
-                    <div class="flex items-center justify-between mb-2">
-                        <h3 class="font-mono text-base font-bold text-white">03. EDUCATION (การศึกษาและทักษะ)</h3>
-                        <span class="text-xs font-mono text-gray-500">INTELLECT</span>
-                    </div>
-                    <p class="text-xs sm:text-sm text-gray-300 mb-3 leading-relaxed">
-                        ประวัติการเรียนตั้งแต่มัธยมจนถึงมหาวิทยาลัย สาขาที่จบ วิชาที่ถนัด ทักษะพิเศษที่ใช้เอาตัวรอด (เช่น การเจรจา การเงิน การต่อสู้) และภาษาต่างประเทศที่เรียนมา
-                    </p>
-                    <div class="bg-noir-950/90 p-3 rounded-xl border border-white/5 font-mono text-xs text-gray-300">
-                        <span class="text-amberx-500">Ex:</span> Major: <span class="text-white">Corporate Law</span> | Skills: <span class="text-white">Negotiation, Chess, Cryptography</span>
-                    </div>
-                </div>
-
-                <!-- Section 04 -->
-                <div class="dossier-card p-5 rounded-2xl border-l-4 border-l-gray-500">
-                    <div class="flex items-center justify-between mb-2">
-                        <h3 class="font-mono text-base font-bold text-white">04. PERSONALITY (บุคลิกภาพและนิสัย)</h3>
-                        <span class="text-xs font-mono text-gray-500">BEHAVIOR</span>
-                    </div>
-                    <p class="text-xs sm:text-sm text-gray-300 mb-3 leading-relaxed">
-                        นิสัยแกนหลัก จุดแข็ง-จุดอ่อน การควบคุมอารมณ์ การเข้าสังคม <b>สไตล์การสื่อสารและภาวะผู้นำ</b> รวมถึงนิสัยติดตัวเล็กๆ น้อยๆ (Habits) และสิ่งที่ยึดถือ (Values)
-                    </p>
-                    <div class="bg-noir-950/90 p-3 rounded-xl border border-white/5 font-mono text-xs text-gray-300">
-                        <span class="text-amberx-500">Ex:</span> Habits: <span class="text-white">Adjusts cufflinks when thinking</span> | Values: <span class="text-white">Loyalty above all</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- =========================================================
-             SLIDE 05: CHARACTER RECORD GUIDE — PART 2 (SECTIONS 05 - 07)
-        ========================================================= -->
-        <section class="slide flex-col justify-center py-6 min-h-[75vh]" data-slide="5">
-            <div class="mb-6">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded bg-amberx-500/15 border border-amberx-500/30 text-amberx-400 font-mono text-xs mb-2">
-                    <i class="fa-solid fa-mug-hot"></i>
-                    <span>DOSSIER GUIDE // PART 02 OF 03</span>
-                </div>
-                <h2 class="text-2xl sm:text-4xl font-bold text-white">วิธีกรอกแบบฟอร์ม: ไลฟ์สไตล์ & ความสัมพันธ์</h2>
-                <p class="text-gray-400 text-sm mt-1">เติมรายละเอียดชีวิตประจำวันและความเชื่อมโยงกับผู้คนรอบตัว (หมวดที่ 05 – 07)</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-                <!-- Section 05 -->
-                <div class="dossier-card p-6 rounded-2xl flex flex-col justify-between">
-                    <div>
-                        <span class="font-mono text-xs text-amberx-500 font-bold">SECTION 05</span>
-                        <h3 class="text-xl font-bold text-white mt-1 mb-3">PERSONAL PREFERENCES<br><span class="text-sm font-normal text-gray-400">(ความชอบส่วนตัว)</span></h3>
-                        <p class="text-xs sm:text-sm text-gray-300 leading-relaxed mb-4">
-                            ระบุของโปรดในชีวิตประจำวัน เช่น อาหาร เครื่องดื่ม แนวเพลง หนัง/หนังสือเล่มโปรด สี สถานที่โปรด ฤดูกาล หรือแม้แต่ <b>กลิ่นน้ำหอม (Fragrance)</b>
-                        </p>
-                    </div>
-                    <div class="bg-noir-950/90 p-3.5 rounded-xl border border-white/5 text-xs space-y-1.5">
-                        <p class="text-amberx-400 font-mono font-bold"><i class="fa-solid fa-lightbulb mr-1"></i> เคล็ดลับการเขียน:</p>
-                        <p class="text-gray-400">การใส่รายละเอียดเล็กๆ อย่าง "ชอบดื่มกาแฟดำไม่ใส่น้ำตาล" หรือ "กลิ่นไม้ซีดาร์และฝนตก" จะช่วยให้ตัวละครดูมีเสน่ห์และสมจริงมากขึ้น</p>
-                    </div>
-                </div>
-
-                <!-- Section 06 -->
-                <div class="dossier-card p-6 rounded-2xl flex flex-col justify-between">
-                    <div>
-                        <span class="font-mono text-xs text-amberx-500 font-bold">SECTION 06</span>
-                        <h3 class="text-xl font-bold text-white mt-1 mb-3">DAILY ROUTINE<br><span class="text-sm font-normal text-gray-400">(กิจวัตรประจำวัน)</span></h3>
-                        <p class="text-xs sm:text-sm text-gray-300 leading-relaxed mb-4">
-                            เล่าตารางชีวิตคร่าวๆ ตั้งแต่มอร์นิ่ง บ่าย เย็น กลางคืน เวลาทำงาน เวลาพักผ่อน และพฤติกรรมการนอน เพื่อสะท้อนจังหวะชีวิตของตัวละคร
-                        </p>
-                    </div>
-                    <div class="bg-noir-950/90 p-3.5 rounded-xl border border-white/5 font-mono text-xs space-y-1 text-gray-300">
-                        <p><span class="text-amberx-400">Morning:</span> 06:30 Espresso & news</p>
-                        <p><span class="text-amberx-400">Night:</span> 23:00 Reviewing ledger</p>
-                        <p><span class="text-amberx-400">Sleep:</span> Light sleeper, 4-5 hrs</p>
-                    </div>
-                </div>
-
-                <!-- Section 07 -->
-                <div class="dossier-card p-6 rounded-2xl flex flex-col justify-between">
-                    <div>
-                        <span class="font-mono text-xs text-amberx-500 font-bold">SECTION 07</span>
-                        <h3 class="text-xl font-bold text-white mt-1 mb-3">FAMILY & RELATIONSHIPS<br><span class="text-sm font-normal text-gray-400">(ครอบครัวและความสัมพันธ์)</span></h3>
-                        <p class="text-xs sm:text-sm text-gray-300 leading-relaxed mb-4">
-                            ระบุภูมิหลังครอบครัว พ่อแม่ พี่น้อง เพื่อนสมัยเด็ก <b>คนที่ไว้ใจที่สุด (Closest Person)</b> ความสัมพันธ์สำคัญในองค์กร รวมถึงประวัติความรัก
-                        </p>
-                    </div>
-                    <div class="bg-noir-950/90 p-3.5 rounded-xl border border-white/5 text-xs space-y-1.5">
-                        <p class="text-amberx-400 font-mono font-bold"><i class="fa-solid fa-circle-nodes mr-1"></i> แนวทางการใส่ข้อมูล:</p>
-                        <p class="text-gray-400">สามารถใส่ได้ทั้งความสัมพันธ์ที่อบอุ่น ความบาดหมางในครอบครัว หรือคนที่มีบุญคุณต่อกัน</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- =========================================================
-             SLIDE 06: CHARACTER RECORD GUIDE — PART 3 (SECTIONS 08 - 12)
-        ========================================================= -->
-        <section class="slide flex-col justify-center py-6 min-h-[75vh]" data-slide="6">
-            <div class="mb-6">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded bg-amberx-500/15 border border-amberx-500/30 text-amberx-400 font-mono text-xs mb-2">
-                    <i class="fa-solid fa-brain"></i>
-                    <span>DOSSIER GUIDE // PART 03 OF 03</span>
-                </div>
-                <h2 class="text-2xl sm:text-4xl font-bold text-white">วิธีกรอกแบบฟอร์ม: จิตวิทยาเบื้องลึก & เส้นเรื่อง</h2>
-                <p class="text-gray-400 text-sm mt-1">หัวใจสำคัญที่ขับเคลื่อนการกระทำและเรื่องราวทั้งหมดของตัวละคร (หมวดที่ 08 – 12)</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
-                <!-- Section 08 -->
-                <div class="dossier-card p-5 rounded-2xl">
-                    <div class="flex items-center gap-2.5 mb-2">
-                        <span class="px-2 py-0.5 rounded bg-amberx-500 text-noir-950 font-mono text-xs font-bold">08</span>
-                        <h3 class="font-mono text-base font-bold text-white">PSYCHOLOGICAL PROFILE (โปรไฟล์จิตวิทยา)</h3>
-                    </div>
-                    <p class="text-xs sm:text-sm text-gray-300 leading-relaxed">
-                        เจาะลึกจิตใจ: <b>ความกลัวสูงสุด (Greatest Fear)</b> ความปรารถนาลึกๆ ความเสียใจในอดีต ปมด้อย ความขัดแย้งในใจ กฎศีลธรรมส่วนตัว สิ่งที่ทำให้รู้สึกปลอดภัย และ <b>สิ่งที่ซ่อนไว้ไม่เคยบอกใคร</b>
-                    </p>
-                </div>
-
-                <!-- Section 09 -->
-                <div class="dossier-card p-5 rounded-2xl">
-                    <div class="flex items-center gap-2.5 mb-2">
-                        <span class="px-2 py-0.5 rounded bg-amberx-500 text-noir-950 font-mono text-xs font-bold">09</span>
-                        <h3 class="font-mono text-base font-bold text-white">LIFE HISTORY (ไทม์ไลน์ประวัติชีวิต)</h3>
-                    </div>
-                    <p class="text-xs sm:text-sm text-gray-300 leading-relaxed">
-                        สรุปเหตุการณ์สำคัญตามช่วงวัย: วัยเด็ก (Childhood) วัยรุ่น (Adolescence) วัยผู้ใหญ่ตอนต้น <b>จุดเปลี่ยนสำคัญที่ทำให้เข้าสู่วงการนี้ (Turning Point)</b> จนถึงชีวิตปัจจุบัน
-                    </p>
-                </div>
-
-                <!-- Section 10 -->
-                <div class="dossier-card p-5 rounded-2xl">
-                    <div class="flex items-center gap-2.5 mb-2">
-                        <span class="px-2 py-0.5 rounded bg-amberx-500 text-noir-950 font-mono text-xs font-bold">10</span>
-                        <h3 class="font-mono text-base font-bold text-white">MOTIVATION (แรงจูงใจและเป้าหมาย)</h3>
-                    </div>
-                    <p class="text-xs sm:text-sm text-gray-300 leading-relaxed">
-                        แยกแยะระหว่าง <b>สิ่งที่เขาต้องการ (What He Wants)</b> vs <b>สิ่งที่เขาจำเป็นจริงๆ (What He Needs)</b> รวมถึงสิ่งที่กลัวจะสูญเสีย และหลักการที่ยอมตายดีกว่าละทิ้ง
-                    </p>
-                </div>
-
-                <!-- Section 11 & 12 -->
-                <div class="dossier-card p-5 rounded-2xl border border-amberx-500/30 bg-amberx-500/[0.03]">
-                    <div class="flex items-center gap-2.5 mb-2">
-                        <span class="px-2 py-0.5 rounded bg-amberx-500 text-noir-950 font-mono text-xs font-bold">11–12</span>
-                        <h3 class="font-mono text-base font-bold text-amberx-400">CURRENT STORY & 10 CHAPTERS</h3>
-                    </div>
-                    <p class="text-xs sm:text-sm text-gray-300 leading-relaxed">
-                        <b>หมวด 11:</b> สถานการณ์ ปัญหา ความลับ และแผนการในปัจจุบัน<br>
-                        <b>หมวด 12:</b> โครงเรื่อง 10 บท (I. Before Everything ถึง X. What Comes Next) เอาไว้ค่อยๆ ทยอยเขียนเล่าเรื่องทีละตอน
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- =========================================================
-             SLIDE 07: LANGUAGE RECORD & PROJECT STATUS
-        ========================================================= -->
-        <section class="slide flex-col justify-center py-6 min-h-[75vh]" data-slide="7">
-            <div class="mb-6">
-                <span class="font-mono text-xs sm:text-sm text-amberx-500 tracking-widest uppercase">04 // ENGLISH IMMERSION TRACKER</span>
-                <h2 class="text-2xl sm:text-4xl font-bold text-white mt-1">ส่วนบันทึกการเรียนรู้ภาษาอังกฤษ & สถานะโปรเจกต์</h2>
-                <p class="text-gray-400 text-sm mt-1">ส่วนท้ายของแบบฟอร์มที่เปลี่ยนการสร้างตัวละครให้กลายเป็นทักษะภาษาอังกฤษที่ใช้ได้จริง</p>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-                <!-- Left 7 cols: Language Record -->
-                <div class="lg:col-span-7 dossier-card p-6 rounded-2xl flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center justify-between border-b border-white/10 pb-3 mb-4">
-                            <h3 class="font-mono text-lg font-bold text-amberx-400">
-                                <i class="fa-solid fa-pen-nib mr-2"></i>LANGUAGE RECORD
-                            </h3>
-                            <span class="text-xs font-mono text-gray-400">บันทึกคลังภาษาส่วนตัว</span>
-                        </div>
-
-                        <div class="space-y-3.5 text-sm">
-                            <div class="bg-noir-950/70 p-3.5 rounded-xl border border-white/5">
-                                <p class="font-mono text-xs text-amberx-400 font-bold mb-1">✧ NEW VOCABULARY & USEFUL EXPRESSIONS</p>
-                                <p class="text-xs sm:text-sm text-gray-300">จดคำศัพท์ใหม่และสำนวนเท่ๆ ที่ได้จากการแต่งประวัติ เช่น <span class="text-white font-mono">stoic (นิ่งเฉย), syndicate (องค์กร), keep a low profile (ทำตัวเงียบๆ)</span></p>
-                            </div>
-
-                            <div class="bg-noir-950/70 p-3.5 rounded-xl border border-white/5">
-                                <p class="font-mono text-xs text-amberx-400 font-bold mb-1">✧ SENTENCES I UNDERSTAND / CAN REWRITE</p>
-                                <p class="text-xs sm:text-sm text-gray-300">เลือกประโยคภาษาอังกฤษที่ชอบมาวิเคราะห์ความหมาย และลองเขียนปรับสำนวนใหม่ในแบบของตัวเอง</p>
-                            </div>
-
-                            <div class="bg-noir-950/70 p-3.5 rounded-xl border border-white/5">
-                                <p class="font-mono text-xs text-amberx-400 font-bold mb-1">✧ MY ENGLISH SUMMARY & SPEAKING PRACTICE</p>
-                                <p class="text-xs sm:text-sm text-gray-300">เขียนแนะนำตัวละครเป็นภาษาอังกฤษสั้นๆ (3–5 บรรทัด) แล้วฝึกอ่านออกเสียงเพื่อสร้างความคุ้นเคย</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right 5 cols: Interactive Project Status Checklist -->
-                <div class="lg:col-span-5 dossier-card p-6 rounded-2xl border-t-4 border-t-amberx-500 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center justify-between border-b border-white/10 pb-3 mb-4">
-                            <h3 class="font-mono text-lg font-bold text-white">PROJECT STATUS</h3>
-                            <span id="checklist-counter" class="text-xs font-mono px-2.5 py-0.5 rounded bg-amberx-500/20 text-amberx-400">0 / 7 DONE</span>
-                        </div>
-                        <p class="text-xs text-gray-400 mb-3">ลองคลิกติ๊กเช็กลิสต์ด้านล่างเพื่อดูลำดับความคืบหน้าของโปรเจกต์:</p>
-
-                        <div id="interactive-checklist" class="space-y-2">
-                            <label class="flex items-center gap-3 p-2.5 rounded-lg bg-noir-950/60 hover:bg-noir-800 cursor-pointer border border-white/5 transition">
-                                <input type="checkbox" onchange="updateChecklist()" class="w-4 h-4 accent-[#FF6B00] rounded">
-                                <span class="text-xs sm:text-sm text-gray-200 font-mono">Character Generated (คิดโครงตัวละคร)</span>
-                            </label>
-                            <label class="flex items-center gap-3 p-2.5 rounded-lg bg-noir-950/60 hover:bg-noir-800 cursor-pointer border border-white/5 transition">
-                                <input type="checkbox" onchange="updateChecklist()" class="w-4 h-4 accent-[#FF6B00] rounded">
-                                <span class="text-xs sm:text-sm text-gray-200 font-mono">Visual Reference Created (หารูปอ้างอิง)</span>
-                            </label>
-                            <label class="flex items-center gap-3 p-2.5 rounded-lg bg-noir-950/60 hover:bg-noir-800 cursor-pointer border border-white/5 transition">
-                                <input type="checkbox" onchange="updateChecklist()" class="w-4 h-4 accent-[#FF6B00] rounded">
-                                <span class="text-xs sm:text-sm text-gray-200 font-mono">Personal File Completed (กรอกประวัติครบ)</span>
-                            </label>
-                            <label class="flex items-center gap-3 p-2.5 rounded-lg bg-noir-950/60 hover:bg-noir-800 cursor-pointer border border-white/5 transition">
-                                <input type="checkbox" onchange="updateChecklist()" class="w-4 h-4 accent-[#FF6B00] rounded">
-                                <span class="text-xs sm:text-sm text-gray-200 font-mono">Biography Completed (เขียนเรื่องราว 10 บท)</span>
-                            </label>
-                            <label class="flex items-center gap-3 p-2.5 rounded-lg bg-noir-950/60 hover:bg-noir-800 cursor-pointer border border-white/5 transition">
-                                <input type="checkbox" onchange="updateChecklist()" class="w-4 h-4 accent-[#FF6B00] rounded">
-                                <span class="text-xs sm:text-sm text-gray-200 font-mono">Vocabulary Reviewed (ทบทวนคำศัพท์)</span>
-                            </label>
-                            <label class="flex items-center gap-3 p-2.5 rounded-lg bg-noir-950/60 hover:bg-noir-800 cursor-pointer border border-white/5 transition">
-                                <input type="checkbox" onchange="updateChecklist()" class="w-4 h-4 accent-[#FF6B00] rounded">
-                                <span class="text-xs sm:text-sm text-gray-200 font-mono">English Summary Written (เขียนสรุปอังกฤษ)</span>
-                            </label>
-                            <label class="flex items-center gap-3 p-2.5 rounded-lg bg-noir-950/60 hover:bg-noir-800 cursor-pointer border border-white/5 transition">
-                                <input type="checkbox" onchange="updateChecklist()" class="w-4 h-4 accent-[#FF6B00] rounded">
-                                <span class="text-xs sm:text-sm text-gray-200 font-mono">Speaking Practice Completed (ฝึกพูดออกเสียง)</span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- =========================================================
-             SLIDE 08: HOW TO START & CLOSING CTA
-        ========================================================= -->
-        <section class="slide flex-col justify-center py-6 min-h-[75vh]" data-slide="8">
-            <div class="text-center max-w-3xl mx-auto mb-8">
-                <span class="font-mono text-xs sm:text-sm text-amberx-500 tracking-widest uppercase">05 // INITIATE YOUR ARCHIVE</span>
-                <h2 class="text-2xl sm:text-4xl font-bold text-white mt-1">เริ่มต้นสร้างตัวละครง่ายๆ ใน 4 ขั้นตอน</h2>
-            </div>
-
-            <!-- 4 Workflow Steps -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
-                <div class="dossier-card p-5 rounded-2xl relative">
-                    <span class="font-mono text-2xl font-bold text-amberx-500">01</span>
-                    <h4 class="font-bold text-white mt-2 mb-1.5">ร่างไอเดียตั้งต้น</h4>
-                    <p class="text-xs text-gray-400 leading-relaxed">คิดคอนเซปต์ตัวละครคร่าวๆ เป็นภาษาไทยก่อนได้ เช่น ชื่อ ฉายา และบุคลิกเด่น</p>
-                </div>
-
-                <div class="dossier-card p-5 rounded-2xl relative">
-                    <span class="font-mono text-2xl font-bold text-amberx-500">02</span>
-                    <h4 class="font-bold text-white mt-2 mb-1.5">ค่อยๆ กรอกทีละหมวด</h4>
-                    <p class="text-xs text-gray-400 leading-relaxed">ไม่ต้องรีบทำให้เสร็จในวันเดียว เริ่มจากข้อมูลพื้นฐานแล้วค่อยเติมปมจิตวิทยาทีหลัง</p>
-                </div>
-
-                <div class="dossier-card p-5 rounded-2xl relative">
-                    <span class="font-mono text-2xl font-bold text-amberx-500">03</span>
-                    <h4 class="font-bold text-white mt-2 mb-1.5">แปลและเก็บคลังศัพท์</h4>
-                    <p class="text-xs text-gray-400 leading-relaxed">ใช้ตัวช่วยแปลเรียบเรียงเป็นภาษาอังกฤษ พร้อมจดคำศัพท์ใหม่ลงใน Language Record</p>
-                </div>
-
-                <div class="dossier-card p-5 rounded-2xl relative">
-                    <span class="font-mono text-2xl font-bold text-amberx-500">04</span>
-                    <h4 class="font-bold text-white mt-2 mb-1.5">แชร์และพัฒนาไปด้วยกัน</h4>
-                    <p class="text-xs text-gray-400 leading-relaxed">แลกเปลี่ยนไอเดียตัวละครกับเพื่อนๆ ในโปรเจกต์ ฝึกอ่านและฝึกพูดตามจังหวะของตัวเอง</p>
-                </div>
-            </div>
-
-            <!-- Final Closing Banner & Copy Template Button -->
-            <div class="dossier-card p-6 sm:p-8 rounded-3xl border border-amberx-500/40 bg-gradient-to-br from-noir-800 to-noir-950 text-center max-w-3xl mx-auto w-full shadow-[0_0_40px_rgba(255,107,0,0.12)]">
-                <p class="font-serif text-xl sm:text-3xl font-bold text-white tracking-wide mb-2">
-                    “ THE STORY IS YOURS. <span class="text-amberx-500">THE LANGUAGE WILL FOLLOW.</span> ”
-                </p>
-                <p class="text-xs sm:text-sm text-gray-400 mb-6">
-                    ยินดีต้อนรับสู่โลกที่คุณเป็นผู้สร้างเรื่องราว — พร้อมเริ่มบันทึกแฟ้มตัวละครของคุณหรือยัง?
-                </p>
-
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
-                    <button onclick="copyTemplate()" class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-amberx-500 hover:bg-amberx-400 text-noir-950 font-bold text-sm transition flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(255,107,0,0.4)] cursor-pointer">
-                        <i class="fa-regular fa-copy"></i>
-                        <span>คัดลอกแบบฟอร์มเปล่า (Copy Character Template)</span>
-                    </button>
-                    <button onclick="goToSlide(1)" class="w-full sm:w-auto px-5 py-3.5 rounded-xl bg-noir-800 hover:bg-noir-700 border border-white/10 text-gray-300 font-mono text-xs transition cursor-pointer">
-                        <i class="fa-solid fa-rotate-left mr-1.5"></i>กลับไปหน้าแรก
-                    </button>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- Bottom Navigation Bar -->
-    <footer id="bottom-nav" class="w-full px-4 sm:px-8 py-4 z-40 max-w-7xl mx-auto">
-        <div class="flex items-center justify-between bg-noir-800/90 backdrop-blur-md border border-white/10 px-4 py-2.5 rounded-2xl shadow-2xl">
-            <!-- Prev Button -->
-            <button onclick="prevSlide()" id="prev-btn" class="px-4 py-2 rounded-xl bg-noir-700 hover:bg-amberx-500 hover:text-noir-950 disabled:opacity-30 disabled:pointer-events-none text-white text-xs sm:text-sm font-mono font-bold transition flex items-center gap-2 cursor-pointer">
-                <i class="fa-solid fa-arrow-left"></i>
-                <span class="hidden sm:inline">PREV</span>
-            </button>
-
-            <!-- Slide Dots & Counter -->
-            <div class="flex items-center gap-4">
-                <div id="slide-dots" class="hidden md:flex items-center gap-2"></div>
-                <span id="slide-counter" class="font-mono text-xs sm:text-sm font-bold text-amberx-400 tracking-widest">
-                    01 / 08
-                </span>
-            </div>
-
-            <!-- Next Button -->
-            <button onclick="nextSlide()" id="next-btn" class="px-4 py-2 rounded-xl bg-amberx-500 hover:bg-amberx-400 disabled:opacity-30 disabled:pointer-events-none text-noir-950 text-xs sm:text-sm font-mono font-bold transition flex items-center gap-2 cursor-pointer shadow-[0_0_15px_rgba(255,107,0,0.3)]">
-                <span class="hidden sm:inline">NEXT</span>
-                <i class="fa-solid fa-arrow-right"></i>
-            </button>
-        </div>
-    </footer>
-
-    <!-- Custom Toast Notification (No alert() used) -->
-    <div id="toast" class="fixed bottom-20 left-1/2 -translate-x-1/2 px-5 py-3 rounded-xl bg-noir-800 border border-amberx-500 text-white text-xs sm:text-sm font-medium shadow-[0_10px_30px_rgba(0,0,0,0.8)] opacity-0 pointer-events-none transition-all duration-300 z-50 flex items-center gap-2.5">
-        <i class="fa-solid fa-circle-check text-amberx-500 text-base"></i>
-        <span id="toast-msg">คัดลอกแบบฟอร์มเรียบร้อยแล้ว!</span>
-    </div>
-
-    <!-- Hidden Textarea for Reliable Clipboard Copy -->
-    <textarea id="template-source" class="sr-only" readonly>╔══════════════════════════════════════╗
-𓆩 CONFIDENTIAL ARCHIVE 𓆪
-THE CHARACTER RECORD
-╚══════════════════════════════════════╝
-
-⌞ FILE NO. :
-⌞ CHARACTER NAME :
-⌞ ALIAS :
-⌞ STATUS :
-
-「 A PERSON BEHIND THE NAME 」
-
-━━━━━━━━━━━ 𖤐 ━━━━━━━━━━━
-01. IDENTITY
-━━━━━━━━━━━ 𖤐 ━━━━━━━━━━━
-⌞ Full Name :
-⌞ Nickname :
-⌞ Age :
-⌞ Date of Birth :
-⌞ Place of Birth :
-⌞ Nationality :
-⌞ Languages :
-⌞ Current Residence :
-⌞ Occupation :
-⌞ Affiliation :
-
-━━━━━━━━━━━ 𖤐 ━━━━━━━━━━━
-02. PHYSICAL DESCRIPTION
-━━━━━━━━━━━ 𖤐 ━━━━━━━━━━━
-⌞ Height :
-⌞ Weight (optional) :
-⌞ Body Type :
-⌞ Hair :
-⌞ Eyes :
-⌞ Facial Features :
-⌞ Voice :
-⌞ Clothing :
-⌞ Accessories :
-⌞ Distinguishing Features :
-
-━━━━━━━━━━━ 𖤐 ━━━━━━━━━━━
-03. EDUCATION
-━━━━━━━━━━━ 𖤐 ━━━━━━━━━━━
-⌞ Elementary School :
-⌞ Secondary School :
-⌞ University :
-⌞ Major :
-⌞ Academic Strengths :
-⌞ Skills :
-⌞ Languages Learned :
-
-━━━━━━━━━━━ 𖤐 ━━━━━━━━━━━
-04. PERSONALITY
-━━━━━━━━━━━ 𖤐 ━━━━━━━━━━━
-⌞ Core Personality :
-⌞ Strengths :
-⌞ Weaknesses :
-⌞ Temperament :
-⌞ Social Behavior :
-⌞ Emotional Control :
-⌞ Communication Style :
-⌞ Leadership Style :
-⌞ Habits :
-⌞ Values :
-
-━━━━━━━━━━━ 𖤐 ━━━━━━━━━━━
-05. PERSONAL PREFERENCES
-━━━━━━━━━━━ 𖤐 ━━━━━━━━━━━
-⌞ Favorite Food :
-⌞ Favorite Drink :
-⌞ Favorite Music :
-⌞ Favorite Film :
-⌞ Favorite Book :
-⌞ Favorite Color :
-⌞ Favorite Place :
-⌞ Favorite Season :
-⌞ Favorite Hobby :
-⌞ Favorite Fragrance :
-⌞ Favorite Clothing :
-⌞ Favorite Activities :
-
-━━━━━━━━━━━ 𖤐 ━━━━━━━━━━━
-06. DAILY ROUTINE
-━━━━━━━━━━━ 𖤐 ━━━━━━━━━━━
-⌞ Morning :
-⌞ Afternoon :
-⌞ Evening :
-⌞ Night :
-⌞ Work :
-⌞ Leisure :
-⌞ Sleep :
-
-━━━━━━━━━━━ 𖤐 ━━━━━━━━━━━
-07. FAMILY & RELATIONSHIPS
-━━━━━━━━━━━ 𖤐 ━━━━━━━━━━━
-⌞ Family Background :
-⌞ Parents :
-⌞ Siblings :
-⌞ Childhood Friends :
-⌞ Closest Person :
-⌞ Important Relationships :
-⌞ Relationship History :
-
-━━━━━━━━━━━ 𖤐 ━━━━━━━━━━━
-08. PSYCHOLOGICAL PROFILE
-━━━━━━━━━━━ 𖤐 ━━━━━━━━━━━
-⌞ Greatest Fear :
-⌞ Deepest Desire :
-⌞ Biggest Regret :
-⌞ Personal Insecurity :
-⌞ Internal Conflict :
-⌞ Moral Principles :
-⌞ What Makes Him Feel Safe :
-⌞ What He Hides :
-⌞ What He Never Talks About :
-
-━━━━━━━━━━━ 𖤐 ━━━━━━━━━━━
-09. LIFE HISTORY
-━━━━━━━━━━━ 𖤐 ━━━━━━━━━━━
-⌞ Childhood :
-⌞ Adolescence :
-⌞ Education :
-⌞ Early Adulthood :
-⌞ Turning Point :
-⌞ Major Life Events :
-⌞ Present Life :
-
-━━━━━━━━━━━ 𖤐 ━━━━━━━━━━━
-10. MOTIVATION
-━━━━━━━━━━━ 𖤐 ━━━━━━━━━━━
-⌞ Main Goal :
-⌞ Personal Ambition :
-⌞ What He Wants :
-⌞ What He Needs :
-⌞ What He Fears Losing :
-⌞ What He Refuses to Abandon :
-
-━━━━━━━━━━━ 𖤐 ━━━━━━━━━━━
-11. CURRENT STORY
-━━━━━━━━━━━ 𖤐 ━━━━━━━━━━━
-⌞ Current Situation :
-⌞ Current Problems :
-⌞ Current Relationships :
-⌞ Current Responsibilities :
-⌞ Current Secrets :
-⌞ Future Plans :
-
-━━━━━━━━━━━ 𖤐 ━━━━━━━━━━━
-12. BIOGRAPHY CHAPTERS
-━━━━━━━━━━━ 𖤐 ━━━━━━━━━━━
-I. Before Everything
-II. The House He Grew Up In
-III. The Boy He Used to Be
-IV. Education & Formation
-V. The Turning Point
-VI. Entering the World
-VII. The Man Behind the Name
-VIII. His Present Life
-IX. The Things He Never Says
-X. What Comes Next
-
-╭────────── · · 𖤐 · · ──────────╮
-LANGUAGE RECORD
-╰────────── · · 𖤐 · · ──────────╯
-
-✧ NEW VOCABULARY
-- 
-
-✧ USEFUL EXPRESSIONS
-- 
-
-✧ SENTENCES I UNDERSTAND
-- 
-
-✧ SENTENCES I CAN REWRITE
-- 
-
-✧ MY ENGLISH SUMMARY
-...
-
-✧ MY SPEAKING PRACTICE
-...
-
-╔══════════════════════════════════════╗
-PROJECT STATUS
-╚══════════════════════════════════════╝
-[ ] Character Generated
-[ ] Visual Reference Created
-[ ] Personal File Completed
-[ ] Biography Completed
-[ ] Vocabulary Reviewed
-[ ] English Summary Written
-[ ] Speaking Practice Completed</textarea>
-
-    <script>
-        let currentSlide = 1;
-        const slides = document.querySelectorAll('.slide');
-        const totalSlides = slides.length;
-        const progressBar = document.getElementById('progress-bar');
-        const slideCounter = document.getElementById('slide-counter');
-        const slideDotsContainer = document.getElementById('slide-dots');
-        const prevBtn = document.getElementById('prev-btn');
-        const nextBtn = document.getElementById('next-btn');
-
-        // Initialize Slide Dots
-        function initDots() {
-            slideDotsContainer.innerHTML = '';
-            for (let i = 1; i <= totalSlides; i++) {
-                const dot = document.createElement('button');
-                dot.className = `h-2 rounded-full transition-all duration-300 cursor-pointer ${i === currentSlide ? 'w-6 bg-amberx-500 shadow-[0_0_8px_#FF6B00]' : 'w-2 bg-gray-600 hover:bg-gray-400'}`;
-                dot.setAttribute('aria-label', `Go to slide ${i}`);
-                dot.onclick = () => goToSlide(i);
-                slideDotsContainer.appendChild(dot);
-            }
-        }
-
-        // Render Current Slide State
-        function updateSlideUI() {
-            slides.forEach((slide, index) => {
-                if (index + 1 === currentSlide) {
-                    slide.classList.add('active');
-                } else {
-                    slide.classList.remove('active');
-                }
-            });
-
-            // Update Progress Bar & Counter
-            const progressPercent = (currentSlide / totalSlides) * 100;
-            progressBar.style.width = `${progressPercent}%`;
-            slideCounter.textContent = `${String(currentSlide).padStart(2, '0')} / ${String(totalSlides).padStart(2, '0')}`;
-
-            // Button Disabled States
-            prevBtn.disabled = currentSlide === 1;
-            nextBtn.disabled = currentSlide === totalSlides;
-
-            // Update Dots
-            initDots();
-
-            // Scroll to top smoothly on mobile
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function nextSlide() {
-            if (currentSlide < totalSlides) {
-                currentSlide++;
-                updateSlideUI();
-            }
-        }
-
-        function prevSlide() {
-            if (currentSlide > 1) {
-                currentSlide--;
-                updateSlideUI();
-            }
-        }
-
-        function goToSlide(num) {
-            if (num >= 1 && num <= totalSlides) {
-                currentSlide = num;
-                updateSlideUI();
-            }
-        }
-
-        // Keyboard Arrow Support
-        document.addEventListener('keydown', (e) => {
-            if (document.body.classList.contains('overview-mode')) return;
-            if (e.key === 'ArrowRight' || e.key === ' ') {
-                e.preventDefault();
-                nextSlide();
-            } else if (e.key === 'ArrowLeft') {
-                e.preventDefault();
-                prevSlide();
-            }
+<body>
+<canvas id="fx"></canvas><div class="orb" style="left:-14%;top:8%"></div><div class="orb b" style="right:-14%;bottom:0"></div><div id="spot"></div><div id="bar"></div>
+<div class="top"><div><i></i><span class="hd">CONFIDENTIAL ARCHIVE // PROJECT BRIEF</span></div><div><button id="fs">⛶ FULL</button></div></div>
+<main id="main">
+
+<!-- 1 COVER -->
+<section class="slide cover on">
+<div class="ring"></div><div class="ring b"></div>
+<div class="stamp">CONFIDENTIAL</div>
+<div class="r" style="--i:0"><span class="pill">[ OPEN INVITATION ]</span></div>
+<div class="r mafia" style="--i:1">MAFIA</div>
+<div class="r cim" style="--i:2">CHARACTER IMMERSION</div>
+<div class="r line" style="--i:3"></div>
+<p class="r sub" style="--i:4;margin:0 auto 18px;text-align:center;font-size:clamp(15px,2vw,20px);color:#e6e6ee">สร้างตัวละครที่มีชีวิต เรียนรู้ภาษาอังกฤษจากเรื่องราวที่คุณออกแบบเอง</p>
+<div class="r quote" style="--i:5">“ THE STORY IS YOURS.<br>THE LANGUAGE WILL FOLLOW. ”</div>
+<div class="r mini" style="--i:6"><div>✍️ <b>ไม่ต้องมีประสบการณ์เขียน</b></div><div>🌐 <b>ไม่ต้องเก่งอังกฤษ</b></div><div>🕰️ <b>เรียนตามจังหวะตัวเอง</b></div></div>
+<!-- เพิ่มส่วนแสดงจำนวนคนสมัครแบบ Live -->
+<div class="r live-badge" style="--i:7">
+  <div class="live-dot"></div>
+  มีผู้เข้าร่วมกิจกรรมแล้ว <b id="reg-count" style="color:#fff;margin:0 4px">0</b> คน
+</div>
+<div class="r" style="--i:8;margin-top:26px"><button class="btn p" onclick="show(8)">🔥 สมัครเข้าร่วมเลย</button><button class="btn s" onclick="show(1)">ดูรายละเอียดกิจกรรม →</button></div>
+</section>
+
+<!-- 2 CONCEPT -->
+<section class="slide">
+<div class="r" style="--i:0"><div class="tag">01 // Project Overview</div><h2>แนวคิดและเป้าหมาย</h2>
+<p class="sub">ใช้เสน่ห์ของโลก <b>Mafia &amp; Noir</b> ที่เต็มไปด้วยความลับ ความสัมพันธ์ และมิติของตัวละคร เป็นแรงขับให้ฝึกภาษาอังกฤษอย่างเป็นธรรมชาติ</p></div>
+<div class="grid g3">
+<div class="r card" style="--i:1"><div class="big">01</div><div class="ico">🕵️</div><div class="tag">Deep Character Design</div><h3>สร้างตัวตนที่มีมิติ</h3><p>ออกแบบตัวละครละเอียดตั้งแต่ชื่อ รูปลักษณ์ นิสัย กิจวัตร จนถึงปมในอดีตและจิตวิทยาเบื้องลึก</p></div>
+<div class="r card" style="--i:2"><div class="big">02</div><div class="ico">📖</div><div class="tag">Active English Immersion</div><h3>เรียนภาษาผ่านความสนใจ</h3><p>อ่านประวัติ เก็บคำศัพท์ เขียนสรุป และเรียบเรียงประโยคอังกฤษจากเรื่องที่เราแต่งเอง</p></div>
+<div class="r card" style="--i:3"><div class="big">03</div><div class="ico">🛡️</div><div class="tag">Safe &amp; Supportive Space</div><h3>พื้นที่ปลอดภัย ไม่กดดัน</h3><p>ไม่ต้องสมบูรณ์แบบ ใช้ Dictionary หรือโปรแกรมแปลได้ แล้วค่อยปรับแก้เพื่อเข้าใจโครงสร้างประโยค</p></div>
+</div></section>
+
+<!-- 3 RULES -->
+<section class="slide"><div class="r" style="--i:0"><div class="tag">02 // Code of Conduct</div><h2>กฎกติกา 10 ข้อ</h2><p class="sub mono" style="color:var(--o2)">“ CREATE WITH INTENTION. LEARN WITH CURIOSITY. ”</p></div><div class="grid g2" id="rules"></div></section>
+
+<!-- 4-6 FORM -->
+<section class="slide"><div class="r" style="--i:0"><div class="tag">Dossier Guide // Part 01 of 03</div><h2>วิธีกรอกแบบฟอร์ม: ตัวตนและบุคลิก</h2><p class="sub">เริ่มจาก <b>FILE HEADER</b> (FILE NO. / CHARACTER NAME / ALIAS / STATUS) ตั้งรหัสแฟ้มและฉายาเองได้เลย เช่น #MC-001 แล้วค่อยเติมหมวด 01–04</p></div><div class="grid g2" data-f="0"></div></section>
+<section class="slide"><div class="r" style="--i:0"><div class="tag">Dossier Guide // Part 02 of 03</div><h2>วิธีกรอกแบบฟอร์ม: ชีวิตและความสัมพันธ์</h2><p class="sub">รายละเอียดเล็กๆ คือสิ่งที่ทำให้ตัวละครดูมีชีวิต เช่น “กาแฟดำไม่ใส่น้ำตาล” หรือ “กลิ่นไม้ซีดาร์หลังฝนตก” (หมวด 05–08)</p></div><div class="grid g2" data-f="4"></div></section>
+<section class="slide"><div class="r" style="--i:0"><div class="tag">Dossier Guide // Part 03 of 03</div><h2>วิธีกรอกแบบฟอร์ม: เส้นเรื่องและแรงขับ</h2><p class="sub">หัวใจที่ขับเคลื่อนการกระทำและเรื่องราวทั้งหมดของตัวละคร (หมวด 09–12)</p></div><div class="grid g2" data-f="8"></div></section>
+
+<!-- 7 LANGUAGE -->
+<section class="slide"><div class="r" style="--i:0"><div class="tag">04 // English Immersion Tracker</div><h2>Language Record &amp; Project Status</h2><p class="sub">ส่วนท้ายของแบบฟอร์มที่เปลี่ยนตัวละครให้เป็นทักษะอังกฤษที่ใช้ได้จริง ลองแตะเช็กลิสต์ดูได้เลย</p></div>
+<div class="grid g2">
+<div>
+<div class="r card" style="--i:1;margin-bottom:14px"><div class="tag">✧ New Vocabulary &amp; Useful Expressions</div><p style="margin-top:8px">จดคำศัพท์และสำนวนเท่ๆ ที่ได้ระหว่างแต่งประวัติ</p><div class="chips"><span>stoic = นิ่งสงบ</span><span>syndicate = องค์กร</span><span>keep a low profile = ทำตัวเงียบๆ</span></div></div>
+<div class="r card" style="--i:2;margin-bottom:14px"><div class="tag">✧ Sentences I Understand / Can Rewrite</div><p style="margin-top:8px">เลือกประโยคที่ชอบมาวิเคราะห์ความหมาย แล้วลองเขียนใหม่ในสำนวนของตัวเอง</p></div>
+<div class="r card" style="--i:3"><div class="tag">✧ My English Summary &amp; Speaking Practice</div><p style="margin-top:8px">เขียนแนะนำตัวละครเป็นอังกฤษ 3–5 บรรทัด แล้วอ่านออกเสียงให้คุ้นปาก</p></div>
+</div>
+<div class="r card" style="--i:2"><div style="display:flex;justify-content:space-between;align-items:center"><h3 class="mono" style="font-size:16px">PROJECT STATUS</h3><span id="cc" class="mono tag">0 / 7</span></div><div class="meter"><i id="mt"></i></div><div id="cl"></div></div>
+</div></section>
+
+<!-- 8 START -->
+<section class="slide"><div class="r" style="--i:0;text-align:center"><div class="tag">05 // Initiate Your Archive</div><h2>เริ่มสร้างตัวละครใน 4 ขั้นตอน</h2></div>
+<div class="grid g4">
+<div class="r card step" style="--i:1"><b>01</b><h3>ร่างไอเดีย</h3><p>คิดคอนเซปต์เป็นภาษาไทยก่อนได้ ชื่อ ฉายา บุคลิกเด่น</p></div>
+<div class="r card step" style="--i:2"><b>02</b><h3>กรอกทีละหมวด</h3><p>ไม่ต้องรีบ เริ่มจากข้อมูลพื้นฐาน แล้วค่อยเติมปมจิตวิทยา</p></div>
+<div class="r card step" style="--i:3"><b>03</b><h3>แปลและเก็บศัพท์</h3><p>ใช้ตัวช่วยแปล แล้วจดคำใหม่ลง Language Record</p></div>
+<div class="r card step" style="--i:4"><b>04</b><h3>แชร์และพัฒนา</h3><p>แลกเปลี่ยนไอเดียกับเพื่อนๆ ฝึกอ่านฝึกพูดตามจังหวะตัวเอง</p></div>
+</div>
+<div class="r cta" style="--i:5"><q>THE STORY IS YOURS.<br><span>THE LANGUAGE WILL FOLLOW.</span></q><p class="sub" style="margin:12px auto 18px;text-align:center">ยินดีต้อนรับสู่โลกที่คุณเป็นผู้สร้างเรื่องราว</p><button class="btn p" onclick="show(8)">🔥 สมัครและรับแบบฟอร์ม</button><button class="btn s" id="hm">↺ หน้าแรก</button></div>
+</section>
+
+<!-- 9 REGISTER -->
+<section class="slide"><div class="r" style="--i:0"><div class="tag">06 // Member Registration</div><h2>สมัครเข้าร่วม แล้วรับแบบฟอร์มตัวละคร</h2><p class="sub">กรอกข้อมูลสั้นๆ เมื่อกดส่ง ระบบจะบันทึกข้อมูลและส่งให้ผู้ดูแลอัตโนมัติ คุณจะได้รับ <b>แบบฟอร์ม Character Record</b> ที่ใส่เลขแฟ้มและชื่อตัวละครให้แล้ว พร้อมคัดลอกไปเริ่มเขียนได้ทันที</p></div>
+<div class="grid g2">
+<form class="r card" id="rf" style="--i:1">
+<div class="fg"><label for="f-nick">ชื่อเล่นของคุณ <i>*</i></label><input class="inp" id="f-nick" required placeholder="เช่น มิน, ธีร์"></div>
+<div class="fg"><label for="f-char">ชื่อตัวละครที่จะสร้าง <i>*</i></label><input class="inp" id="f-char" required placeholder="เช่น Dante Moretti (ยังไม่ตั้ง ใส่ “กำลังคิด”)"></div>
+<div class="fg"><label for="f-age">อายุ <i>*</i></label><small>ใช้เช็กความเหมาะสมของกิจกรรม</small><input class="inp" id="f-age" required placeholder="เช่น 20 ปี"></div>
+<div class="fg"><label for="f-soc">ชื่อ Facebook / X / TikTok <i>*</i></label><input class="inp" id="f-soc" required placeholder="เช่น X: @james_oc"></div>
+<div class="fg"><label for="f-link">ลิงก์โปรไฟล์หรือช่องทางติดต่อ <i>*</i></label><textarea class="inp" id="f-link" required placeholder="วางลิงก์โปรไฟล์ หรือ Line ID"></textarea></div>
+<button class="btn p" type="submit" style="width:100%;margin:6px 0 0">🔥 สมัครและรับแบบฟอร์ม</button></form>
+<div class="r card" style="--i:2"><div class="tag">Member Dossier Pass</div>
+<div id="wait"><div class="ico" style="margin-top:16px">🗂️</div><h3>แบบฟอร์มของคุณรออยู่</h3><p>กรอกข้อมูลฝั่งซ้ายแล้วกดสมัคร บัตรสมาชิกและแบบฟอร์ม Character Record ฉบับเต็มจะปรากฏที่นี่ พร้อมเลขแฟ้มและชื่อตัวละครที่เติมให้แล้ว</p></div>
+<div id="done" style="display:none">
+  <div class="pid" id="pid">#MC-0000</div>
+  <div class="pr"><small>ชื่อเล่น</small><span id="pn"></span></div>
+  <div class="pr"><small>ตัวละคร</small><b id="pc" style="color:var(--o2)"></b></div>
+  <div class="ready">
+    <b>✅ ยืนยันการสมัครสำเร็จ! ยินดีต้อนรับคุณ <span id="welcome-name" style="color:#fff"></span></b>
+    <p>ทุกคนพร้อมแล้วใช่มั้ยครับ สามารถคัดลอกข้อมูลไปต่อยอดใน Canva, PowerPoint หรือโปรแกรมอื่นๆ ได้ตามสะดวก จะทำเป็นสไลด์ทีละหน้าก็ได้ ทั้งแนวนอนและแนวตั้งตามความถนัด</p>
+    <p>สำหรับ <b>Body Sheet</b> ขอเน้นภาพตัวละครแบบละเอียด ทั้งเต็มตัว หน้าตรง ด้านข้าง ด้านหลัง รวมถึงสีหน้า เช่น ยิ้ม ไม่ยิ้ม มุมปาก การหุบหรือเผยอริมฝีปาก รายละเอียดมือ ท่าทาง และมุมอื่นๆ ที่ช่วยให้เห็นเอกลักษณ์ของตัวละครชัดเจน</p>
+    <p>หากมีข้อสงสัยหรือติดขัดตรงไหน สามารถสอบถาม <b>ปิตซึม (Bong Sol)</b> ได้เลยนะครับ เพื่อช่วยให้ทุกคนทำชิ้นงานออกมาได้สมบูรณ์ครับ</p>
+  </div>
+  <button class="btn p" id="cpf" style="width:100%">✅ พร้อมแล้ว คัดลอกแบบฟอร์มตัวละคร</button>
+  <button class="btn s" id="cpa" style="width:100%;margin-top:8px">📨 คัดลอกใบสมัครเก็บไว้ (สำรอง)</button>
+  <p style="font-size:12px;color:var(--m);margin-top:12px;text-align:center">ระบบได้ส่งข้อมูลให้ผู้ดูแลทางอีเมลและบันทึกในระบบแล้ว</p>
+</div>
+</div></div>
+</section>
+</main>
+
+<nav><button id="pv">← PREV</button><div style="display:flex;gap:16px;align-items:center"><div id="dots"></div><span id="ct">01 / 08</span></div><button id="nx">NEXT →</button></nav>
+<div id="toast"></div>
+<textarea id="tpl" style="position:fixed;left:-9999px;top:0" readonly></textarea>
+
+<script>
+const $=(s,e=document)=>e.querySelector(s),$$=(s,e=document)=>[...e.querySelectorAll(s)];
+
+// ⚠️ สำคัญ: วางลิงก์ Web App URL จาก Google Apps Script ตรงนี้
+const APP_SCRIPT_URL = "YOUR_WEB_APP_URL_HERE"; 
+
+const RULES=[["RESPECT & CONDUCT","เคารพซึ่งกันและกัน","ไม่ดูถูกความสามารถ ภาษา หรือผลงานของผู้อื่น วิจารณ์ได้ด้วยเหตุผลและความสุภาพ"],["ORIGINALITY","สร้างสรรค์อย่างมีเอกลักษณ์","ออกแบบตัวละครได้อิสระ แต่ต้องมีรายละเอียดเป็นของตนเอง"],["FICTIONAL WORLD","โลกสมมติเพื่อการเรียนรู้","ธีม Mafia ใช้เล่าเรื่องและสร้างบรรยากาศเท่านั้น ไม่ส่งเสริมการกระทำผิดในชีวิตจริง"],["ENGLISH IMMERSION","ฝึกภาษาตามระดับตัวเอง","ไม่ต้องเป๊ะ ค้นศัพท์ ใช้ตัวช่วยแปล แล้วค่อยปรับแก้เพื่อเรียนรู้"],["CONSISTENCY","พัฒนาอย่างต่อเนื่อง","ไม่ต้องเสร็จในวันเดียว เน้นรายละเอียดและความสมเหตุสมผลของเรื่อง"],["NO PLAGIARISM","ห้ามคัดลอกผลงาน","ห้ามนำประวัติ บทเขียน หรือภาพของผู้อื่นไปใช้โดยไม่ขออนุญาต"],["PRIVACY","เคารพความเป็นส่วนตัว","ไม่เผยแพร่ข้อมูลส่วนตัว บทสนทนา หรือผลงานของสมาชิกโดยไม่ได้รับอนุญาต"],["CONSTRUCTIVE FEEDBACK","ติชมอย่างสร้างสรรค์","แนะนำด้วยความหวังดี ไม่ประชดหรือทำให้เจ้าของผลงานรู้สึกด้อยค่า"],["PARTICIPATION","เรียนตามจังหวะของตนเอง","ไม่แข่งขัน ไม่เปรียบเทียบระดับภาษาหรือความละเอียดของตัวละคร"],["PROJECT INTEGRITY","รักษาบรรยากาศที่ดี","หากเกิดความเห็นต่าง ให้คุยกันด้วยเหตุผล และให้ผู้ดูแลเป็นกลางพิจารณา"]];
+const SEC=[
+["01","IDENTITY","ข้อมูลระบุตัวตน","ชื่อจริง ชื่อเล่น อายุ วันเกิด สัญชาติ อาชีพฉากหน้า และสังกัด/แก๊ง","Alias: “The Architect” | Occupation: Art Restorer (front)","Full Name|Nickname|Age|Date of Birth|Place of Birth|Nationality|Languages|Current Residence|Occupation|Affiliation"],
+["02","PHYSICAL DESCRIPTION","รูปลักษณ์","ส่วนสูง รูปร่าง สีผม สีตา โทนเสียง การแต่งตัว และตำหนิที่เป็นเอกลักษณ์","Voice: calm, deep baritone | Feature: faint scar on left wrist","Height|Weight (optional)|Body Type|Hair|Eyes|Facial Features|Voice|Clothing|Accessories|Distinguishing Features"],
+["03","EDUCATION","การศึกษาและทักษะ","ประวัติการเรียน สาขา วิชาที่ถนัด และทักษะพิเศษที่ใช้เอาตัวรอด","Major: Corporate Law | Skills: negotiation, chess","Elementary School|Secondary School|University|Major|Academic Strengths|Skills|Languages Learned"],
+["04","PERSONALITY","บุคลิกภาพและนิสัย","นิสัยแกนหลัก จุดแข็ง-จุดอ่อน การคุมอารมณ์ สไตล์สื่อสาร นิสัยติดตัว และสิ่งที่ยึดถือ","Habit: adjusts cufflinks when thinking | Value: loyalty above all","Core Personality|Strengths|Weaknesses|Temperament|Social Behavior|Emotional Control|Communication Style|Leadership Style|Habits|Values"],
+["05","PERSONAL PREFERENCES","ความชอบส่วนตัว","ของโปรดในชีวิตประจำวัน ยิ่งเจาะจง ยิ่งดูเป็นคนจริง","Fragrance: cedar after rain | Drink: black coffee, no sugar","Favorite Food|Favorite Drink|Favorite Music|Favorite Film|Favorite Book|Favorite Color|Favorite Place|Favorite Season|Favorite Hobby|Favorite Fragrance|Favorite Clothing|Favorite Activities"],
+["06","DAILY ROUTINE","กิจวัตรประจำวัน","เล่าตารางชีวิตคร่าวๆ ตั้งแต่เช้าถึงกลางคืน รวมถึงการนอน","Morning: 06:30 espresso &amp; news | Sleep: light sleeper, 4–5 hrs","Morning|Afternoon|Evening|Night|Work|Leisure|Sleep"],
+["07","FAMILY &amp; RELATIONSHIPS","ครอบครัวและความสัมพันธ์","ภูมิหลังครอบครัว พ่อแม่ พี่น้อง เพื่อนเก่า คนที่ไว้ใจที่สุด และประวัติความรัก","Closest Person: his older sister, Elena","Family Background|Parents|Siblings|Childhood Friends|Closest Person|Important Relationships|Relationship History"],
+["08","PSYCHOLOGICAL PROFILE","โปรไฟล์จิตวิทยา","ความกลัว ความปรารถนา ความเสียใจ ปมด้อย ความขัดแย้งในใจ และสิ่งที่ซ่อนไว้","Greatest Fear: being forgotten | Hides: he still keeps her letters","Greatest Fear|Deepest Desire|Biggest Regret|Personal Insecurity|Internal Conflict|Moral Principles|What Makes Him Feel Safe|What He Hides|What He Never Talks About"],
+["09","LIFE HISTORY","ไทม์ไลน์ประวัติชีวิต","เหตุการณ์สำคัญตามช่วงวัย โดยเฉพาะ Turning Point ที่พาเขาเข้าสู่โลกนี้","Turning Point: the night the family restaurant burned","Childhood|Adolescence|Education|Early Adulthood|Turning Point|Major Life Events|Present Life"],
+["10","MOTIVATION","แรงจูงใจและเป้าหมาย","แยกให้ออกระหว่าง “สิ่งที่อยากได้” กับ “สิ่งที่จำเป็นจริงๆ”","Wants: power | Needs: someone he can trust","Main Goal|Personal Ambition|What He Wants|What He Needs|What He Fears Losing|What He Refuses to Abandon"],
+["11","CURRENT STORY","เรื่องราวปัจจุบัน","สถานการณ์ ปัญหา ความลับ และแผนในอนาคตของตัวละคร ณ ตอนนี้","Secret: he is the informant the family is hunting","Current Situation|Current Problems|Current Relationships|Current Responsibilities|Current Secrets|Future Plans"],
+["12","BIOGRAPHY CHAPTERS","โครงเรื่อง 10 บท","ทยอยเขียนทีละบท จาก “Before Everything” ถึง “What Comes Next” ไม่ต้องรีบ","Start with chapter I, only 3–5 lines is fine","I. Before Everything|II. The House He Grew Up In|III. The Boy He Used to Be|IV. Education &amp; Formation|V. The Turning Point|VI. Entering the World|VII. The Man Behind the Name|VIII. His Present Life|IX. The Things He Never Says|X. What Comes Next"]];
+const STAT=[["Character Generated","คิดโครงตัวละคร"],["Visual Reference Created","หารูปอ้างอิง"],["Personal File Completed","กรอกประวัติครบ"],["Biography Completed","เขียน 10 บท"],["Vocabulary Reviewed","ทบทวนศัพท์"],["English Summary Written","สรุปอังกฤษ"],["Speaking Practice Completed","ฝึกพูด"]];
+
+$('#rules').innerHTML=RULES.map((r,i)=>`<div class="r card rule" style="--i:${i%5+1}"><div class="n">${String(i+1).padStart(2,'0')}</div><div><h4><span>${r[0]}</span>${r[1]}</h4><p>${r[2]}</p></div></div>`).join('');
+$$('[data-f]').forEach(g=>{const s=+g.dataset.f;g.innerHTML=SEC.slice(s,s+4).map((x,i)=>`<div class="r card" style="--i:${i+1}"><div class="head"><div class="sec">${x[0]}<small>SECTION</small></div><h3>${x[1]}<span>${x[2]}</span></h3></div><p style="margin-top:12px">${x[3]}</p><div class="chips">${x[5].split('|').map(f=>`<span>${f}</span>`).join('')}</div><div class="ex"><em>EX //</em> ${x[4]}</div></div>`).join('')});
+$('#cl').innerHTML=STAT.map(s=>`<div class="chk"><b>✓</b>${s[0]}<small>${s[1]}</small></div>`).join('');
+
+const L='━━━━━━━━━━━ 𖤐 ━━━━━━━━━━━',dec=t=>{const d=document.createElement('textarea');d.innerHTML=t;return d.value};
+$('#tpl').value='╔══════════════════════════════════════╗\n𓆩 CONFIDENTIAL ARCHIVE 𓆪\nTHE CHARACTER RECORD\n╚══════════════════════════════════════╝\n\n⌞ FILE NO. :\n⌞ CHARACTER NAME :\n⌞ ALIAS :\n⌞ STATUS :\n\n「 A PERSON BEHIND THE NAME 」\n\n'+SEC.map(s=>`${L}\n${s[0]}. ${dec(s[1])}\n${L}\n`+s[5].split('|').map(f=>dec(f)).map(f=>s[0]=='12'?f:`⌞ ${f} :`).join('\n')).join('\n\n')+'\n\n╭────────── · · 𖤐 · · ──────────╮\nLANGUAGE RECORD\n╰────────── · · 𖤐 · · ──────────╯\n\n✧ NEW VOCABULARY\n- \n\n✧ USEFUL EXPRESSIONS\n- \n\n✧ SENTENCES I UNDERSTAND\n- \n\n✧ SENTENCES I CAN REWRITE\n- \n\n✧ MY ENGLISH SUMMARY\n...\n\n✧ MY SPEAKING PRACTICE\n...\n\n╔══════════════════════════════════════╗\nPROJECT STATUS\n╚══════════════════════════════════════╝\n'+STAT.map(s=>'[ ] '+s[0]).join('\n');
+
+const S=$$('.slide'),N=S.length;let cur=0;
+function show(n){cur=Math.max(0,Math.min(N-1,n));S.forEach((s,i)=>s.classList.toggle('on',i===cur));
+ $('#bar').style.width=((cur+1)/N*100)+'%';$('#ct').textContent=String(cur+1).padStart(2,'0')+' / '+String(N).padStart(2,'0');
+ $('#pv').disabled=cur===0;$('#nx').disabled=cur===N-1;
+ $('#dots').innerHTML=S.map((_,i)=>`<i class="${i===cur?'a':''}" data-i="${i}"></i>`).join('');$('#main').scrollTop=0;burst(innerWidth/2,innerHeight*.45,26)}
+$('#dots').onclick=e=>{if(e.target.dataset.i!=null)show(+e.target.dataset.i)};
+$('#pv').onclick=()=>show(cur-1);$('#nx').onclick=()=>show(cur+1);$('#hm').onclick=()=>show(0);
+addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='PageDown')show(cur+1);if(e.key==='ArrowLeft'||e.key==='PageUp')show(cur-1)});
+let tx=0;addEventListener('touchstart',e=>tx=e.changedTouches[0].clientX,{passive:true});
+addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-tx;if(Math.abs(d)>70)show(cur+(d<0?1:-1))},{passive:true});
+$('#fs').onclick=()=>{try{document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()}catch(e){}};
+
+let tt;function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('s');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('s'),2600)}
+$$('.chk').forEach(c=>c.onclick=e=>{c.classList.toggle('d');const n=$$('.chk.d').length;$('#cc').textContent=n+' / 7';$('#mt').style.width=(n/7*100)+'%';const r=c.getBoundingClientRect();burst(r.left+30,r.top+16,18);if(n===7){toast('🔥 MISSION COMPLETE');burst(innerWidth/2,innerHeight/2,140)}});
+
+document.addEventListener('mousemove',e=>{const sp=$('#spot');sp.style.left=e.clientX+'px';sp.style.top=e.clientY+'px';const c=e.target.closest&&e.target.closest('.card');if(c){const b=c.getBoundingClientRect(),x=(e.clientX-b.left)/b.width,y=(e.clientY-b.top)/b.height;c.style.setProperty('--mx',x*100+'%');c.style.setProperty('--my',y*100+'%');c.style.setProperty('--ry',((x-.5)*7)+'deg');c.style.setProperty('--rx',((.5-y)*7)+'deg')}});
+document.addEventListener('mouseout',e=>{const c=e.target.closest&&e.target.closest('.card');if(c){c.style.setProperty('--rx','0deg');c.style.setProperty('--ry','0deg')}});
+
+const cv=$('#fx'),cx=cv.getContext('2d');let W,H,P=[];
+function rs(){W=cv.width=innerWidth;H=cv.height=innerHeight}rs();addEventListener('resize',rs);
+const mk=(x,y,b)=>({x,y,vx:b?(Math.random()-.5)*7:(Math.random()-.5)*.4,vy:b?(Math.random()-.8)*7:-Math.random()*.9-.25,r:Math.random()*2.2+.6,l:b?60+Math.random()*40:1e9,a:Math.random()*.8+.2,b});
+for(let i=0;i<70;i++)P.push(mk(Math.random()*innerWidth,Math.random()*innerHeight,0));
+function burst(x,y,n){for(let i=0;i<n;i++)P.push(mk(x,y,1))}
+(function loop(){cx.clearRect(0,0,W,H);cx.globalCompositeOperation='lighter';
+P=P.filter(p=>p.l>0);P.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.b){p.vy+=.12;p.l--}else{p.x+=Math.sin(p.y/40)*.3;if(p.y<-10){p.y=H+10;p.x=Math.random()*W}}
+const a=p.b?p.l/100:p.a;const g=cx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r*5);g.addColorStop(0,`rgba(255,190,100,${a})`);g.addColorStop(.4,`rgba(255,107,0,${a*.5})`);g.addColorStop(1,'rgba(255,107,0,0)');cx.fillStyle=g;cx.beginPath();cx.arc(p.x,p.y,p.r*5,0,7);cx.fill()});
+requestAnimationFrame(loop)})();
+
+function cpy(t,m){const b=document.createElement('textarea');b.value=t;b.style.cssText='position:fixed;left:-9999px';document.body.appendChild(b);b.select();let ok=false;try{ok=document.execCommand('copy')}catch(e){}b.remove();if(ok)toast(m);else if(navigator.clipboard)navigator.clipboard.writeText(t).then(()=>toast(m),()=>toast('คัดลอกไม่สำเร็จ'))}
+let formTxt='',appTxt='';
+
+// ฟังก์ชันโหลดจำนวนคนสมัครแบบ Live
+async function loadRegistrations() {
+  if(APP_SCRIPT_URL === "https://script.google.com/macros/s/AKfycbwgw1D-0he9k22Oyt3L2M2ODIrC306EU9jpWH5WtsKH5hxyxoto9FP_DtF87N8AY7MU/exec ") return;
+  try {
+    const res = await fetch(APP_SCRIPT_URL);
+    const data = await res.json();
+    $('#reg-count').textContent = data.count;
+  } catch(e) { console.log("Counter load failed", e); }
+}
+
+$('#rf').onsubmit = async (e) => {
+    e.preventDefault();
+    const v = s => $(s).value.trim();
+    const nick = v('#f-nick');
+    const charName = v('#f-char');
+    const age = v('#f-age');
+    const soc = v('#f-soc');
+    const link = v('#f-link');
+    const id = '#MC-' + (Math.floor(Math.random() * 9000) + 1000);
+    
+    const btn = $('#rf button[type="submit"]');
+    const originalBtnText = btn.innerHTML;
+    btn.innerHTML = '⏳ กำลังส่งข้อมูล...';
+    btn.disabled = true;
+
+    if(APP_SCRIPT_URL === "YOUR_WEB_APP_URL_HERE") {
+        toast('❌ กรุณาตั้งค่า APP_SCRIPT_URL ในโค้ดก่อน');
+        btn.innerHTML = originalBtnText;
+        btn.disabled = false;
+        return;
+    }
+
+    try {
+        // ส่งข้อมูลไปยัง Google Apps Script (ใช้ text/plain เพื่อเลี่ยงปัญหา CORS)
+        const response = await fetch(APP_SCRIPT_URL, {
+            method: "POST",
+            body: JSON.stringify({
+                id: id,
+                nick: nick,
+                char: charName,
+                age: age,
+                soc: soc,
+                link: link
+            })
         });
 
-        // Touch Swipe Support for Mobile
-        let touchStartX = 0;
-        let touchEndX = 0;
-
-        document.addEventListener('touchstart', e => {
-            touchStartX = e.changedTouches[0].screenX;
-        }, { passive: true });
-
-        document.addEventListener('touchend', e => {
-            if (document.body.classList.contains('overview-mode')) return;
-            touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
-        }, { passive: true });
-
-        function handleSwipe() {
-            const swipeThreshold = 50;
-            if (touchEndX < touchStartX - swipeThreshold) {
-                nextSlide();
-            }
-            if (touchEndX > touchStartX + swipeThreshold) {
-                prevSlide();
-            }
+        if (response.ok) {
+            formTxt = $('#tpl').value.replace('⌞ FILE NO. :', '⌞ FILE NO. : ' + id).replace('⌞ CHARACTER NAME :', '⌞ CHARACTER NAME : ' + charName);
+            appTxt = `𓆩 MAFIA CHARACTER IMMERSION — ใบสมัคร 𓆪\nรหัส: ${id}\nชื่อเล่น: ${nick}\nตัวละคร: ${charName}\nอายุ: ${age}\nโซเชียล: ${soc}\nช่องทางติดต่อ: ${link}`;
+            
+            $('#pid').textContent = id;
+            $('#pn').textContent = nick;
+            $('#pc').textContent = charName;
+            $('#welcome-name').textContent = nick;
+            
+            $('#wait').style.display = 'none';
+            $('#done').style.display = 'block';
+            $('#done').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            burst(innerWidth / 2, innerHeight / 2, 140);
+            toast('🔥 สมัครสำเร็จ! ส่งข้อมูลให้ผู้ดูแลเรียบร้อยแล้ว');
+            
+            // อัปเดตตัวเลขคนสมัครทันที
+            loadRegistrations();
+        } else {
+            throw new Error('Network response was not ok');
         }
+    } catch (error) {
+        console.error('Error:', error);
+        toast('❌ ส่งข้อมูลไม่สำเร็จ กรุณาลองใหม่อีกครั้ง');
+        btn.innerHTML = originalBtnText;
+        btn.disabled = false;
+    }
+};
 
-        // Toggle Overview Mode (View All Slides at Once)
-        function toggleOverview() {
-            document.body.classList.toggle('overview-mode');
-            const isOverview = document.body.classList.contains('overview-mode');
-            document.getElementById('overview-text').textContent = isOverview ? 'SLIDE VIEW' : 'ALL SLIDES';
-            if (!isOverview) {
-                updateSlideUI();
-            }
-        }
+$('#cpf').onclick=()=>cpy(formTxt,'✓ คัดลอกแบบฟอร์มตัวละครแล้ว');
+$('#cpa').onclick=()=>cpy(appTxt,'✓ คัดลอกใบสมัครแล้ว');
 
-        // Fullscreen Toggle
-        function toggleFullscreen() {
-            if (!document.fullscreenElement) {
-                document.documentElement.requestFullscreen().catch(() => {
-                    showToast('เบราว์เซอร์ไม่รองรับโหมดเต็มหน้าจอในหน้าต่างนี้');
-                });
-            } else {
-                if (document.exitFullscreen) {
-                    document.exitFullscreen();
-                }
-            }
-        }
-
-        // Interactive Checklist Counter on Slide 7
-        function updateChecklist() {
-            const checkboxes = document.querySelectorAll('#interactive-checklist input[type="checkbox"]');
-            const checkedCount = Array.from(checkboxes).filter(cb => cb.checked).length;
-            document.getElementById('checklist-counter').textContent = `${checkedCount} / ${checkboxes.length} DONE`;
-        }
-
-        // Copy Blank Character Template to Clipboard
-        function copyTemplate() {
-            const source = document.getElementById('template-source');
-            source.classList.remove('sr-only');
-            source.select();
-            source.setSelectionRange(0, 99999);
-            try {
-                document.execCommand('copy');
-                showToast('คัดลอกแบบฟอร์ม Character Record เรียบร้อยแล้ว!');
-            } catch (err) {
-                showToast('ไม่สามารถคัดลอกได้ กรุณาลองใหม่อีกครั้ง');
-            }
-            source.classList.add('sr-only');
-            window.getSelection().removeAllRanges();
-        }
-
-        // Toast Helper
-        let toastTimeout;
-        function showToast(message) {
-            const toast = document.getElementById('toast');
-            document.getElementById('toast-msg').textContent = message;
-            toast.classList.remove('opacity-0', 'translate-y-2');
-            toast.classList.add('opacity-100', 'translate-y-0');
-
-            clearTimeout(toastTimeout);
-            toastTimeout = setTimeout(() => {
-                toast.classList.remove('opacity-100', 'translate-y-0');
-                toast.classList.add('opacity-0', 'translate-y-2');
-            }, 3000);
-        }
-
-        // Initialize on load
-        window.onload = function() {
-            updateSlideUI();
-        };
-    </script>
+// โหลดจำนวนคนสมัครเมื่อเปิดเว็บ
+loadRegistrations();
+show(0);
+</script>
 </body>
 </html>
-```
