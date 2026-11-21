@@ -688,20 +688,36 @@ async function loadFeed(){
   }
 }
 
+const sendingComments = new Set();
+const lastCommentSentAt = new Map();
+
 async function sendComment(postId){
+  const now = Date.now();
+  const prevTime = lastCommentSentAt.get(postId) || 0;
+  if(sendingComments.has(postId) || (now - prevTime) < 2000) return;
+
   const inp = document.getElementById('cmt-inp-' + postId);
+  const btn = inp ? inp.nextElementSibling : null;
   const text = inp ? inp.value.trim() : '';
   if(!text){
     toast('พิมพ์ข้อความก่อนส่งคอมเมนต์นะครับ');
     return;
   }
+
   const commenterNick = activeUser.nick || prompt('ใส่ชื่อเล่นของคุณสำหรับแสดงในคอมเมนต์:') || '';
   if(!commenterNick.trim()){
     toast('กรุณาระบุชื่อเล่นก่อนคอมเมนต์ครับ');
     return;
   }
 
-  inp.disabled = true;
+  sendingComments.add(postId);
+  lastCommentSentAt.set(postId, now);
+  if(inp){
+    inp.value = '';
+    inp.disabled = true;
+  }
+  if(btn) btn.disabled = true;
+
   try{
     await fetch(APP_SCRIPT_URL, {
       method: "POST",
@@ -715,12 +731,22 @@ async function sendComment(postId){
       })
     });
     toast('💬 ส่งคอมเมนต์แล้ว!');
-    setTimeout(loadFeed, 900);
+    setTimeout(() => {
+      sendingComments.delete(postId);
+      loadFeed();
+    }, 1000);
   } catch(e){
+    sendingComments.delete(postId);
+    lastCommentSentAt.delete(postId);
     toast('❌ ส่งคอมเมนต์ไม่สำเร็จ');
-    inp.disabled = false;
+    if(inp){
+      inp.disabled = false;
+      inp.value = text;
+    }
+    if(btn) btn.disabled = false;
   }
 }
+
 
 $('#btn-refresh-feed').onclick = loadFeed;
 $('#cpf').onclick=()=>cpy(formTxt,'✓ คัดลอกแบบฟอร์มตัวละครแล้ว');
