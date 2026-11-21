@@ -77,11 +77,12 @@ h2{font-size:clamp(26px,4.6vw,48px);font-weight:700;margin:6px 0 8px;line-height
 .cta{margin:26px auto 0;max-width:760px;text-align:center;padding:32px 24px;border-radius:26px;border:1px solid #ff6b0088;background:radial-gradient(ellipse at 50% 0,rgba(255,107,0,.25),transparent 70%),#0c0c10;box-shadow:0 0 70px rgba(255,107,0,.25)}
 .cta q{display:block;font:800 clamp(18px,3.4vw,32px)/1.4 'Cinzel',serif;quotes:"“" "”"}.cta q span{color:var(--o)}
 .btn{margin:8px 5px 0;padding:14px 26px;border-radius:14px;border:0;cursor:pointer;font:700 14px 'Prompt',sans-serif;transition:.25s}
-.btn.p{background:linear-gradient(135deg,var(--o),var(--o2));color:#000;box-shadow:0 0 34px rgba(255,107,0,.6)}.btn.p:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 0 50px rgba(255,107,0,.9)}
+.btn.p{background:linear-gradient(135deg,var(--o),var(--o2));color:#000;box-shadow:0 0 34px rgba(255,107,0,.6)}.btn.p:hover:not(:disabled){transform:translateY(-3px) scale(1.03);box-shadow:0 0 50px rgba(255,107,0,.9)}
 .btn.s{background:#ffffff10;color:#ddd;border:1px solid #ffffff22}
+.btn:disabled{opacity:.45;cursor:not-allowed;filter:grayscale(.3)}
 .orb{position:fixed;width:46vmax;height:46vmax;border-radius:50%;background:radial-gradient(circle,rgba(255,107,0,.3),transparent 65%);filter:blur(40px);z-index:0;pointer-events:none;animation:drift 18s ease-in-out infinite alternate}.orb.b{background:radial-gradient(circle,rgba(255,150,60,.22),transparent 65%);animation-duration:25s}@keyframes drift{to{transform:translate(9vw,-7vh) scale(1.25)}}
 .fg{margin-bottom:14px}.fg label{display:block;font-size:13px;font-weight:500;margin-bottom:6px}.fg label i{color:var(--o);font-style:normal}.fg small{display:block;color:var(--o2);font-size:11.5px;margin-bottom:6px}
-.inp{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,166,61,.24);border-radius:12px;padding:12px 14px;color:#fff;font:13.5px 'Prompt',sans-serif;outline:0;transition:.25s;backdrop-filter:blur(8px);box-shadow:inset 0 1px 0 rgba(255,255,255,.06)}.inp:focus{border-color:var(--o);background:rgba(255,107,0,.07);box-shadow:0 0 0 3px rgba(255,107,0,.16),0 0 34px -6px rgba(255,107,0,.7)}.inp::placeholder{color:#7a6c5d}textarea.inp{min-height:70px;resize:vertical}
+.inp{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,166,61,.24);border-radius:12px;padding:12px 14px;color:#fff;font:13.5px 'Prompt',sans-serif;outline:0;transition:.25s;backdrop-filter:blur(8px);box-shadow:inset 0 1px 0 rgba(255,255,255,.06)}.inp:focus{border-color:var(--o);background:rgba(255,107,0,.07);box-shadow:0 0 0 3px rgba(255,107,0,.16),0 0 34px -6px rgba(255,107,0,.7)}.inp:disabled{opacity:.6;background:rgba(255,255,255,.02)}.inp::placeholder{color:#7a6c5d}textarea.inp{min-height:70px;resize:vertical}
 .pid{font:900 32px 'Cinzel',serif;color:var(--o);text-shadow:0 0 26px var(--o);margin:6px 0}.pr{margin:8px 0;font-size:13px}.pr small{display:block;font:11px 'Space Mono',monospace;color:var(--m)}
 .ready,.praise-box,.submit-box,.publish-box{margin:14px 0;padding:18px;border-radius:14px;border:1px solid rgba(255,166,61,.35);background:linear-gradient(145deg,rgba(255,150,60,.16),rgba(255,107,0,.04));box-shadow:0 0 40px -12px rgba(255,107,0,.7),inset 0 1px 0 rgba(255,255,255,.14);text-align:left}
 .ready b,.praise-box b,.submit-box b,.publish-box b{color:var(--o2);font-size:15px;display:block;margin-bottom:8px}
@@ -90,6 +91,7 @@ h2{font-size:clamp(26px,4.6vw,48px);font-weight:700;margin:6px 0 8px;line-height
 .praise-box b{color:#7effc2}
 .publish-box{border-color:rgba(0,210,255,.45);background:linear-gradient(145deg,rgba(0,210,255,.12),rgba(255,107,0,.05))}
 .publish-box b{color:#7ee8ff}
+.locked-link{padding:10px 12px;border-radius:10px;background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.12);font:12px 'Space Mono',monospace;color:#a8f0ff;word-break:break-all;margin-bottom:8px}
 .login-row{display:flex;gap:8px;margin-bottom:14px}
 .login-row .inp{flex:1}
 .login-row .btn{margin:0;padding:12px 16px;white-space:nowrap;font-size:12.5px}
@@ -97,10 +99,9 @@ h2{font-size:clamp(26px,4.6vw,48px);font-weight:700;margin:6px 0 8px;line-height
 .status-pill.ok{background:rgba(0,255,136,.14);border-color:rgba(0,255,136,.5);color:#7effc2}
 .status-pill.wait{background:rgba(255,193,7,.14);border-color:rgba(255,193,7,.5);color:#ffe082}
 .status-pill.fail{background:rgba(255,77,77,.16);border-color:rgba(255,77,77,.55);color:#ff9e9e}
-/* Showcase Feed & Comments */
 .post-card{margin-bottom:16px}
 .post-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;border-bottom:1px solid rgba(255,255,255,.08);padding-bottom:10px;margin-bottom:12px}
-.post-author{font-weight:700;font-size:15px;color:#fff;display:flex;align-items:center;gap:8px}
+.post-author{font-weight:700;font-size:15px;color:#fff;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .post-author span.badge{font:700 10px 'Space Mono',monospace;padding:2px 8px;border-radius:99px;background:rgba(255,107,0,.18);color:var(--o2);border:1px solid rgba(255,107,0,.35)}
 .post-time{font:11px 'Space Mono',monospace;color:var(--m)}
 .post-caption{font-size:14px;color:#f0ece6;line-height:1.75;white-space:pre-line;margin:10px 0 14px}
@@ -190,7 +191,7 @@ nav button:disabled{opacity:.3;pointer-events:none}
 </section>
 
 <!-- 9 REGISTER & SUBMISSION -->
-<section class="slide"><div class="r" style="--i:0"><div class="tag">06 // Member Registration &amp; Archive Access</div><h2>สมัครเข้าร่วม หรือเข้าแอคเคาต์เดิมด้วย Gmail</h2><p class="sub">สมัครใหม่เพื่อรับเลขแฟ้ม หรือกรอก <b>Gmail</b> เพื่อเรียกดูแอคเดิม ส่งงานหลังทำเสร็จ รอรับคำชม และปลดล็อกสิทธิ์โพสต์ผลงานขึ้นบอร์ด</p></div>
+<section class="slide"><div class="r" style="--i:0"><div class="tag">06 // Member Registration &amp; Archive Access</div><h2>สมัครเข้าร่วม หรือเข้าแอคเคาต์เดิมด้วย Gmail</h2><p class="sub">สมัครใหม่เพื่อรับเลขแฟ้ม หรือกรอก <b>Gmail</b> เพื่อเรียกดูแอคเดิม ส่งงานหลังทำเสร็จ รอรับคำชม และโพสต์ผลงานขึ้นบอร์ดเมื่อผ่านการตรวจ</p></div>
 <div class="grid g2">
 <form class="r card" id="rf" style="--i:1">
 <div class="fg"><label for="f-gmail">อีเมล Gmail ของคุณ <i>*</i></label><small>ใช้จำแอคเคาต์เดิม ไม่ให้ลืมรหัสแฟ้มและตัวละคร</small><input class="inp" type="email" id="f-gmail" required placeholder="เช่น name@gmail.com"></div>
@@ -237,12 +238,14 @@ nav button:disabled{opacity:.3;pointer-events:none}
     <button class="btn p" type="button" id="btn-submit-work" style="width:100%;margin-top:10px">🚀 ส่งงานหลังทำเสร็จ</button>
   </div>
 
-  <!-- แจ้งเตือนสถานะการตรวจ & กล่องโพสต์ผลงาน (ขึ้นเฉพาะตอนผ่านการตรวจสอบแล้ว) -->
+  <!-- แจ้งเตือนสถานะการตรวจ -->
   <div id="review-notice" style="display:none;margin:12px 0;padding:14px;border-radius:12px;font-size:13px"></div>
 
+  <!-- กล่องโพสต์ผลงาน (ขึ้นเมื่อผ่านการตรวจสอบแล้ว และใช้ลิงก์เดิมที่ส่งมา) -->
   <div class="publish-box" id="publish-box" style="display:none">
     <b>✨ ผ่านการตรวจสอบแล้ว! โพสต์ผลงานขึ้นบอร์ดให้เพื่อนๆ ชม</b>
-    <p style="font-size:12.5px;color:var(--m)">ระบบจะแสดงเฉพาะ <b>ชื่อเล่น</b> ของคุณ (<b><span id="pub-nick"></span></b>) พร้อมเวลาที่ลงโพสต์และแคปชั่น</p>
+    <p style="font-size:12.5px;color:var(--m)">โพสต์ได้หลายรอบตามใจ แต่ใช้ <b>ลิงก์เดิมที่ส่งผ่านการตรวจแล้ว</b> เท่านั้น (แสดงชื่อเล่น: <b><span id="pub-nick"></span></b> และเวลาที่ลงโพสต์)</p>
+    <div class="locked-link" id="pub-locked-url"></div>
     <textarea class="inp" id="f-post-caption" placeholder="เขียนแคปชั่นแนะนำตัวละคร หรือเล่าเบื้องหลังผลงานของคุณ..."></textarea>
     <button class="btn p" type="button" id="btn-publish-post" style="width:100%;margin-top:10px">📢 โพสต์ผลงานขึ้นบอร์ด</button>
     <button class="btn s" type="button" onclick="show(9)" style="width:100%;margin-top:8px">🏛️ ไปดูบอร์ดผลงาน</button>
@@ -355,6 +358,12 @@ function esc(str){
   return String(str || '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 }
 
+function checkPassed(statusStr){
+  const s = String(statusStr || '').trim();
+  if(!s || s.includes('ไม่ผ่าน') || s.includes('รอ') || s.includes('ยัง')) return false;
+  return s.includes('ผ่าน');
+}
+
 let formTxt='',appTxt='',activeUser={id:'',nick:'',char:'',gmail:'',workUrl:'',reviewStatus:''};
 
 function renderDossier(u){
@@ -363,8 +372,8 @@ function renderDossier(u){
     nick: u.nick || '',
     char: u.char || '',
     gmail: u.gmail || '',
-    workUrl: u.workUrl || '',
-    reviewStatus: u.reviewStatus || 'ยังไม่ส่งงาน'
+    workUrl: (u.workUrl || '').trim(),
+    reviewStatus: (u.reviewStatus || 'ยังไม่ส่งงาน').trim()
   };
 
   formTxt = $('#tpl').value
@@ -379,44 +388,65 @@ function renderDossier(u){
   $('#pub-nick').textContent = activeUser.nick;
   $('#praise-text').textContent = u.adminPraise || 'รอผู้ดูแลอ่านผลงานและส่งคำชม / คำอวยพรกลับมานะครับ';
 
-  // จัดการแสดงผลตาม 3 สถานะ: รอดำเนินการ / ไม่ผ่าน / ผ่านการตรวจสอบแล้ว
   const st = activeUser.reviewStatus;
+  const passed = checkPassed(st);
+  const failed = st.includes('ไม่ผ่าน');
   const pill = $('#p-status');
   const notice = $('#review-notice');
   const pubBox = $('#publish-box');
+  const workInp = $('#f-work-url');
+  const workBtn = $('#btn-submit-work');
 
   pill.className = 'status-pill';
   pill.textContent = 'สถานะ: ' + st;
   notice.style.display = 'none';
   pubBox.style.display = 'none';
 
-  if(st === 'ผ่านการตรวจสอบแล้ว'){
+  // ลิงก์ล่าสุด (ถ้ามี)
+  if(activeUser.workUrl){
+    $('#current-work-wrap').style.display = 'block';
+    $('#current-work-link').href = activeUser.workUrl;
+    $('#current-work-link').textContent = activeUser.workUrl;
+    workInp.value = activeUser.workUrl;
+  } else {
+    $('#current-work-wrap').style.display = 'none';
+    workInp.value = '';
+  }
+
+  // จัดการปุ่มส่งงาน:
+  // - ถ้าผ่านแล้ว: ล็อกไม่ให้กดส่งซ้ำ ค้างข้อความว่า "ส่งผลงานนี้แล้ว"
+  // - ถ้ากำลังรอดำเนินการ (ส่งไปแล้ว): ล็อกไม่ให้กดส่งซ้ำ ค้างข้อความว่า "ส่งผลงานนี้แล้ว"
+  // - ถ้ายังไม่ส่ง หรือ "ไม่ผ่าน": เปิดให้กรอกและกดส่งได้
+  if(passed || (st.includes('รอ') && activeUser.workUrl)){
+    workInp.disabled = true;
+    workBtn.disabled = true;
+    workBtn.innerHTML = '🔒 ส่งผลงานนี้แล้ว';
+  } else {
+    workInp.disabled = false;
+    workBtn.disabled = false;
+    workBtn.innerHTML = failed ? '🔄 แก้ไขและส่งงานใหม่อีกครั้ง' : '🚀 ส่งงานหลังทำเสร็จ';
+  }
+
+  if(passed){
     pill.classList.add('ok');
-    pubBox.style.display = 'block';
-  } else if(st === 'ไม่ผ่าน'){
+    if(activeUser.workUrl){
+      pubBox.style.display = 'block';
+      $('#pub-locked-url').textContent = 'ลิงก์งานที่ผ่านการตรวจ (ใช้ลิงก์นี้โพสต์เท่านั้น): ' + activeUser.workUrl;
+    }
+  } else if(failed){
     pill.classList.add('fail');
     notice.style.display = 'block';
     notice.style.background = 'rgba(255,77,77,.12)';
     notice.style.border = '1px solid rgba(255,77,77,.4)';
     notice.style.color = '#ffb3b3';
-    notice.innerHTML = '❌ <b>ผลงานยังไม่ผ่านการตรวจสอบ:</b> กรุณาอ่านคำแนะนำจากผู้ดูแลด้านล่าง แก้ไขผลงาน แล้ววางลิงก์ส่งใหม่อีกครั้ง (ระบบยังไม่เปิดให้โพสต์ขึ้นบอร์ด)';
-  } else if(st === 'รอดำเนินการ'){
+    notice.innerHTML = '❌ <b>ไม่ผ่านการตรวจสอบ:</b> สามารถแก้ไขงานแล้ววางลิงก์ส่งใหม่อีกครั้งได้เลยครับ (ยังไม่เปิดให้โพสต์ขึ้นบอร์ด)';
+  } else if(st.includes('รอ')){
     pill.classList.add('wait');
     notice.style.display = 'block';
     notice.style.background = 'rgba(255,193,7,.10)';
     notice.style.border = '1px solid rgba(255,193,7,.35)';
     notice.style.color = '#ffe082';
-    notice.innerHTML = '⏳ <b>รอดำเนินการ:</b> ผู้ดูแลได้รับลิงก์ผลงานแล้ว เมื่อผู้ดูแลตรวจสอบและอนุมัติ ปุ่มโพสต์ผลงานขึ้นบอร์ดจะปรากฏตรงนี้ทันที';
-  }
-
-  if(activeUser.workUrl){
-    $('#current-work-wrap').style.display = 'block';
-    $('#current-work-link').href = activeUser.workUrl;
-    $('#current-work-link').textContent = activeUser.workUrl;
-    $('#f-work-url').value = activeUser.workUrl;
-  } else {
-    $('#current-work-wrap').style.display = 'none';
-    $('#f-work-url').value = '';
+    notice.innerHTML = '⏳ <b>รอดำเนินการ:</b> ส่งผลงานนี้แล้ว รอผู้ดูแลตรวจสอบ เมื่อผ่านแล้วปุ่มโพสต์ผลงานจะขึ้นอัตโนมัติครับ';
   }
 
   $('#wait').style.display = 'none';
@@ -536,7 +566,6 @@ $('#btn-submit-work').onclick = async () => {
   }
 
   const btn = $('#btn-submit-work');
-  const oldTxt = btn.innerHTML;
   btn.innerHTML = '⏳ กำลังส่งงาน...';
   btn.disabled = true;
 
@@ -562,24 +591,28 @@ $('#btn-submit-work').onclick = async () => {
       reviewStatus: 'รอดำเนินการ'
     });
     burst(innerWidth / 2, innerHeight / 2, 90);
-    toast('🚀 ส่งงานเรียบร้อย! สถานะ: รอดำเนินการ');
+    toast('🚀 ส่งผลงานนี้แล้ว! รอผู้ดูแลตรวจสอบครับ');
   } catch(e){
     toast('❌ ส่งงานไม่สำเร็จ ลองใหม่อีกครั้งครับ');
-  } finally {
-    btn.innerHTML = oldTxt;
+    btn.innerHTML = '🚀 ส่งงานหลังทำเสร็จ';
     btn.disabled = false;
   }
 };
 
-/* โพสต์ผลงานขึ้นบอร์ด (เฉพาะผ่านการตรวจสอบแล้ว) */
+/* โพสต์ผลงานขึ้นบอร์ด (เฉพาะผ่านการตรวจ และใช้ลิงก์เดิมที่ส่งมา) */
 $('#btn-publish-post').onclick = async () => {
   const caption = $('#f-post-caption').value.trim();
-  if(activeUser.reviewStatus !== 'ผ่านการตรวจสอบแล้ว'){
-    toast('❌ ต้องผ่านการตรวจสอบจากผู้ดูแลก่อนจึงจะโพสต์ได้');
+  const lockedUrl = activeUser.workUrl;
+  if(!checkPassed(activeUser.reviewStatus)){
+    toast('❌ ต้องผ่านการตรวจสอบก่อนจึงจะโพสต์ได้');
+    return;
+  }
+  if(!lockedUrl){
+    toast('❌ ไม่พบลิงก์ผลงานที่ส่งไว้');
     return;
   }
   if(!caption){
-    toast('เขียนแคปชั่นสั้นๆ แนะนำผลงานก่อนโพสต์นะครับ');
+    toast('เขียนแคปชั่นก่อนโพสต์นะครับ');
     return;
   }
 
@@ -598,15 +631,15 @@ $('#btn-publish-post').onclick = async () => {
         gmail: activeUser.gmail,
         nick: activeUser.nick,
         char: activeUser.char,
-        workUrl: activeUser.workUrl,
+        workUrl: lockedUrl,
         caption: caption
       })
     });
 
     $('#f-post-caption').value = '';
     burst(innerWidth / 2, innerHeight / 2, 120);
-    toast('📢 โพสต์ผลงานขึ้นบอร์ดเรียบร้อยแล้ว!');
-    setTimeout(() => show(9), 900);
+    toast('📢 โพสต์เรียบร้อย! สามารถเขียนแคปชั่นโพสต์เพิ่มได้ตามใจ');
+    loadFeed();
   } catch(e){
     toast('❌ โพสต์ไม่สำเร็จ ลองใหม่อีกครั้งครับ');
   } finally {
@@ -625,7 +658,7 @@ async function loadFeed(){
     const posts = (data && data.posts) || [];
 
     if(!posts.length){
-      list.innerHTML = '<div class="card"><h3>ยังไม่มีโพสต์ผลงานในบอร์ด</h3><p>เมื่อสมาชิกส่งงานและผ่านการตรวจสอบจากผู้ดูแลแล้ว จะสามารถกดโพสต์ผลงานมาโชว์ตรงนี้ได้เป็นคนแรก!</p></div>';
+      list.innerHTML = '<div class="card"><h3>ยังไม่มีโพสต์ผลงานในบอร์ด</h3><p>เมื่อสมาชิกส่งงานและผ่านการตรวจสอบแล้ว จะสามารถกดโพสต์ผลงานมาโชว์ตรงนี้ได้ครับ</p></div>';
       return;
     }
 
