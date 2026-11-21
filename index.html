@@ -281,7 +281,6 @@ $('#rf').onsubmit = async (e) => {
     btn.innerHTML = '⏳ กำลังส่งข้อมูล...';
     btn.disabled = true;
 
-    
     try {
         // ส่งข้อมูลไปยัง Google Apps Script (ใช้ text/plain เพื่อเลี่ยงปัญหา CORS)
         const response = await fetch(APP_SCRIPT_URL, {
