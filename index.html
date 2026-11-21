@@ -287,7 +287,7 @@ nav button:disabled{opacity:.3;pointer-events:none}
 const $=(s,e=document)=>e.querySelector(s),$$=(s,e=document)=>[...e.querySelectorAll(s)];
 
 /* URL ของ Google Apps Script */
-const APP_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyv-OawwEx1e0VXnBTok1JlCEpebM81WVCKEeMkHaCW0tx7H3iCb0ze9fkP5TaZm95P/exec";
+const APP_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwEoilhYBro9GN2NdpHbppsjZ-HODS4OhtY-ttAISfTyh1kvth_Pp2LW4BMafapWUZ5/exec";
 const STORAGE_KEY = "mafia_ci_last_gmail";
 
 const RULES=[["RESPECT & CONDUCT","เคารพซึ่งกันและกัน","ไม่ดูถูกความสามารถ ภาษา หรือผลงานของผู้อื่น วิจารณ์ได้ด้วยเหตุผลและความสุภาพ"],["ORIGINALITY","สร้างสรรค์อย่างมีเอกลักษณ์","ออกแบบตัวละครได้อิสระ แต่ต้องมีรายละเอียดเป็นของตนเอง"],["FICTIONAL WORLD","โลกสมมติเพื่อการเรียนรู้","ธีม Mafia ใช้เล่าเรื่องและสร้างบรรยากาศเท่านั้น ไม่ส่งเสริมการกระทำผิดในชีวิตจริง"],["ENGLISH IMMERSION","ฝึกภาษาตามระดับตัวเอง","ไม่ต้องเป๊ะ ค้นศัพท์ ใช้ตัวช่วยแปล แล้วค่อยปรับแก้เพื่อเรียนรู้"],["CONSISTENCY","พัฒนาอย่างต่อเนื่อง","ไม่ต้องเสร็จในวันเดียว เน้นรายละเอียดและความสมเหตุสมผลของเรื่อง"],["NO PLAGIARISM","ห้ามคัดลอกผลงาน","ห้ามนำประวัติ บทเขียน หรือภาพของผู้อื่นไปใช้โดยไม่ขออนุญาต"],["PRIVACY","เคารพความเป็นส่วนตัว","ไม่เผยแพร่ข้อมูลส่วนตัว บทสนทนา หรือผลงานของสมาชิกโดยไม่ได้รับอนุญาต"],["CONSTRUCTIVE FEEDBACK","ติชมอย่างสร้างสรรค์","แนะนำด้วยความหวังดี ไม่ประชดหรือทำให้เจ้าของผลงานรู้สึกด้อยค่า"],["PARTICIPATION","เรียนตามจังหวะของตนเอง","ไม่แข่งขัน ไม่เปรียบเทียบระดับภาษาหรือความละเอียดของตัวละคร"],["PROJECT INTEGRITY","รักษาบรรยากาศที่ดี","หากเกิดความเห็นต่าง ให้คุยกันด้วยเหตุผล และให้ผู้ดูแลเป็นกลางพิจารณา"]];
@@ -402,7 +402,6 @@ function renderDossier(u){
   notice.style.display = 'none';
   pubBox.style.display = 'none';
 
-  // ลิงก์ล่าสุด (ถ้ามี)
   if(activeUser.workUrl){
     $('#current-work-wrap').style.display = 'block';
     $('#current-work-link').href = activeUser.workUrl;
@@ -413,10 +412,6 @@ function renderDossier(u){
     workInp.value = '';
   }
 
-  // จัดการปุ่มส่งงาน:
-  // - ถ้าผ่านแล้ว: ล็อกไม่ให้กดส่งซ้ำ ค้างข้อความว่า "ส่งผลงานนี้แล้ว"
-  // - ถ้ากำลังรอดำเนินการ (ส่งไปแล้ว): ล็อกไม่ให้กดส่งซ้ำ ค้างข้อความว่า "ส่งผลงานนี้แล้ว"
-  // - ถ้ายังไม่ส่ง หรือ "ไม่ผ่าน": เปิดให้กรอกและกดส่งได้
   if(passed || (st.includes('รอ') && activeUser.workUrl)){
     workInp.disabled = true;
     workBtn.disabled = true;
@@ -455,7 +450,7 @@ function renderDossier(u){
 
 async function loadRegistrations(){
   try{
-    const res=await fetch(APP_SCRIPT_URL);
+    const res=await fetch(`${APP_SCRIPT_URL}?t=${Date.now()}`);
     const data=await res.json();
     if(data && typeof data.count !== 'undefined'){
       $('#reg-count').textContent=data.count;
@@ -465,7 +460,6 @@ async function loadRegistrations(){
   }
 }
 
-/* สมัครสมาชิกใหม่ */
 $('#rf').onsubmit = async (e) => {
   e.preventDefault();
   const v = s => $(s).value.trim();
@@ -520,7 +514,6 @@ $('#rf').onsubmit = async (e) => {
   setTimeout(loadRegistrations, 1500);
 };
 
-/* เข้าสู่ระบบ / ดึงแอคเคาต์เดิมด้วย Gmail */
 async function lookupByGmail(emailInput, silent = false){
   const email = (emailInput || '').trim().toLowerCase();
   if(!email){
@@ -533,7 +526,7 @@ async function lookupByGmail(emailInput, silent = false){
   if(!silent){ btn.innerHTML = '⏳...'; btn.disabled = true; }
 
   try{
-    const res = await fetch(`${APP_SCRIPT_URL}?action=lookup&gmail=${encodeURIComponent(email)}`);
+    const res = await fetch(`${APP_SCRIPT_URL}?action=lookup&gmail=${encodeURIComponent(email)}&t=${Date.now()}`);
     const data = await res.json();
     if(data && data.found && data.user){
       localStorage.setItem(STORAGE_KEY, email);
@@ -552,7 +545,6 @@ async function lookupByGmail(emailInput, silent = false){
 
 $('#btn-login').onclick = () => lookupByGmail($('#f-login-gmail').value, false);
 
-/* ส่งงานหลังทำเสร็จ */
 $('#btn-submit-work').onclick = async () => {
   const workUrl = $('#f-work-url').value.trim();
   const gmail = (activeUser.gmail || $('#f-login-gmail').value || $('#f-gmail').value || '').trim().toLowerCase();
@@ -599,7 +591,6 @@ $('#btn-submit-work').onclick = async () => {
   }
 };
 
-/* โพสต์ผลงานขึ้นบอร์ด (เฉพาะผ่านการตรวจ และใช้ลิงก์เดิมที่ส่งมา) */
 $('#btn-publish-post').onclick = async () => {
   const caption = $('#f-post-caption').value.trim();
   const lockedUrl = activeUser.workUrl;
@@ -639,7 +630,7 @@ $('#btn-publish-post').onclick = async () => {
     $('#f-post-caption').value = '';
     burst(innerWidth / 2, innerHeight / 2, 120);
     toast('📢 โพสต์เรียบร้อย! สามารถเขียนแคปชั่นโพสต์เพิ่มได้ตามใจ');
-    loadFeed();
+    setTimeout(loadFeed, 1000);
   } catch(e){
     toast('❌ โพสต์ไม่สำเร็จ ลองใหม่อีกครั้งครับ');
   } finally {
@@ -648,47 +639,50 @@ $('#btn-publish-post').onclick = async () => {
   }
 };
 
-/* โหลดบอร์ดผลงาน & คอมเมนต์ */
 async function loadFeed(){
   const list = $('#feed-list');
   list.innerHTML = '<div class="card"><p style="color:var(--m)">⏳ กำลังโหลดผลงานสมาชิก...</p></div>';
   try{
-    const res = await fetch(`${APP_SCRIPT_URL}?action=feed`);
+    const res = await fetch(`${APP_SCRIPT_URL}?action=feed&t=${Date.now()}`, { cache: "no-store" });
     const data = await res.json();
-    const posts = (data && data.posts) || [];
+    const posts = Array.isArray(data && data.posts) ? data.posts : [];
 
     if(!posts.length){
       list.innerHTML = '<div class="card"><h3>ยังไม่มีโพสต์ผลงานในบอร์ด</h3><p>เมื่อสมาชิกส่งงานและผ่านการตรวจสอบแล้ว จะสามารถกดโพสต์ผลงานมาโชว์ตรงนี้ได้ครับ</p></div>';
       return;
     }
 
-    list.innerHTML = posts.map(p => `
-      <div class="card post-card">
-        <div class="post-head">
-          <div>
-            <div class="post-author">🎭 ${esc(p.nick)} <span class="badge">${esc(p.char || 'CHARACTER')}</span></div>
-            <div class="post-time">🕒 โพสต์เมื่อ ${esc(p.time)}</div>
+    list.innerHTML = posts.map((p, idx) => {
+      const pid = p.postId || ('post-' + idx);
+      const comments = Array.isArray(p.comments) ? p.comments : [];
+      return `
+        <div class="card post-card">
+          <div class="post-head">
+            <div>
+              <div class="post-author">🎭 ${esc(p.nick || 'สมาชิก')} <span class="badge">${esc(p.char || 'CHARACTER')}</span></div>
+              <div class="post-time">🕒 โพสต์เมื่อ ${esc(p.time || '-')}</div>
+            </div>
+            ${p.workUrl ? `<a class="btn s" href="${esc(p.workUrl)}" target="_blank" rel="noopener" style="margin:0;padding:8px 14px;font-size:12px;text-decoration:none">🔗 เปิดดูผลงาน</a>` : ''}
           </div>
-          ${p.workUrl ? `<a class="btn s" href="${esc(p.workUrl)}" target="_blank" rel="noopener" style="margin:0;padding:8px 14px;font-size:12px;text-decoration:none">🔗 เปิดดูผลงาน</a>` : ''}
+          <div class="post-caption">${esc(p.caption || '')}</div>
+          <div class="cmt-area">
+            <div style="font-size:12px;color:var(--o2);margin-bottom:8px;font-weight:500">💬 ความคิดเห็น (${comments.length})</div>
+            <div class="cmt-list">
+              ${comments.map(c => `
+                <div class="cmt-item">
+                  <div class="cmt-meta"><span>${esc(c.nick || 'สมาชิก')}</span><small>${esc(c.time || '')}</small></div>
+                  <div>${esc(c.text || '')}</div>
+                </div>
+              `).join('')}
+            </div>
+            <div class="cmt-form">
+              <input class="inp" id="cmt-inp-${esc(pid)}" placeholder="${activeUser.nick ? 'คอมเมนต์ในชื่อ ' + esc(activeUser.nick) + '...' : 'พิมพ์คอมเมนต์ให้กำลังใจ...'}">
+              <button class="btn p" type="button" onclick="sendComment('${esc(pid)}')">ส่งคอมเมนต์</button>
+            </div>
+          </div>
         </div>
-        <div class="post-caption">${esc(p.caption)}</div>
-        <div class="cmt-area">
-          <div style="font-size:12px;color:var(--o2);margin-bottom:8px;font-weight:500">💬 ความคิดเห็น (${p.comments.length})</div>
-          <div class="cmt-list">
-            ${p.comments.map(c => `
-              <div class="cmt-item">
-                <div class="cmt-meta"><span>${esc(c.nick)}</span><small>${esc(c.time)}</small></div>
-                <div>${esc(c.text)}</div>
-              </div>
-            `).join('')}
-          </div>
-          <div class="cmt-form">
-            <input class="inp" id="cmt-inp-${esc(p.postId)}" placeholder="${activeUser.nick ? 'คอมเมนต์ในชื่อ ' + esc(activeUser.nick) + '...' : 'พิมพ์คอมเมนต์ให้กำลังใจ...'}">
-            <button class="btn p" type="button" onclick="sendComment('${esc(p.postId)}')">ส่งคอมเมนต์</button>
-          </div>
-        </div>
-      </div>
-    `).join('');
+      `;
+    }).join('');
   } catch(e){
     list.innerHTML = '<div class="card"><p style="color:#ff9e9e">❌ โหลดฟีดไม่สำเร็จ กดรีเฟรชด้านบนเพื่อลองใหม่ครับ</p></div>';
   }
