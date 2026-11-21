@@ -281,13 +281,7 @@ $('#rf').onsubmit = async (e) => {
     btn.innerHTML = '⏳ กำลังส่งข้อมูล...';
     btn.disabled = true;
 
-    if(APP_SCRIPT_URL === "https://script.google.com/macros/s/AKfycbyv-OawwEx1e0VXnBTok1JlCEpebM81WVCKEeMkHaCW0tx7H3iCb0ze9fkP5TaZm95P/exec") {
-        toast('❌ กรุณาตั้งค่า APP_SCRIPT_URL ในโค้ดก่อน');
-        btn.innerHTML = originalBtnText;
-        btn.disabled = false;
-        return;
-    }
-
+    
     try {
         // ส่งข้อมูลไปยัง Google Apps Script (ใช้ text/plain เพื่อเลี่ยงปัญหา CORS)
         const response = await fetch(APP_SCRIPT_URL, {
